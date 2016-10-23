@@ -13,13 +13,12 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
 
-        ActionBar actionBar=getSupportActionBar();
-        actionBar.hide();
+
         new Handler().postDelayed(new Runnable() {
 
             @Override
             public void run() {
-                Intent i = new Intent(Splash.this, EducationHunt.class);
+                Intent i = new Intent(Splash.this, EduHunt.class);
                 startActivity(i);
 
                 finish();

@@ -16,31 +16,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".EducationHunt"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Home"
-            android:label="@string/title_activity_home"
-            android:parentActivityName=".EducationHunt" />
-        <activity
-            android:name=".Search"
-            android:label="@string/title_activity_search"
-            android:parentActivityName=".EducationHunt" />
-        <activity
-            android:name=".Fav"
-            android:label="@string/title_activity_fav"
-            android:parentActivityName=".EducationHunt" />
-        <activity
-            android:name=".Info"
-            android:label="@string/title_activity_info"
-            android:parentActivityName=".EducationHunt" />
-        <activity
-            android:name=".Settings"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName=".EducationHunt"></activity>
-        <activity
             android:name=".OurTeam"
-            android:parentActivityName=".EducationHunt"></activity>
+            android:parentActivityName=".EducationHunt" />
+        <activity
+            android:name=".EduHunt">
+
+        </activity>
     </application>
 
 </manifest>
