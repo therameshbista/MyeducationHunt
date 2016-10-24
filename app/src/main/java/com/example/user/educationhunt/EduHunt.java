@@ -1,5 +1,6 @@
 package com.example.user.educationhunt;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -50,7 +53,7 @@ public class EduHunt extends AppCompatActivity {
     }
 
     private ActionBarDrawerToggle setupDrawerToggle() {
-        return new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.drawer_open,  R.string.drawer_close);
+        return new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.drawer_open, R.string.drawer_close);
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
@@ -68,7 +71,7 @@ public class EduHunt extends AppCompatActivity {
         // Create a new fragment and specify the fragment to show based on nav item clicked
         Fragment fragment = null;
         Class fragmentClass;
-        switch(menuItem.getItemId()) {
+        switch (menuItem.getItemId()) {
             case R.id.home:
                 fragmentClass = Home.class;
                 break;
@@ -85,7 +88,7 @@ public class EduHunt extends AppCompatActivity {
                 fragmentClass = Settings.class;
                 break;
             default:
-                fragmentClass = EduHunt.class;
+                fragmentClass = Home.class;
         }
 
         try {
@@ -112,6 +115,11 @@ public class EduHunt extends AppCompatActivity {
         if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
+        switch (item.getItemId()){
+            case R.id.our_team:
+                startActivity(new Intent(this,OurTeam.class));
+                return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -130,4 +138,10 @@ public class EduHunt extends AppCompatActivity {
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.education_hunt, menu);
+        return true;
+    }
 }

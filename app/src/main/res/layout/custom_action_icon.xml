@@ -4,11 +4,11 @@
 
     <ImageButton
         android:id="@+id/btn_slide"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_width="wrap_content"
         android:background="@null"
         android:scaleType="centerInside"
         android:src="@mipmap/edutext"
-        android:paddingRight="170dp"
+        android:paddingRight="210dp"
         android:paddingTop="4dp"/>
 </RelativeLayout>

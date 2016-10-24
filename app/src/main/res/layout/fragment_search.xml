@@ -1,13 +1,117 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.user.educationhunt.Search">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+   <LinearLayout
+       android:id="@+id/school"
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="1"
+       android:background="#BDB76B"
+       android:paddingLeft="20dp"
+       android:gravity="center_vertical"
+       android:orientation="vertical">
 
-</FrameLayout>
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textAllCaps="true"
+           android:textColor="#fff"
+           android:textSize="13dp"
+           android:text="Search For"/>
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textAllCaps="true"
+           android:textColor="#fff"
+           android:textStyle="bold"
+           android:textSize="35dp"
+           android:text="Schools"/>
+   </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/colleges"
+        android:onClick="searchCollege"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#2F4F4F"
+        android:paddingLeft="20dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textColor="#fff"
+            android:textSize="13dp"
+            android:text="Search For"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:textSize="35dp"
+            android:text="Colleges"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/universities"
+        android:onClick="searchUniversities"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#F4A460"
+        android:paddingLeft="20dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textColor="#fff"
+            android:textSize="13dp"
+            android:text="Search For"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:textSize="35dp"
+            android:text="Universities"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/bookmark"
+        android:onClick="bookMark"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#708090"
+        android:paddingLeft="20dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textColor="#fff"
+            android:textSize="13dp"
+            android:text="Your"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:textSize="35dp"
+            android:text="BookMarked"/>
+    </LinearLayout>
+</LinearLayout>
