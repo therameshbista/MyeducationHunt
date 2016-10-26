@@ -11,10 +11,21 @@
        android:layout_height="0dp"
        android:layout_weight="1"
        android:background="#BDB76B"
-       android:paddingLeft="20dp"
-       android:gravity="center_vertical"
-       android:orientation="vertical">
+       android:orientation="horizontal">
 
+       <ImageView
+           android:layout_width="0dp"
+           android:layout_weight="0.25"
+           android:layout_height="wrap_content"
+           android:paddingTop="41dp"
+           android:paddingBottom="42dp"
+           android:src="@mipmap/flatschool"/>
+       <LinearLayout
+           android:layout_width="0dp"
+           android:layout_weight="0.75"
+           android:layout_height="match_parent"
+           android:gravity="center_vertical"
+           android:orientation="vertical">
        <TextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
@@ -30,88 +41,125 @@
            android:textStyle="bold"
            android:textSize="35dp"
            android:text="Schools"/>
+       </LinearLayout>
    </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/colleges"
-        android:onClick="searchCollege"
+        android:id="@+id/college"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="#2F4F4F"
-        android:paddingLeft="20dp"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="0.25"
+            android:paddingTop="41dp"
+            android:paddingBottom="43dp"
             android:layout_height="wrap_content"
-            android:textAllCaps="true"
-            android:textColor="#fff"
-            android:textSize="13dp"
-            android:text="Search For"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAllCaps="true"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            android:textSize="35dp"
-            android:text="Colleges"/>
+            android:src="@mipmap/university"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="0.75"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:textColor="#fff"
+                android:textSize="13dp"
+                android:text="Search For"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:textSize="35dp"
+                android:text="Collages"/>
+        </LinearLayout>
     </LinearLayout>
 
+
     <LinearLayout
-        android:id="@+id/universities"
-        android:onClick="searchUniversities"
+        android:id="@+id/university"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="#F4A460"
-        android:paddingLeft="20dp"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="0.25"
+            android:paddingTop="41dp"
+            android:paddingBottom="43dp"
             android:layout_height="wrap_content"
-            android:textAllCaps="true"
-            android:textColor="#fff"
-            android:textSize="13dp"
-            android:text="Search For"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAllCaps="true"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            android:textSize="35dp"
-            android:text="Universities"/>
+            android:src="@mipmap/college"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="0.75"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:textColor="#fff"
+                android:textSize="13dp"
+                android:text="Search For"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:textSize="35dp"
+                android:text="Universities"/>
+        </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/bookmark"
-        android:onClick="bookMark"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#708090"
-        android:paddingLeft="20dp"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:background="#808080"
+        android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="0.25"
+            android:paddingTop="41dp"
+            android:paddingBottom="43dp"
             android:layout_height="wrap_content"
-            android:textAllCaps="true"
-            android:textColor="#fff"
-            android:textSize="13dp"
-            android:text="Your"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAllCaps="true"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            android:textSize="35dp"
-            android:text="BookMarked"/>
+            android:src="@mipmap/bookmark"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="0.75"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:textColor="#fff"
+                android:textSize="13dp"
+                android:text="Your"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:textSize="35dp"
+                android:text="Bookmarks"/>
+        </LinearLayout>
     </LinearLayout>
+
 </LinearLayout>

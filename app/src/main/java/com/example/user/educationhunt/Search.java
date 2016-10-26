@@ -36,14 +36,14 @@ public class Search extends Fragment{
                 startActivity(new Intent(getContext(),School.class));
             }
         });
-        college=(LinearLayout)view.findViewById(R.id.colleges);
+        college=(LinearLayout)view.findViewById(R.id.college);
         college.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(),College.class));
             }
         });
-        university=(LinearLayout)view.findViewById(R.id.universities);
+        university=(LinearLayout)view.findViewById(R.id.university);
         university.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
