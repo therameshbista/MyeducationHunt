@@ -79,7 +79,7 @@
                 android:textColor="#fff"
                 android:textStyle="bold"
                 android:textSize="35dp"
-                android:text="Collages"/>
+                android:text="Colleges"/>
         </LinearLayout>
     </LinearLayout>
 

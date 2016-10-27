@@ -81,11 +81,11 @@ public class EduHunt extends AppCompatActivity {
             case R.id.fav:
                 fragmentClass = Favourites.class;
                 break;
-            case R.id.info:
-                fragmentClass = Information.class;
-                break;
             case R.id.settings:
                 fragmentClass = Settings.class;
+                break;
+            case R.id.register:
+                fragmentClass = Register.class;
                 break;
             default:
                 fragmentClass = Home.class;

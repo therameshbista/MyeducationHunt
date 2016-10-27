@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:HTMLCode="http://schemas.android.com/apk/res-auto">
 
     <group android:checkableBehavior="single">
         <item
@@ -14,14 +15,19 @@
             android:id="@+id/fav"
             android:icon="@mipmap/fav"
             android:title="Favourites" />
-        <item
-            android:id="@+id/info"
-            android:icon="@mipmap/info"
-            android:title="Info" />
+
         <item
             android:id="@+id/settings"
             android:icon="@mipmap/settings"
             android:title="Settings" />
     </group>
-
+    <group
+        android:id="@+id/group"
+        android:checkableBehavior="single"  >
+        <item
+            android:id="@+id/register"
+            android:icon="@mipmap/register"
+            android:checkableBehavior="none"
+            android:title="Register Your Institution" />
+    </group>
 </menu>
