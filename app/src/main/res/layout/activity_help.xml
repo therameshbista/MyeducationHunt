@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.example.user.educationhunt.Info">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="How to Use this app ?"
+                android:textStyle="bold"
+                android:textColor="#f26c4f"
+                android:layout_marginBottom="10dp"
+                android:textSize="22dp"/>
+            <LinearLayout
+                android:id="@+id/for_students"
+                android:layout_width="match_parent"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="15dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="#f26c4f"
+                    android:text="For Students"/>
+                <ImageView
+                    android:id="@+id/students_toggle"
+                    android:layout_width="20dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/down"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/help_student"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:padding="5dp"
+                    android:text="Download this app from playstore for free"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:padding="5dp"
+                    android:text="We recommend you to glance over terms and conditions page under setting tab"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:padding="5dp"
+                    android:text="If you wish to search your desired institution directly go through search page else go through the list of all the available institution"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:padding="5dp"
+                    android:text="While viewing the details of college if you think that this can be of your possible destiny then click to add icon at the right top of your screen.You can view the list of your choice later by going to bookmark tab under Search page"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:padding="5dp"
+                    android:text="You can also like any institutions.Based on number of like college will be rated.College with most likes in overall will be automatically displayed under favourites page."/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:padding="5dp"
+                    android:text="You can view all the details of your desired institution from our app else you can even directly go to their official sites or enquiry via their contact address."/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:padding="5dp"
+                    android:text="We are much aware of the fraud details.Keeping all this in mind we have strictly refined and verified the details of every single institution before entering to our list.Hence we want to make you assure of its reliability"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:padding="5dp"
+                    android:text="If you have any complement or suggestions regarding our application please fell free to send your feedback by clicking feedback link at the bottom "/>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="#FF6347"/>
+
+            <LinearLayout
+                android:id="@+id/for_institutions"
+                android:layout_width="match_parent"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="15dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="#f26c4f"
+                    android:text="For Institutions"/>
+                <ImageView
+                    android:id="@+id/institution_toggle"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/down"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/help_institution"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:padding="5dp"
+                    android:text="Download this app from playstore for free"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:padding="5dp"
+                    android:text="We recommend you to glance over terms and conditions page under setting tab"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:padding="5dp"
+                    android:text="We request all the institutions to have their institutions registered"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:padding="5dp"
+                    android:text="To register your institution first go to register page in the navigation drawer and select your institution type."/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:padding="5dp"
+                    android:text="Please note that in case if you have two or more levels of education under same institution then you have to register each of them seperately.For example if your institution provides service for school as well as for college level(above grade 12),then you have to register separately under corresponding file"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:padding="5dp"
+                    android:text="While filling up the registration form all the fields marked by * symbol are mendatory"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:padding="5dp"
+                    android:text="Please do not provide unwarranted information,we highly proscribe such acts"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:padding="5dp"
+                    android:text="After filling up the form click to submit button and wait until you get a message displaying success message"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:padding="5dp"
+                    android:text="You will get a response from us within 48 business hours"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13dp"
+                    android:padding="5dp"
+                    android:text="If you wish to display advertisements of your college in our app then please do not hesitate to contact us.You can get our complete contact details under contact us page inside overflow menu in the action bar"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

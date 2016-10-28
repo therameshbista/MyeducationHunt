@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.example.user.educationhunt.Info">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="About Us"
+                android:textStyle="bold"
+                android:textColor="#f26c4f"
+                android:layout_marginBottom="10dp"
+                android:textSize="22dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:padding="10dp"
+                android:textSize="12dp"
+                android:text="MyEducationHunt is a complete search application based on android platform thats facilitates your educational search.We are mainly concerned with helping students over Nepal to get to appropriate educational institutions.
+Nevertheless, this application is not only limited to students, any educational institution can have them registered to us and dessiminate their enterpraise mileu with as much details."/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Why Us?"
+                android:textStyle="bold"
+                android:textColor="#f26c4f"
+                android:layout_marginBottom="10dp"
+                android:textSize="22dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="12dp"
+                android:text="User Friendly"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:padding="5dp"
+                android:textSize="12dp"
+                android:text="Easy accessible"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:padding="5dp"
+                android:textSize="12dp"
+                android:text="Free to use"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:padding="5dp"
+                android:textSize="12dp"
+                android:text="Secure and Reliable"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="12dp"
+                android:layout_marginBottom="30dp"
+                android:text="Legally approved"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Info"
+                android:textStyle="bold"
+                android:textColor="#f26c4f"
+                android:layout_marginBottom="10dp"
+                android:textSize="22dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="12dp"
+                android:text="Version : 1.6.10"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="12dp"
+                android:text="Release Date : December 25, 2016"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="12dp"
+                android:text="Published on : Play Store(free)"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="12dp"
+                android:text="Developed by : Soani Tech Pvt. Ltd."/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="12dp"
+                android:text="Platform     : Android"/>
+            <TextView
+                android:id="@+id/website"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginLeft="5dp"
+                android:textStyle="italic"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12dp"
+                android:text="Website      : Click here !!"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#00F"
+                android:textSize="10dp"
+                android:layout_marginTop="25dp"
+                android:textStyle="italic"
+                android:text="CopyRight @MyEducationHunt 2016"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
