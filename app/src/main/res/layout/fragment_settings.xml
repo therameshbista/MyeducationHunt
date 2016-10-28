@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context="com.example.user.educationhunt.Settings">
+    tools:context=".fragment.Settings">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -17,7 +17,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:padding="15dp"
         android:layout_marginLeft="5dp"
         android:orientation="horizontal">
@@ -26,20 +26,19 @@
             android:layout_height="wrap_content"
             android:textColor="#000000"
             android:text="Allow sound"/>
-        <ImageView
-            android:tag="1"
+        <ToggleButton
             android:id="@+id/toggleSound"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="216dp"
-            android:src="@mipmap/toggleoff"/>
-        <ImageView
-            android:tag="1"
-            android:id="@+id/toggleSound1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="216dp"
-            android:src="@mipmap/toggleon"/>
+            android:background="@null"
+            android:drawableRight="@drawable/check"
+            android:textOn=""
+            android:textOff=""
+            android:layout_marginLeft="150dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:layout_centerVertical="true"/>
+
 
     </LinearLayout>
     <View
@@ -50,7 +49,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:padding="15dp"
         android:layout_marginLeft="5dp"
         android:orientation="horizontal">
@@ -59,16 +58,21 @@
             android:layout_height="wrap_content"
             android:textColor="#000000"
             android:text="Allow Location"/>
-        <ImageView
+        <ToggleButton
             android:id="@+id/toggleLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="200dp"
-            android:tag="3"
-            android:src="@mipmap/toggleoff"/>
+            android:background="@null"
+            android:drawableRight="@drawable/check"
+            android:textOn=""
+            android:textOff=""
+            android:layout_marginLeft="133dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:layout_centerVertical="true"/>
+
 
     </LinearLayout>
-
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"

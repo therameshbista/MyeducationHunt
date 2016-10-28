@@ -6,4 +6,9 @@
         android:orderInCategory="100"
         android:title="@string/our_team"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/feedback"
+        android:orderInCategory="100"
+        android:title="@string/feedback"
+        app:showAsAction="never" />
 </menu>

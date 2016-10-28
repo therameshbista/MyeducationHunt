@@ -17,4 +17,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search">Search</string>
     <string name="spinner_title">Register your Institution</string>
+    <string name="feedback">Feedback</string>
 </resources>

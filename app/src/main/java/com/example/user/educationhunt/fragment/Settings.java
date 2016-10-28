@@ -1,4 +1,4 @@
-package com.example.user.educationhunt;
+package com.example.user.educationhunt.fragment;
 
 
 import android.content.Intent;
@@ -7,9 +7,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ToggleButton;
+
+import com.example.user.educationhunt.Help;
+import com.example.user.educationhunt.Info;
+import com.example.user.educationhunt.Privacy;
+import com.example.user.educationhunt.R;
+import com.example.user.educationhunt.Terms;
 
 
 /**
@@ -18,8 +26,7 @@ import android.widget.TextView;
 public class Settings extends Fragment implements View.OnClickListener{
 
     TextView terms,privacy,info,help;
-    ImageView toggleSound,toggleLocation;
-
+    ToggleButton toggleSound,toggleLocation;
     public Settings() {
         // Required empty public constructor
     }
@@ -35,8 +42,9 @@ public class Settings extends Fragment implements View.OnClickListener{
         privacy=(TextView) view.findViewById(R.id.privacy);
         info=(TextView) view.findViewById(R.id.info);
         help=(TextView) view.findViewById(R.id.help);
-        toggleSound= (ImageView) view.findViewById(R.id.toggleSound);
-        toggleLocation= (ImageView) view.findViewById(R.id.toggleLocation);
+        toggleLocation= (ToggleButton) view.findViewById(R.id.toggleLocation);
+        toggleSound= (ToggleButton) view.findViewById(R.id.toggleLocation);
+
 
         terms.setOnClickListener(this);
         privacy.setOnClickListener(this);
@@ -44,6 +52,19 @@ public class Settings extends Fragment implements View.OnClickListener{
         help.setOnClickListener(this);
         toggleSound.setOnClickListener(this);
         toggleLocation.setOnClickListener(this);
+
+        toggleSound.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // Sound  is disabled
+                    toggleSound.setSoundEffectsEnabled(false);
+                } else {
+                    // Sound is enabled
+                    toggleSound.setSoundEffectsEnabled(true);
+                }
+            }
+        });
 
         return view;
     }

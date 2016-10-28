@@ -5,9 +5,7 @@ import android.content.res.Configuration;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +13,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
+
+import com.example.user.educationhunt.fragment.Favourites;
+import com.example.user.educationhunt.fragment.Home;
+import com.example.user.educationhunt.fragment.Register;
+import com.example.user.educationhunt.fragment.Search;
+import com.example.user.educationhunt.fragment.Settings;
 
 public class EduHunt extends AppCompatActivity {
     private DrawerLayout mDrawer;
@@ -119,6 +122,10 @@ public class EduHunt extends AppCompatActivity {
             case R.id.our_team:
                 startActivity(new Intent(this,OurTeam.class));
                 return true;
+            case R.id.feedback:
+                startActivity(new Intent(this,Feedback.class));
+                return true;
+
         }
         return super.onOptionsItemSelected(item);
     }

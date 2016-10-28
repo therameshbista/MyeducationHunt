@@ -48,13 +48,24 @@
             android:theme="@style/AppTheme1" />
         <activity
             android:name=".Info"
-            android:theme="@style/AppTheme1"></activity>
+            android:theme="@style/AppTheme1" />
         <activity
             android:name=".Website"
             android:parentActivityName=".Info"
-            android:theme="@style/AppTheme1">
-
-        </activity>
+            android:theme="@style/AppTheme1" />
+        <activity
+            android:name=".SchoolRegistration"
+            android:theme="@style/AppTheme1" />
+        <activity
+            android:name=".CollegeRegistration"
+            android:theme="@style/AppTheme1" />
+        <activity
+            android:name=".UniversityRegistration"
+            android:theme="@style/AppTheme1"></activity>
+        <activity
+            android:name=".Feedback"
+            android:theme="@style/AppTheme1"
+            android:parentActivityName=".EduHunt"></activity>
     </application>
 
 </manifest>

@@ -1,20 +1,24 @@
-package com.example.user.educationhunt;
+package com.example.user.educationhunt.fragment;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.user.educationhunt.R;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Register extends Fragment {
+public class Home extends Fragment {
 
 
-    public Register() {
+    public Home() {
         // Required empty public constructor
     }
 
@@ -23,7 +27,6 @@ public class Register extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false);
+        return inflater.inflate(R.layout.fragment_home, container, false);
     }
-
 }

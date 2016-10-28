@@ -4,89 +4,69 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    android:background="@drawable/side_nav_bar"
-    tools:context="com.example.user.educationhunt.Register">
+    android:background="#fff"
+    tools:context=".fragment.Register">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="0.1"
-        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:textSize="30dp"
+        android:layout_marginBottom="50dp"
         android:textStyle="bold"
-        android:textColor="#FFF"
+        android:textColor="@color/colorPrimary"
         android:text="Select Your Type" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.3">
+    <Button
+        android:id="@+id/btn_school"
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="23dp"
-            android:textColor="#FFF"
-            android:textStyle="bold"
-            android:text="Register Your School"/>
+        android:text="Register your School here"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
 
-        <ImageView
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/next"/>
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="2"
+        android:shadowDy="-2"
+        android:shadowRadius="12"
+        />
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.3"
-        android:orientation="horizontal"
-        android:layout_gravity="right">
+    <Button
+        android:id="@+id/btn_college"
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="23dp"
-            android:textColor="#FFF"
-            android:textStyle="bold"
-            android:text="Register Your College"/>
+        android:text="Register your college here"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
 
-        <ImageView
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/next"/>
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="2"
+        android:shadowDy="-2"
+        android:shadowRadius="12"
+        />
 
+    <Button
+        android:id="@+id/btn_university"
 
-    </LinearLayout>
+        android:text="Register your University here"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.3">
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="2"
+        android:shadowDy="-2"
+        android:shadowRadius="12"
+        />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="#FFF"
-            android:textSize="23dp"
-            android:textStyle="bold"
-            android:text="Register Your University"/>
-
-        <ImageView
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/next"/>
-
-
-
-    </LinearLayout>
 
 </LinearLayout>
