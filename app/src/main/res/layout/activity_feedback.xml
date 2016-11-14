@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:padding="5dp"
+        android:layout_marginBottom="5dp"
         android:textColor="@color/colorPrimary"
         android:text="Name"/>
 
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:padding="5dp"
+        android:layout_marginBottom="5dp"
         android:textColor="@color/colorPrimary"
         android:text="Email"/>
 
@@ -40,6 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="7dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/feedback"/>
 
     <TextView
@@ -47,7 +48,7 @@
         android:layout_height="wrap_content"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:padding="5dp"
+        android:layout_marginBottom="5dp"
         android:textColor="@color/colorPrimary"
         android:text="Comment"/>
 

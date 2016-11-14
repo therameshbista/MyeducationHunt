@@ -1,5 +1,6 @@
 package com.example.user.educationhunt;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.design.widget.NavigationView;
@@ -34,11 +35,6 @@ public class EduHunt extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-//        ActionBar actionBar=getSupportActionBar();
-//        View mActionBarView=getLayoutInflater().inflate(R.layout.custom_action_icon,null);
-//        actionBar.setCustomView(mActionBarView);
-//        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -120,7 +116,9 @@ public class EduHunt extends AppCompatActivity {
         }
         switch (item.getItemId()){
             case R.id.our_team:
-                startActivity(new Intent(this,OurTeam.class));
+                final Dialog dialog=new Dialog(this);
+                dialog.setContentView(R.layout.activity_our_team);
+                dialog.show();
                 return true;
             case R.id.feedback:
                 startActivity(new Intent(this,Feedback.class));
