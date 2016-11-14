@@ -1,20 +1,65 @@
 package com.example.user.educationhunt;
 
+import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
 
-public class SchoolRegistration extends AppCompatActivity {
+import com.example.user.educationhunt.adapter.NothingSelectedSpinnerAdapter;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
+public class SchoolRegistration extends AppCompatActivity implements View.OnClickListener{
+
+    ImageView schoolLogoUpload;
+    private static int RESULT_LOAD_IMAGE = 1;
+    private EditText schoolEstDate,schoolAdmissionStartDate,schoolAdmissionEndDate;
+    private DatePickerDialog datePickerDialogSchool,schoolAdmissionStartDatePicker,schoolAdmissionEndDatePicker;
+    private SimpleDateFormat dateFormatterSchool;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school_registration);
 
+        schoolLogoUpload= (ImageView) findViewById(R.id.register_school_logo);
+        schoolLogoUpload.setOnClickListener(this);
+
+        dateFormatterSchool = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+
+        schoolEstDate = (EditText) findViewById(R.id.register_school_estdate);
+        schoolEstDate.setInputType(InputType.TYPE_NULL);
+        schoolEstDate.requestFocus();
+
+        schoolAdmissionStartDate = (EditText) findViewById(R.id.school_admission_startDate);
+        schoolAdmissionStartDate.setInputType(InputType.TYPE_NULL);
+        schoolAdmissionStartDate.requestFocus();
+
+        schoolAdmissionEndDate = (EditText) findViewById(R.id.school_admission_end_date);
+        schoolAdmissionEndDate.setInputType(InputType.TYPE_NULL);
+
         ActionBar actionBar=getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle("Register you School");
+
+        setDateTimeField();
+
+        setSpinnerSchoolObjects();
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -25,5 +70,254 @@ public class SchoolRegistration extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.register_school_logo:
+                Intent i=new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(i, RESULT_LOAD_IMAGE);
+                break;
+            case R.id.register_school_estdate:
+                datePickerDialogSchool.show();
+                break;
+            case R.id.school_admission_startDate:
+                schoolAdmissionStartDatePicker.show();
+                break;
+            case R.id.school_admission_end_date:
+                schoolAdmissionEndDatePicker.show();
+
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+            Cursor cursor = getContentResolver().query(selectedImage,filePathColumn, null, null, null);
+            cursor.moveToFirst();
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+            ImageView imageView = (ImageView) findViewById(R.id.register_school_logo);
+            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+        }
+    }
+
+    //Setting datepicker dialog in edittext fields
+    private void setDateTimeField() {
+        schoolEstDate.setOnClickListener(this);
+        schoolAdmissionStartDate.setOnClickListener(this);
+        schoolAdmissionEndDate.setOnClickListener(this);
+
+
+        Calendar newCalendar = Calendar.getInstance();
+        datePickerDialogSchool = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+                schoolEstDate.setText(dateFormatterSchool.format(newDate.getTime()));
+            }
+
+        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+
+        schoolAdmissionStartDatePicker = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+                schoolAdmissionStartDate.setText(dateFormatterSchool.format(newDate.getTime()));
+            }
+
+        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+
+        schoolAdmissionEndDatePicker = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+                schoolAdmissionEndDate.setText(dateFormatterSchool.format(newDate.getTime()));
+            }
+
+        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+    }
+
+
+    //Handling spinner Objects
+    private void setSpinnerSchoolObjects(){
+
+        Spinner spinner_school_level = (Spinner) findViewById(R.id.register_school_level);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.array_school_level, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner_school_level.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        adapter,
+                        R.layout.spinner_level,
+                        // R.layout.contact_spinner_nothing_selected_dropdown, // Optional
+                        this));
+
+        Spinner spinner_school_level1 = (Spinner) findViewById(R.id.register_school_level1);
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.array_school_level, android.R.layout.simple_spinner_item);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner_school_level1.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        adapter1,
+                        R.layout.spinner_level,
+                        // R.layout.contact_spinner_nothing_selected_dropdown, // Optional
+                        this));
+
+        Spinner spinner_school_level2 = (Spinner) findViewById(R.id.register_school_level2);
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.array_school_level, android.R.layout.simple_spinner_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner_school_level2.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        adapter2,
+                        R.layout.spinner_level,
+                        // R.layout.contact_spinner_nothing_selected_dropdown, // Optional
+                        this));
+
+        Spinner spinner_school_level3 = (Spinner) findViewById(R.id.register_school_level3);
+        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this, R.array.array_school_level, android.R.layout.simple_spinner_item);
+        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner_school_level3.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        adapter3,
+                        R.layout.spinner_level,
+                        // R.layout.contact_spinner_nothing_selected_dropdown, // Optional
+                        this));
+
+        Spinner spinner_school_level4 = (Spinner) findViewById(R.id.register_school_level4);
+        ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this, R.array.array_school_level, android.R.layout.simple_spinner_item);
+        adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner_school_level4.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        adapter4,
+                        R.layout.spinner_level,
+                        // R.layout.contact_spinner_nothing_selected_dropdown, // Optional
+                        this));
+
+        Spinner spinner_school_level5 = (Spinner) findViewById(R.id.register_school_level5);
+        ArrayAdapter<CharSequence> adapter5= ArrayAdapter.createFromResource(this, R.array.array_school_level, android.R.layout.simple_spinner_item);
+        adapter5.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner_school_level5.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        adapter5,
+                        R.layout.spinner_level,
+                        // R.layout.contact_spinner_nothing_selected_dropdown, // Optional
+                        this));
+
+        Spinner spinner_school_level6 = (Spinner) findViewById(R.id.register_school_level6);
+        ArrayAdapter<CharSequence> adapter6 = ArrayAdapter.createFromResource(this, R.array.array_school_level, android.R.layout.simple_spinner_item);
+        adapter6.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner_school_level6.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        adapter6,
+                        R.layout.spinner_level,
+                        // R.layout.contact_spinner_nothing_selected_dropdown, // Optional
+                        this));
+
+        Spinner spinner_school_level7 = (Spinner) findViewById(R.id.register_school_level7);
+        ArrayAdapter<CharSequence> adapter7 = ArrayAdapter.createFromResource(this, R.array.array_school_level, android.R.layout.simple_spinner_item);
+        adapter7.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner_school_level7.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        adapter7,
+                        R.layout.spinner_level,
+                        // R.layout.contact_spinner_nothing_selected_dropdown, // Optional
+                        this));
+
+        Spinner spinner_school_level8 = (Spinner) findViewById(R.id.register_school_level8);
+        ArrayAdapter<CharSequence> adapter8 = ArrayAdapter.createFromResource(this, R.array.array_school_level, android.R.layout.simple_spinner_item);
+        adapter8.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner_school_level8.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        adapter8,
+                        R.layout.spinner_level,
+                        // R.layout.contact_spinner_nothing_selected_dropdown, // Optional
+                        this));
+
+        Spinner spinner_school_level9 = (Spinner) findViewById(R.id.register_school_level9);
+        ArrayAdapter<CharSequence> adapter9 = ArrayAdapter.createFromResource(this, R.array.array_school_level, android.R.layout.simple_spinner_item);
+        adapter9.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner_school_level9.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        adapter9,
+                        R.layout.spinner_level,
+                        // R.layout.contact_spinner_nothing_selected_dropdown, // Optional
+                        this));
+
+        Spinner spinner_school_level10 = (Spinner) findViewById(R.id.register_school_level10);
+        ArrayAdapter<CharSequence> adapter10 = ArrayAdapter.createFromResource(this, R.array.array_school_level, android.R.layout.simple_spinner_item);
+        adapter10.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner_school_level10.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        adapter10,
+                        R.layout.spinner_level,
+                        // R.layout.contact_spinner_nothing_selected_dropdown, // Optional
+                        this));
+
+        Spinner spinner_school_level11 = (Spinner) findViewById(R.id.register_school_level11);
+        ArrayAdapter<CharSequence> adapter11 = ArrayAdapter.createFromResource(this, R.array.array_school_level, android.R.layout.simple_spinner_item);
+        adapter11.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner_school_level11.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        adapter11,
+                        R.layout.spinner_level,
+                        // R.layout.contact_spinner_nothing_selected_dropdown, // Optional
+                        this));
+
+        Spinner spinner_district = (Spinner) findViewById(R.id.register_college_district);
+        ArrayAdapter<CharSequence> adapter12 = ArrayAdapter.createFromResource(this, R.array.array_district, android.R.layout.simple_spinner_item);
+        adapter12.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner_district.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        adapter12,
+                        R.layout.spinner_district,
+                        // R.layout.contact_spinner_nothing_selected_dropdown, // Optional
+                        this));
+
+        // Spinner for country selection
+        Spinner spinner_country = (Spinner) findViewById(R.id.register_college_country);
+        ArrayAdapter<CharSequence> adapter13 = ArrayAdapter.createFromResource(this, R.array.array_country, android.R.layout.simple_spinner_item);
+        adapter13.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner_country.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        adapter13,
+                        R.layout.spinner_country,
+                        // R.layout.contact_spinner_nothing_selected_dropdown, // Optional
+                        this));
+
+        // Spinner for institution selection
+        Spinner spinner_institution = (Spinner) findViewById(R.id.register_college_institution);
+        ArrayAdapter<CharSequence> adapter14 = ArrayAdapter.createFromResource(this, R.array.array_institution, android.R.layout.simple_spinner_item);
+        adapter14.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_institution.setPrompt("Day!");
+
+        spinner_institution.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        adapter14,
+                        R.layout.spinner_institution_type,
+                        // R.layout.contact_spinner_nothing_selected_dropdown, // Optional
+                        this));
+
+
     }
 }

@@ -1,12 +1,854 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.user.educationhunt.SchoolRegistration">
+    android:paddingBottom="22dp"
+    android:paddingLeft="22dp"
+    android:paddingRight="22dp"
+    android:paddingTop="22dp"
+    android:background="@mipmap/backgroundlogo"
+    tools:context="com.example.user.educationhunt.UniversityRegistration">
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:layout_marginBottom="4dp"
+            android:text="Name:"/>
+
+        <EditText
+            android:id="@+id/register_college_name"
+            android:layout_width="match_parent"
+            android:background="@drawable/rounded_edittext"
+            android:padding="6dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:layout_marginBottom="4dp"
+            android:text="Address:"/>
+
+        <EditText
+            android:id="@+id/register_college_address"
+            android:layout_width="match_parent"
+            android:background="@drawable/rounded_edittext"
+            android:padding="6dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/register_college_district"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content" />
+            <Spinner
+                android:id="@+id/register_college_country"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:layout_marginBottom="4dp"
+            android:text="Phone:"/>
+
+        <EditText
+            android:id="@+id/register_college_phone"
+            android:layout_width="match_parent"
+            android:background="@drawable/rounded_edittext"
+            android:padding="6dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:layout_marginBottom="4dp"
+            android:text="Email:"/>
+
+        <EditText
+            android:id="@+id/register_college_email"
+            android:layout_width="match_parent"
+            android:background="@drawable/rounded_edittext"
+            android:padding="6dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:layout_marginBottom="4dp"
+            android:text="Website:"/>
+
+        <EditText
+            android:id="@+id/register_college_website"
+            android:layout_width="match_parent"
+            android:background="@drawable/rounded_edittext"
+            android:padding="6dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:layout_marginBottom="4dp"
+                android:text="Institution Type:"/>
+            <Spinner
+                android:id="@+id/register_college_institution"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:textSize="18dp"
+            android:text="Establishment Date:"/>
+
+        <EditText
+            android:id="@+id/register_school_estdate"
+            android:layout_width="match_parent"
+            android:background="@drawable/rounded_edittext"
+            android:padding="6dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:textSize="18dp"
+            android:text="Fee Structure:"/>
+
+        <LinearLayout
+            android:id="@+id/addSchoolProgram"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <Spinner
+                    android:id="@+id/register_school_level"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_edittext"
+                    android:padding="6dp"
+                    android:textSize="13.5dp"
+                    android:hint="Total Annual fee(NRs)"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/addSchoolProgram1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="#6c8487"/>
+                <Spinner
+                    android:id="@+id/register_school_level1"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="#6c8487"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_edittext"
+                    android:padding="6dp"
+                    android:textSize="13.5dp"
+                    android:hint="Total Annual fee(NRs)"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/addSchoolProgram2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="#6c8487"/>
+                <Spinner
+                    android:id="@+id/register_school_level2"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="#6c8487"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_edittext"
+                    android:padding="6dp"
+                    android:textSize="13.5dp"
+                    android:hint="Total Annual fee(NRs)"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/addSchoolProgram3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="#6c8487"/>
+                <Spinner
+                    android:id="@+id/register_school_level3"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="#6c8487"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_edittext"
+                    android:padding="6dp"
+                    android:textSize="13.5dp"
+                    android:hint="Total Annual fee(NRs)"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/addSchoolProgram4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="#6c8487"/>
+                <Spinner
+                    android:id="@+id/register_school_level4"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="#6c8487"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_edittext"
+                    android:padding="6dp"
+                    android:textSize="13.5dp"
+                    android:hint="Total Annual fee(NRs)"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/addSchoolProgram5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="#6c8487"/>
+                <Spinner
+                    android:id="@+id/register_school_level5"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="#6c8487"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_edittext"
+                    android:padding="6dp"
+                    android:textSize="13.5dp"
+                    android:hint="Total Annual fee(NRs)"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/addSchoolProgram6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="#6c8487"/>
+                <Spinner
+                    android:id="@+id/register_school_level6"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="#6c8487"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_edittext"
+                    android:padding="6dp"
+                    android:textSize="13.5dp"
+                    android:hint="Total Annual fee(NRs)"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/addSchoolProgram7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="#6c8487"/>
+
+                <Spinner
+                    android:id="@+id/register_school_level7"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_height="wrap_content" />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="#6c8487"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_edittext"
+                    android:padding="6dp"
+                    android:textSize="13.5dp"
+                    android:hint="Total Annual fee(NRs)"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/addSchoolProgram8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="#6c8487"/>
+                <Spinner
+                    android:id="@+id/register_school_level8"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="#6c8487"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_edittext"
+                    android:padding="6dp"
+                    android:textSize="13.5dp"
+                    android:hint="Total Annual fee(NRs)"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/addSchoolProgram9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="#6c8487"/>
+
+                <Spinner
+                    android:id="@+id/register_school_level9"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="#6c8487"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_edittext"
+                    android:padding="6dp"
+                    android:textSize="13.5dp"
+                    android:hint="Total annual fee(NRs)"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/addSchoolProgram10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="#6c8487"/>
+                <Spinner
+                    android:id="@+id/register_school_level10"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="#6c8487"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_edittext"
+                    android:padding="6dp"
+                    android:textSize="13.5dp"
+                    android:hint="Total annual fee(NRs)"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/addSchoolProgram11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="#6c8487"/>
+
+                <Spinner
+                    android:id="@+id/register_school_level11"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="#6c8487"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_edittext"
+                    android:padding="6dp"
+                    android:textSize="13.5dp"
+                    android:hint="Total annual fee(NRs)"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/add_more_school_programs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:layout_gravity="right"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginBottom="8dp"
+            android:text="Add more +"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:textSize="18dp"
+            android:text="Admission Open:"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.1"
+                android:textSize="12dp"
+                android:layout_height="wrap_content"
+                android:text="From:"/>
+            <EditText
+                android:id="@+id/school_admission_startDate"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/rounded_edittext"
+                android:padding="6dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.1"
+                android:textSize="12dp"
+                android:gravity="end"
+                android:layout_height="wrap_content"
+                android:text="To:"/>
+            <EditText
+                android:id="@+id/school_admission_end_date"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:background="@drawable/rounded_edittext"
+                android:padding="6dp"
+                android:layout_marginLeft="7dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:textSize="20dp"
+                android:text="School Logo:"/>
+            <ImageView
+                android:id="@+id/register_school_logo"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="fitXY"
+                android:background="@mipmap/logoholder"
+                android:layout_gravity="center_horizontal"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:textSize="18dp"
+            android:text="Google Map Location URL:"/>
+
+        <EditText
+            android:id="@+id/register_school_map_Url"
+            android:layout_width="match_parent"
+            android:background="@drawable/rounded_edittext"
+            android:padding="6dp"
+            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="35dp"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_submit"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="70dp"
+                android:textColor="#fff"
+                android:text="Submit"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_discard"
+                android:textColor="#fff"
+                android:text="Cancel"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/search"
+        android:id="@+id/schoolSearch"
         android:orderInCategory="100"
-        android:icon="@mipmap/search"
+        android:icon="@mipmap/scholsrch"
         android:title="@string/search"
         app:showAsAction="always" />
 </menu>

@@ -20,11 +20,12 @@
         android:text="Name"/>
 
     <EditText
+        android:id="@+id/feedback_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
+        android:padding="7dp"
         android:layout_marginBottom="10dp"
-        android:background="#FFEFD5"/>
+        android:background="@drawable/feedback"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,10 +36,11 @@
         android:text="Email"/>
 
     <EditText
+        android:id="@+id/feedback_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:background="#FFEFD5"/>
+        android:padding="7dp"
+        android:background="@drawable/feedback"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -50,6 +52,7 @@
         android:text="Comment"/>
 
     <EditText
+        android:id="@+id/feedback_comment"
         android:inputType="textMultiLine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,14 +62,13 @@
         android:overScrollMode="always"
         android:scrollbars="vertical"
         android:scrollbarStyle="insideInset"
-        android:padding="5dp"
-        android:background="#FFEFD5"/>
+        android:padding="7dp"
+        android:background="@drawable/feedback"/>
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="35dp"
         android:layout_marginTop="10dp"
         android:textColor="#fff"
-        android:padding="10dp"
         android:layout_gravity="right"
         android:background="@drawable/btn_send"
         android:text="Send"/>
