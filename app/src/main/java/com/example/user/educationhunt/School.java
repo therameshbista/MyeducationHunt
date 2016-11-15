@@ -60,21 +60,21 @@ public class School extends AppCompatActivity{
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent=new Intent(School.this,SchoolDetails.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("id", ourSchoolsListItems.get(position));
-                intent.putExtras(bundle);
-                bundle.putInt("id",ourSchoolsListItems.get(position).schoolId);
-                bundle.putString("name",ourSchoolsListItems.get(position).schoolName);
-                bundle.putString("location",ourSchoolsListItems.get(position).schoolLocation);
-                bundle.putString("email",ourSchoolsListItems.get(position).schoolEmail);
-                bundle.putString("created_at",ourSchoolsListItems.get(position).createdAt);
-                bundle.putString("updated_at",ourSchoolsListItems.get(position).updatedAt);
-                bundle.putString("website",ourSchoolsListItems.get(position).schoolWebsite);
 
-                About about=new About();
-                about.setArguments(bundle);
-                startActivity(intent);
+                OurSchool ourSchool=new OurSchool();
+                Intent i=new Intent(School.this,SchoolDetails.class);
+
+                i.putExtra("id", ourSchoolsListItems.get(position).schoolId);
+                i.putExtra("name", ourSchoolsListItems.get(position).schoolName);
+                i.putExtra("location", ourSchoolsListItems.get(position).schoolLocation);
+                i.putExtra("logo", ourSchoolsListItems.get(position).schoolLogo);
+                i.putExtra("email", ourSchoolsListItems.get(position).schoolEmail);
+                i.putExtra("website", ourSchoolsListItems.get(position).schoolWebsite);
+                i.putExtra("created_at", ourSchoolsListItems.get(position).createdAt);
+                i.putExtra("updated_at", ourSchoolsListItems.get(position).updatedAt);
+
+                startActivity(i);
+
             }
         });
 
@@ -97,13 +97,16 @@ public class School extends AppCompatActivity{
 
                                 JSONObject obj = response.getJSONObject(i);
                                 OurSchool ourSchool = new OurSchool();
-                                ourSchool.setSchoolName(obj.getString("name"));
-                                ourSchool.setSchoolLogo(obj.getString("logo"));
-                                ourSchool.setSchoolLocation(obj.getString("location"));
-                                ourSchool.setSchoolEmail(obj.getString("email"));
-                                ourSchool.setSchoolWebsite(obj.getString("website"));
-                                ourSchool.setCreatedAt(obj.getString("created_at"));
-                                ourSchool.setUpdatedAt(obj.getString("updated_at"));
+
+                                ourSchool.schoolId=obj.getInt("id");
+                                ourSchool.schoolName=obj.getString("name");
+                                ourSchool.schoolLocation=obj.getString("location");
+                                ourSchool.schoolLogo=obj.getString("logo");
+                                ourSchool.schoolEmail=obj.getString("email");
+                                ourSchool.schoolWebsite=obj.getString("website");
+                                ourSchool.createdAt=obj.getString("created_at");
+                                ourSchool.updatedAt=obj.getString("updated_at");
+
                             // adding schools to ourSchool list
                                 ourSchoolsListItems.add(ourSchool);
 

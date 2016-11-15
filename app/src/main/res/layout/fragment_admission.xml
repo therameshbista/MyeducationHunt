@@ -25,6 +25,7 @@
         android:layout_gravity="center_horizontal"
         android:text="From:" />
     <TextView
+        android:id="@+id/admission_form_open"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -42,6 +43,7 @@
         android:textStyle="italic"
         android:text="To:" />
     <TextView
+        android:id="@+id/admission_form_closed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -60,12 +62,14 @@
         android:text="Contact:" />
 
     <TextView
+        android:id="@+id/school_admission_contact_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="12dp"
         android:layout_gravity="center_horizontal"
         android:text="Phone:015520123" />
     <TextView
+        android:id="@+id/school_admission_contact_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="12dp"

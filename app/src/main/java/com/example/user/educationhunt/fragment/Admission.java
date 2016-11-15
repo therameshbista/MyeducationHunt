@@ -43,6 +43,24 @@ public class Admission extends Fragment {
         SpannableString content2 = new SpannableString("To:");
         content2.setSpan(new UnderlineSpan(), 0, content2.length(), 0);
         textView2.setText(content2);
+
+
+        TextView admissionOpen= (TextView) view.findViewById(R.id.admission_form_open);
+        String Item = getActivity().getIntent().getExtras().getString("created_at");
+        admissionOpen.setText(Item);
+
+        TextView admissionClosed= (TextView) view.findViewById(R.id.admission_form_closed);
+        String Item1 = getActivity().getIntent().getExtras().getString("created_at");
+        admissionClosed.setText(Item1);
+
+        TextView admissionContactNumber= (TextView) view.findViewById(R.id.school_admission_contact_number);
+        String Item2 = getActivity().getIntent().getExtras().getString("created_at");
+        admissionContactNumber.setText("Contact:"+Item2);
+
+        TextView admissionContactEmail= (TextView) view.findViewById(R.id.school_admission_contact_email);
+        String Item3 = getActivity().getIntent().getExtras().getString("email");
+        admissionContactEmail.setText("Email:"+Item3);
+
         return view;
 
 

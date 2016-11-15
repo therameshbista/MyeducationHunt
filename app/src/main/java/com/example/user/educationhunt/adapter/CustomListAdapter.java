@@ -61,20 +61,11 @@ public class CustomListAdapter extends BaseAdapter {
                 .findViewById(R.id.schoolLogo);
         TextView schoolName = (TextView) convertView.findViewById(R.id.schoolName);
         TextView schoolLocation = (TextView) convertView.findViewById(R.id.schoolLocation);
-        TextView schoolEmail = (TextView) convertView.findViewById(R.id.about_school_email);
-        TextView schoolcreated = (TextView) convertView.findViewById(R.id.about_school_number);
-        TextView schoolUpdated = (TextView) convertView.findViewById(R.id.about_school_category);
-        TextView schoolWebsite = (TextView) convertView.findViewById(R.id.about_school_website);
-
         OurSchool m = ourSchoolsList.get(position);
 
         schoolLogo.setImageUrl(m.getSchoolLogo(), imageLoader);
 
         schoolName.setText("Name: " +m.getSchoolName());
-//        schoolEmail.setText(m.getSchoolEmail());
-//        schoolcreated.setText(m.getCreatedAt());
-//        schoolUpdated.setText(m.getUpdatedAt());
-//        schoolWebsite.setText(m.getSchoolWebsite());
 
         schoolLocation.setText("Address: " +String.valueOf(m.getSchoolLocation()));
 

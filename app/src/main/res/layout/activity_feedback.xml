@@ -66,6 +66,7 @@
         android:padding="7dp"
         android:background="@drawable/feedback"/>
     <Button
+        android:id="@+id/btn_feedback_send"
         android:layout_width="80dp"
         android:layout_height="35dp"
         android:layout_marginTop="10dp"

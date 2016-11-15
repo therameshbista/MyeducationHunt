@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.user.educationhunt.R;
+import com.example.user.educationhunt.School;
+import com.example.user.educationhunt.SchoolDetails;
 import com.example.user.educationhunt.pojos.OurSchool;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -21,6 +23,10 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.junit.runner.Describable;
+
+import java.io.Serializable;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -28,12 +34,7 @@ public class About extends Fragment implements OnMapReadyCallback{
 
     MapView mapView;
     GoogleMap map;
-    TextView aboutSchoolName,aboutSchoolLocation,aboutSchoolNumber,aboutSchoolEmail,aboutSchoolWebsite,aboutSchoolCategory;
-
-
-    public About() {
-        // Required empty public constructor
-    }
+    public TextView aboutSchoolName,aboutSchoolLocation,aboutSchoolNumber,aboutSchoolEmail,aboutSchoolWebsite,aboutSchoolCategory;
 
 
     @Override
@@ -49,19 +50,25 @@ public class About extends Fragment implements OnMapReadyCallback{
         aboutSchoolEmail= (TextView) v.findViewById(R.id.about_school_email);
         aboutSchoolWebsite= (TextView) v.findViewById(R.id.about_school_website);
 
-//        String name=getArguments().getString("name");
-//        String location=getArguments().getString("location");
-//        String email=getArguments().getString("email");
-//        String website=getArguments().getString("website");
-//        String created=getArguments().getString("created");
-//        String updated=getArguments().getString("updated");
+        String Item = getActivity().getIntent().getExtras().getString("name");
+        aboutSchoolName.setText(Item);
 
-//        aboutSchoolName.setText(name);
-//        aboutSchoolName.setText(location);
-//        aboutSchoolName.setText(email);
-//        aboutSchoolName.setText(website);
-//        aboutSchoolName.setText(created);
-//        aboutSchoolName.setText(updated);
+        String Item1 = getActivity().getIntent().getExtras().getString("location");
+        aboutSchoolLocation.setText(Item1);
+
+        String Item2 = getActivity().getIntent().getExtras().getString("email");
+        aboutSchoolEmail.setText(Item2);
+
+        String Item3= getActivity().getIntent().getExtras().getString("website");
+        aboutSchoolWebsite.setText(Item3);
+
+        String Item4 = getActivity().getIntent().getExtras().getString("created_at");
+        aboutSchoolNumber.setText(Item4);
+
+        String Item5 = getActivity().getIntent().getExtras().getString("updated_at");
+        aboutSchoolCategory.setText(Item5);
+
+
 
         // Gets the MapView from the XML layout and creates it
         mapView = (MapView) v.findViewById(R.id.mapview);

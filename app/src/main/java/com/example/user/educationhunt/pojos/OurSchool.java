@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class OurSchool implements Serializable {
 
     public String schoolName;
-    private String schoolLogo;
+    public String schoolLogo;
     public int schoolId;
     public String schoolLocation;
     public String createdAt;

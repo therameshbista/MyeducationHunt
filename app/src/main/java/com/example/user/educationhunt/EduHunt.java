@@ -118,10 +118,14 @@ public class EduHunt extends AppCompatActivity {
             case R.id.our_team:
                 final Dialog dialog=new Dialog(this);
                 dialog.setContentView(R.layout.activity_our_team);
+                dialog.getWindow().setLayout(650,1100);
                 dialog.show();
                 return true;
             case R.id.feedback:
-                startActivity(new Intent(this,Feedback.class));
+                final Dialog dialog1=new Dialog(this);
+                dialog1.setContentView(R.layout.activity_feedback);
+                dialog1.getWindow().setLayout(650,1100);
+                dialog1.show();
                 return true;
 
         }

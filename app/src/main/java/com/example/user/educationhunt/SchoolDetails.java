@@ -1,19 +1,24 @@
 package com.example.user.educationhunt;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 import com.example.user.educationhunt.fragment.About;
 import com.example.user.educationhunt.fragment.Admission;
 import com.example.user.educationhunt.fragment.FeeStructure;
 import com.example.user.educationhunt.fragment.Majors;
 import com.example.user.educationhunt.pojos.OurSchool;
+
+import org.junit.runner.Describable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +28,8 @@ public class SchoolDetails extends AppCompatActivity{
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    TextView mySchoolName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +47,8 @@ public class SchoolDetails extends AppCompatActivity{
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-        OurSchool ourSchool= (OurSchool) getIntent().getExtras().get("id");
-
+//        mySchoolName= (TextView) findViewById(R.id.mySchoolName);
+//        mySchoolName.setText(getIntent().getStringExtra("name"));
 
     }
 
