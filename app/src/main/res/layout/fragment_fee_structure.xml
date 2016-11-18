@@ -8,7 +8,8 @@
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="10"
         android:padding="10dp">
 
         <ImageView
@@ -74,7 +75,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="8"
         android:background="#e5e5e5">
 
         <TextView
@@ -114,20 +116,20 @@
             android:text="Total Estimated Cost(NRs)"
             android:textSize="9dp" />
     </LinearLayout>
-
     <View
         android:layout_width="match_parent"
         android:layout_height="0.8dp"
         android:background="#c5c6c4" />
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="65">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
             <LinearLayout
+                android:id="@+id/grade1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -141,6 +143,7 @@
                         android:layout_height="30dp"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:text="Grade 1"
                         android:textSize="9dp" />
 
                     <View
@@ -163,6 +166,7 @@
                         android:background="#c5c6c4" />
 
                     <TextView
+                        android:id="@+id/grade1_fee"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -180,6 +184,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/grade2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -193,6 +198,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:text="Grade 2"
                         android:textSize="9dp" />
 
                     <View
@@ -215,6 +221,7 @@
                         android:background="#c5c6c4" />
 
                     <TextView
+                        android:id="@+id/grade2_fee"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -232,6 +239,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/grade3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -245,6 +253,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:text="Grade 3"
                         android:textSize="9dp" />
 
                     <View
@@ -267,6 +276,7 @@
                         android:background="#c5c6c4" />
 
                     <TextView
+                        android:id="@+id/grade3_fee"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -284,6 +294,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/grade4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -297,6 +308,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:text="Grade 4"
                         android:textSize="9dp" />
 
                     <View
@@ -319,6 +331,7 @@
                         android:background="#c5c6c4" />
 
                     <TextView
+                        android:id="@+id/grade4_fee"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -333,6 +346,7 @@
                     android:background="#c5c6c4" />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/grade5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -346,6 +360,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:text="Grade 5"
                         android:textSize="9dp" />
 
                     <View
@@ -368,6 +383,7 @@
                         android:background="#c5c6c4" />
 
                     <TextView
+                        android:id="@+id/grade5_fee"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -382,6 +398,7 @@
                     android:background="#c5c6c4" />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/grade6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -395,6 +412,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:text="Grade 6"
                         android:textSize="9dp" />
 
                     <View
@@ -417,6 +435,7 @@
                         android:background="#c5c6c4" />
 
                     <TextView
+                        android:id="@+id/grade6_fee"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -431,6 +450,7 @@
                     android:background="#c5c6c4" />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/grade7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -444,6 +464,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:text="Grade 7"
                         android:textSize="9dp" />
 
                     <View
@@ -466,6 +487,7 @@
                         android:background="#c5c6c4" />
 
                     <TextView
+                        android:id="@+id/grade7_fee"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -480,6 +502,7 @@
                     android:background="#c5c6c4" />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/grade8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -493,6 +516,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:text="Grade 8"
                         android:textSize="9dp" />
 
                     <View
@@ -515,6 +539,7 @@
                         android:background="#c5c6c4" />
 
                     <TextView
+                        android:id="@+id/grade8_fee"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -529,6 +554,7 @@
                     android:background="#c5c6c4" />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/grade9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -542,6 +568,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:text="Grade 9"
                         android:textSize="9dp" />
 
                     <View
@@ -564,6 +591,7 @@
                         android:background="#c5c6c4" />
 
                     <TextView
+                        android:id="@+id/grade9_fee"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -578,6 +606,7 @@
                     android:background="#c5c6c4" />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/grade10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -591,6 +620,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:text="Grade 10"
                         android:textSize="9dp" />
 
                     <View
@@ -613,153 +643,7 @@
                         android:background="#c5c6c4" />
 
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:singleLine="false"
-                        android:textSize="9dp" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.8dp"
-                    android:background="#c5c6c4" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:textSize="9dp" />
-
-                    <View
-                        android:layout_width="0.8dp"
-                        android:layout_height="match_parent"
-                        android:background="#c5c6c4" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="1"
-                        android:singleLine="false"
-                        android:textSize="9dp" />
-
-                    <View
-                        android:layout_width="0.8dp"
-                        android:layout_height="match_parent"
-                        android:background="#c5c6c4" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:singleLine="false"
-                        android:textSize="9dp" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.8dp"
-                    android:background="#c5c6c4" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:textSize="9dp" />
-
-                    <View
-                        android:layout_width="0.8dp"
-                        android:layout_height="match_parent"
-                        android:background="#c5c6c4" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="1"
-                        android:singleLine="false"
-                        android:textSize="9dp" />
-
-                    <View
-                        android:layout_width="0.8dp"
-                        android:layout_height="match_parent"
-                        android:background="#c5c6c4" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:singleLine="false"
-                        android:textSize="9dp" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.8dp"
-                    android:background="#c5c6c4" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:textSize="9dp" />
-
-                    <View
-                        android:layout_width="0.8dp"
-                        android:layout_height="match_parent"
-                        android:background="#c5c6c4" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="1"
-                        android:singleLine="false"
-                        android:textSize="9dp" />
-
-                    <View
-                        android:layout_width="0.8dp"
-                        android:layout_height="match_parent"
-                        android:background="#c5c6c4" />
-
-                    <TextView
+                        android:id="@+id/grade10_fee"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -779,7 +663,8 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="15"
         android:textSize="11dp"
         android:layout_gravity="center_horizontal"
         android:textColor="#3175ce"

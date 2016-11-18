@@ -11,8 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.user.educationhunt.fragment.About;
 import com.example.user.educationhunt.fragment.Admission;
@@ -23,16 +21,17 @@ import com.example.user.educationhunt.fragment.Majors;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CollegeDetail extends AppCompatActivity {
+public class UniversityDetails extends AppCompatActivity {
+
     private Toolbar toolbar;
-    private TabLayout tabLayoutCollege;
-    private ViewPager viewPagerCollege;
+    private TabLayout tabLayoutUniversity;
+    private ViewPager viewPagerUniversity;
     Boolean isStarFilled=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_college_detail);
+        setContentView(R.layout.activity_university_details);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -40,11 +39,11 @@ public class CollegeDetail extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getIntent().getExtras().getString("name"));
 
-        viewPagerCollege = (ViewPager) findViewById(R.id.viewpagerCollege);
-        setupViewPager(viewPagerCollege);
+        viewPagerUniversity = (ViewPager) findViewById(R.id.viewpagerUniversity);
+        setupViewPager(viewPagerUniversity);
 
-        tabLayoutCollege = (TabLayout) findViewById(R.id.tabsCollege);
-        tabLayoutCollege.setupWithViewPager(viewPagerCollege);
+        tabLayoutUniversity = (TabLayout) findViewById(R.id.tabsUniversity);
+        tabLayoutUniversity.setupWithViewPager(viewPagerUniversity);
     }
 
     @Override
@@ -70,7 +69,6 @@ public class CollegeDetail extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new About(), "ABOUT US");

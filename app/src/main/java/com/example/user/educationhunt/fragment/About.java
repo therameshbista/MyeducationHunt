@@ -14,6 +14,7 @@ import com.example.user.educationhunt.R;
 import com.example.user.educationhunt.School;
 import com.example.user.educationhunt.SchoolDetails;
 import com.example.user.educationhunt.pojos.OurSchool;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -34,6 +35,8 @@ public class About extends Fragment implements OnMapReadyCallback{
 
     MapView mapView;
     GoogleMap map;
+
+
     public TextView aboutSchoolName,aboutSchoolLocation,aboutSchoolNumber,aboutSchoolEmail,aboutSchoolWebsite,aboutSchoolCategory;
 
 
@@ -42,6 +45,19 @@ public class About extends Fragment implements OnMapReadyCallback{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_about, container, false);
+
+        mapView = (MapView) v.findViewById(R.id.mapview);
+        mapView.onCreate(savedInstanceState);
+
+        map = mapView.getMap();
+        map.getUiSettings().setMyLocationButtonEnabled(false);
+        map.setMyLocationEnabled(true);
+
+        MapsInitializer.initialize(this.getActivity());
+
+        // Updates the location and zoom of the MapView
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(27.6933,85.3211), 15);
+        map.animateCamera(cameraUpdate);
 
         aboutSchoolName= (TextView) v.findViewById(R.id.about_school_name);
         aboutSchoolLocation= (TextView) v.findViewById(R.id.about_school_location);
@@ -68,23 +84,6 @@ public class About extends Fragment implements OnMapReadyCallback{
         String Item5 = getActivity().getIntent().getExtras().getString("updated_at");
         aboutSchoolCategory.setText(Item5);
 
-
-
-        // Gets the MapView from the XML layout and creates it
-        mapView = (MapView) v.findViewById(R.id.mapview);
-        mapView.onCreate(savedInstanceState);
-
-        // Gets to GoogleMap from the MapView and does initialization stuff
-        map = mapView.getMap();
-        map.getUiSettings().setMyLocationButtonEnabled(false);
-        map.setMyLocationEnabled(true);
-
-        // Needs to call MapsInitializer before doing any CameraUpdateFactory calls
-        MapsInitializer.initialize(this.getActivity());
-
-        // Updates the location and zoom of the MapView
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(27.6933, 85.3211), 15);
-        map.animateCamera(cameraUpdate);
         onMapReady(map);
 
         return v;
@@ -94,6 +93,12 @@ public class About extends Fragment implements OnMapReadyCallback{
     public void onResume() {
         mapView.onResume();
         super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mapView.onPause();
     }
 
     @Override
@@ -107,7 +112,6 @@ public class About extends Fragment implements OnMapReadyCallback{
         super.onLowMemory();
         mapView.onLowMemory();
     }
-
     @Override
     public void onMapReady(GoogleMap map) {
         map.addMarker(new MarkerOptions()

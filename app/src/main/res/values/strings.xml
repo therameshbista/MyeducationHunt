@@ -119,6 +119,7 @@
     </string-array>
 
     <string-array name="array_college_level">
+        <item>+2</item>
         <item>Bachelors</item>
         <item>Masters</item>
     </string-array>
@@ -157,8 +158,6 @@
         <item>Grade 8</item>
         <item>Grade 9</item>
         <item>Grade 10</item>
-        <item>Grade 11</item>
-        <item>Grade 12</item>
     </string-array>
 
     <string-array name="array_university_level">
@@ -168,15 +167,15 @@
     </string-array>
 
     <string-array name="Planets">
-        <item>English</item>
-        <item>Nepali</item>
-        <item>Math</item>
-        <item>Science</item>
-        <item>Computer Science</item>
-        <item>Account</item>
-        <item>Opt math</item>
-        <item>Physice</item>
-        <item>Chemistry</item>
+        <item>Sun</item>
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
     </string-array>
 
 </resources>

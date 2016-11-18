@@ -23,7 +23,7 @@
             android:text="Name:"/>
 
         <EditText
-            android:id="@+id/register_college_name"
+            android:id="@+id/register_school_name"
             android:layout_width="match_parent"
             android:background="@drawable/rounded_edittext"
             android:padding="6dp"
@@ -37,7 +37,7 @@
             android:text="Address:"/>
 
         <EditText
-            android:id="@+id/register_college_address"
+            android:id="@+id/register_school_address"
             android:layout_width="match_parent"
             android:background="@drawable/rounded_edittext"
             android:padding="6dp"
@@ -51,13 +51,13 @@
             android:orientation="horizontal">
 
             <Spinner
-                android:id="@+id/register_college_district"
+                android:id="@+id/register_school_district"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_marginRight="10dp"
                 android:layout_height="wrap_content" />
             <Spinner
-                android:id="@+id/register_college_country"
+                android:id="@+id/register_school_country"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_marginBottom="10dp"
@@ -72,7 +72,7 @@
             android:text="Phone:"/>
 
         <EditText
-            android:id="@+id/register_college_phone"
+            android:id="@+id/register_school_phone"
             android:layout_width="match_parent"
             android:background="@drawable/rounded_edittext"
             android:padding="6dp"
@@ -86,7 +86,7 @@
             android:text="Email:"/>
 
         <EditText
-            android:id="@+id/register_college_email"
+            android:id="@+id/register_school_email"
             android:layout_width="match_parent"
             android:background="@drawable/rounded_edittext"
             android:padding="6dp"
@@ -100,7 +100,7 @@
             android:text="Website:"/>
 
         <EditText
-            android:id="@+id/register_college_website"
+            android:id="@+id/register_school_website"
             android:layout_width="match_parent"
             android:background="@drawable/rounded_edittext"
             android:padding="6dp"
@@ -120,7 +120,7 @@
                 android:layout_marginBottom="4dp"
                 android:text="Institution Type:"/>
             <Spinner
-                android:id="@+id/register_college_institution"
+                android:id="@+id/register_school_institution"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="10dp"
                 android:layout_height="wrap_content" />
@@ -177,6 +177,7 @@
                 android:orientation="vertical">
 
                 <EditText
+                    android:id="@+id/register_school_annualFee"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -225,6 +226,7 @@
                     android:layout_marginBottom="7dp"
                     android:background="#6c8487"/>
                 <EditText
+                    android:id="@+id/register_school_annualFee1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -275,6 +277,7 @@
                     android:background="#6c8487"/>
 
                 <EditText
+                    android:id="@+id/register_school_annualFee2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -325,6 +328,7 @@
                     android:background="#6c8487"/>
 
                 <EditText
+                    android:id="@+id/register_school_annualFee3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -375,6 +379,7 @@
                     android:background="#6c8487"/>
 
                 <EditText
+                    android:id="@+id/register_school_annualFee4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -426,6 +431,7 @@
                     android:background="#6c8487"/>
 
                 <EditText
+                    android:id="@+id/register_school_annualFee5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -476,6 +482,7 @@
                     android:background="#6c8487"/>
 
                 <EditText
+                    android:id="@+id/register_school_annualFee6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -528,6 +535,7 @@
                     android:layout_marginBottom="7dp"
                     android:background="#6c8487"/>
                 <EditText
+                    android:id="@+id/register_school_annualFee7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -579,6 +587,7 @@
                     android:layout_marginBottom="7dp"
                     android:background="#6c8487"/>
                 <EditText
+                    android:id="@+id/register_school_annualFee8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -628,6 +637,7 @@
                     android:layout_marginBottom="7dp"
                     android:background="#6c8487"/>
                 <EditText
+                    android:id="@+id/register_school_annualFee9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -639,106 +649,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/addSchoolProgram10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="7dp"
-                    android:background="#6c8487"/>
-                <Spinner
-                    android:id="@+id/register_school_level10"
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="7dp"
-                    android:background="#6c8487"/>
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="6dp"
-                    android:textSize="13.5dp"
-                    android:hint="Total annual fee(NRs)"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/addSchoolProgram11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="7dp"
-                    android:background="#6c8487"/>
-
-                <Spinner
-                    android:id="@+id/register_school_level11"
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="7dp"
-                    android:background="#6c8487"/>
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="6dp"
-                    android:textSize="13.5dp"
-                    android:hint="Total annual fee(NRs)"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
         <TextView
             android:id="@+id/add_more_school_programs"
             android:layout_width="wrap_content"

@@ -1,9 +1,15 @@
 package com.example.user.educationhunt;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,22 +17,34 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-import com.androidquery.AQuery;
-import com.androidquery.callback.AjaxCallback;
-import com.androidquery.callback.AjaxStatus;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.user.educationhunt.adapter.CollegeListAdapter;
+import com.example.user.educationhunt.adapter.CustomListAdapter;
+import com.example.user.educationhunt.pojos.AppController;
 import com.example.user.educationhunt.pojos.OurCollege;
+import com.example.user.educationhunt.pojos.OurSchool;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class College extends AppCompatActivity {
+public class College extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
-    AQuery aq;
-    ListView lstCollegeInfo;
+    // Log tag
+    private static final String TAG = College.class.getSimpleName();
+
+    private static final String url = "http://myeducationhunt.com/public/schools";
+
+    private ProgressDialog pDialog;
+    private List<OurCollege> ourCollegeListItems = new ArrayList<OurCollege>();
+    private ListView listViewCollege;
+    private CollegeListAdapter adapterCollege;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,85 +55,128 @@ public class College extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle("Colleges");
 
-        aq = new AQuery(this);
+        listViewCollege= (ListView) findViewById(R.id.list_college);
+        adapterCollege = new CollegeListAdapter(this, ourCollegeListItems);
+        listViewCollege.setAdapter(adapterCollege);
 
-        aq.ajax("http://myeducationhunt.com/public/schools",
-
-
-                JSONArray.class, new AjaxCallback<JSONArray>() {
-                    @Override
-                    public void callback(String url, JSONArray object,
-                                         AjaxStatus status) {
-                        // TODO Auto-generated method stub
-                        super.callback(url, object, status);
-
-                        System.out.println("REsponse:" + object.toString());
-                        Outputdisplay(parseCollegeInfo(object));
-
-                    }
-                });
-    }
-
-    private ArrayList<OurCollege>parseCollegeInfo(JSONArray arr){
-        ArrayList<OurCollege> list=new  ArrayList<OurCollege>();
-        try{
-            for (int i = 0; i < arr.length(); i++) {
-
-                JSONObject obj = arr.getJSONObject(i);
-
-                OurCollege info=new OurCollege();
-                info.id=obj.getString("id");
-                info.name= obj.getString("name");
-                info.collegeLogo=(obj.getString("logo"));
-                info.createdAt=(obj.getString("created_at"));
-                info.updatedAt=(obj.getString("updated_at"));
-                info.website=(obj.getString("website"));
-                info.email=(obj.getString("email"));
-                info.location=(obj.getString("location"));
-
-                list.add(info);
-            }
-
-        } catch (JSONException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        return list;
-    }
-
-    private void Outputdisplay(final ArrayList<OurCollege>list){
-
-
-        CollegeListAdapter adapter=new CollegeListAdapter(this,0, list);
-        lstCollegeInfo.setAdapter(adapter);
-        lstCollegeInfo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
+        listViewCollege.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1,
-                                    int position, long arg3) {
-                Intent intent=new Intent(College.this,CollegeDetail.class);
-                System.out.println("BankId:"+list.get(position).id);
-                intent.putExtra("id", list.get(position).id);
-                intent.putExtra("name", list.get(position).name);
-                intent.putExtra("createdAt", list.get(position).createdAt);
-                intent.putExtra("logo", list.get(position).collegeLogo);
-                intent.putExtra("location", list.get(position).location);
-                intent.putExtra("email", list.get(position).email);
-                intent.putExtra("updatedAt", list.get(position).updatedAt);
-                intent.putExtra("website", list.get(position).website);
-                startActivity(intent);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                OurCollege ourCollege=new OurCollege();
+                Intent i=new Intent(College.this,CollegeDetail.class);
+
+                i.putExtra("id", ourCollegeListItems.get(position).idCollege);
+                i.putExtra("name", ourCollegeListItems.get(position).nameCollege);
+                i.putExtra("location", ourCollegeListItems.get(position).locationCollege);
+                i.putExtra("logo", ourCollegeListItems.get(position).collegeLogoCollege);
+                i.putExtra("email", ourCollegeListItems.get(position).emailCollege);
+                i.putExtra("website", ourCollegeListItems.get(position).websiteCollege);
+                i.putExtra("created_at", ourCollegeListItems.get(position).createdAtCollege);
+                i.putExtra("updated_at", ourCollegeListItems.get(position).updatedAtCollege);
+
+                startActivity(i);
+
             }
         });
+        pDialog = new ProgressDialog(this);
+        // Showing progress dialog before making http request
+        pDialog.setMessage("Loading…");
+        pDialog.show();
+
+        // Creating volley request obj
+        JsonArrayRequest collegeRequest = new JsonArrayRequest(url,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.d(TAG, response.toString());
+                        hidePDialog();
+
+                        // Parsing json
+                        for (int i = 0; i < response.length(); i++) {
+                            try {
+
+                                JSONObject obj = response.getJSONObject(i);
+                                OurCollege ourCollege = new OurCollege();
+
+                                ourCollege.idCollege=obj.getString("id");
+                                ourCollege.nameCollege=obj.getString("name");
+                                ourCollege.locationCollege=obj.getString("location");
+                                ourCollege.collegeLogoCollege=obj.getString("logo");
+                                ourCollege.emailCollege=obj.getString("email");
+                                ourCollege.websiteCollege=obj.getString("website");
+                                ourCollege.createdAtCollege=obj.getString("created_at");
+                                ourCollege.updatedAtCollege=obj.getString("updated_at");
+
+                                // adding schools to ourSchool list
+                                ourCollegeListItems.add(ourCollege);
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        adapterCollege.notifyDataSetChanged();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+                hidePDialog();
+            }
+        });
+
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(collegeRequest);
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        hidePDialog();
+    }
+
+    private void hidePDialog() {
+        if (pDialog != null) {
+            pDialog.dismiss();
+            pDialog = null;
+        }
+    }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
                 return true;
+            case R.id.collegeSearch:
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_college, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.collegeSearch);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setOnQueryTextListener(this);
+
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        // User pressed the search button
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        // User changed the text
+        return false;
     }
 }

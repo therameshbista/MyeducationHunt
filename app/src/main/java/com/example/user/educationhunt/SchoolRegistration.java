@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.example.user.educationhunt.adapter.NothingSelectedSpinnerAdapter;
@@ -32,10 +33,43 @@ public class SchoolRegistration extends AppCompatActivity implements View.OnClic
     private DatePickerDialog datePickerDialogSchool,schoolAdmissionStartDatePicker,schoolAdmissionEndDatePicker;
     private SimpleDateFormat dateFormatterSchool;
 
+    LinearLayout addSchoolProgram,addSchoolProgram1,addSchoolProgram2,addSchoolProgram3,addSchoolProgram4,addSchoolProgram5,addSchoolProgram6,addSchoolProgram7,addSchoolProgram8,addSchoolProgram9;
+    EditText registerSchoolName,registerSchoolAddress,registerSchoolPhone,registerSchoolEmail,registerSchoolWebsite,registerSchoolFee,registerSchoolUrl,
+    registerSchoolFee1,registerSchoolFee2,registerSchoolFee3,registerSchoolFee4,registerSchoolFee5,registerSchoolFee6,registerSchoolFee7,registerSchoolFee8,registerSchoolFee9;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school_registration);
+
+
+        addSchoolProgram= (LinearLayout) findViewById(R.id.addSchoolProgram);
+        addSchoolProgram1= (LinearLayout) findViewById(R.id.addSchoolProgram1);
+        addSchoolProgram2= (LinearLayout) findViewById(R.id.addSchoolProgram2);
+        addSchoolProgram3= (LinearLayout) findViewById(R.id.addSchoolProgram3);
+        addSchoolProgram4= (LinearLayout) findViewById(R.id.addSchoolProgram4);
+        addSchoolProgram5= (LinearLayout) findViewById(R.id.addSchoolProgram5);
+        addSchoolProgram6= (LinearLayout) findViewById(R.id.addSchoolProgram6);
+        addSchoolProgram7= (LinearLayout) findViewById(R.id.addSchoolProgram7);
+        addSchoolProgram8= (LinearLayout) findViewById(R.id.addSchoolProgram8);
+        addSchoolProgram9= (LinearLayout) findViewById(R.id.addSchoolProgram9);
+
+        registerSchoolName= (EditText) findViewById(R.id.register_school_name);
+        registerSchoolAddress= (EditText) findViewById(R.id.register_school_address);
+        registerSchoolPhone= (EditText) findViewById(R.id.register_school_phone);
+        registerSchoolEmail= (EditText) findViewById(R.id.register_school_email);
+        registerSchoolWebsite= (EditText) findViewById(R.id.register_school_website);
+        registerSchoolFee= (EditText) findViewById(R.id.register_school_annualFee);
+        registerSchoolFee1= (EditText) findViewById(R.id.register_school_annualFee1);
+        registerSchoolFee2= (EditText) findViewById(R.id.register_school_annualFee2);
+        registerSchoolFee3= (EditText) findViewById(R.id.register_school_annualFee3);
+        registerSchoolFee4= (EditText) findViewById(R.id.register_school_annualFee4);
+        registerSchoolFee5= (EditText) findViewById(R.id.register_school_annualFee5);
+        registerSchoolFee6= (EditText) findViewById(R.id.register_school_annualFee6);
+        registerSchoolFee7= (EditText) findViewById(R.id.register_school_annualFee7);
+        registerSchoolFee8= (EditText) findViewById(R.id.register_school_annualFee8);
+        registerSchoolFee9= (EditText) findViewById(R.id.register_school_annualFee9);
+        registerSchoolUrl= (EditText) findViewById(R.id.register_school_map_Url);
 
         schoolLogoUpload= (ImageView) findViewById(R.id.register_school_logo);
         schoolLogoUpload.setOnClickListener(this);
@@ -56,10 +90,19 @@ public class SchoolRegistration extends AppCompatActivity implements View.OnClic
         ActionBar actionBar=getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle("Register you School");
+//        isValidEmail()
 
         setDateTimeField();
 
         setSpinnerSchoolObjects();
+    }
+
+    public final static boolean isValidEmail(CharSequence target) {
+        if (target == null) {
+            return false;
+        } else {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+        }
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -260,29 +303,7 @@ public class SchoolRegistration extends AppCompatActivity implements View.OnClic
                         // R.layout.contact_spinner_nothing_selected_dropdown, // Optional
                         this));
 
-        Spinner spinner_school_level10 = (Spinner) findViewById(R.id.register_school_level10);
-        ArrayAdapter<CharSequence> adapter10 = ArrayAdapter.createFromResource(this, R.array.array_school_level, android.R.layout.simple_spinner_item);
-        adapter10.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        spinner_school_level10.setAdapter(
-                new NothingSelectedSpinnerAdapter(
-                        adapter10,
-                        R.layout.spinner_level,
-                        // R.layout.contact_spinner_nothing_selected_dropdown, // Optional
-                        this));
-
-        Spinner spinner_school_level11 = (Spinner) findViewById(R.id.register_school_level11);
-        ArrayAdapter<CharSequence> adapter11 = ArrayAdapter.createFromResource(this, R.array.array_school_level, android.R.layout.simple_spinner_item);
-        adapter11.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        spinner_school_level11.setAdapter(
-                new NothingSelectedSpinnerAdapter(
-                        adapter11,
-                        R.layout.spinner_level,
-                        // R.layout.contact_spinner_nothing_selected_dropdown, // Optional
-                        this));
-
-        Spinner spinner_district = (Spinner) findViewById(R.id.register_college_district);
+        Spinner spinner_district = (Spinner) findViewById(R.id.register_school_district);
         ArrayAdapter<CharSequence> adapter12 = ArrayAdapter.createFromResource(this, R.array.array_district, android.R.layout.simple_spinner_item);
         adapter12.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -294,7 +315,7 @@ public class SchoolRegistration extends AppCompatActivity implements View.OnClic
                         this));
 
         // Spinner for country selection
-        Spinner spinner_country = (Spinner) findViewById(R.id.register_college_country);
+        Spinner spinner_country = (Spinner) findViewById(R.id.register_school_country);
         ArrayAdapter<CharSequence> adapter13 = ArrayAdapter.createFromResource(this, R.array.array_country, android.R.layout.simple_spinner_item);
         adapter13.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -306,7 +327,7 @@ public class SchoolRegistration extends AppCompatActivity implements View.OnClic
                         this));
 
         // Spinner for institution selection
-        Spinner spinner_institution = (Spinner) findViewById(R.id.register_college_institution);
+        Spinner spinner_institution = (Spinner) findViewById(R.id.register_school_institution);
         ArrayAdapter<CharSequence> adapter14 = ArrayAdapter.createFromResource(this, R.array.array_institution, android.R.layout.simple_spinner_item);
         adapter14.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_institution.setPrompt("Day!");

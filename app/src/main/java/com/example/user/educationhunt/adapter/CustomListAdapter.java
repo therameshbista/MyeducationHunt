@@ -15,6 +15,8 @@ import com.example.user.educationhunt.pojos.AppController;
 import com.example.user.educationhunt.pojos.OurSchool;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.logging.Filter;
 
 /**
  * Created by user on 11/3/2016.
@@ -30,6 +32,7 @@ public class CustomListAdapter extends BaseAdapter {
         this.activity = activity;
         this.ourSchoolsList = ourSchoolsList;
     }
+
 
     @Override
     public int getCount() {
@@ -73,4 +76,7 @@ public class CustomListAdapter extends BaseAdapter {
         return convertView;
     }
 
+    public static android.widget.Filter getFilter() {
+        return null;
+    }
 }

@@ -17,14 +17,14 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         <ImageView
-            android:id="@+id/college_cover"
+            android:id="@+id/university_cover"
             android:layout_width="match_parent"
             android:layout_height="157dp"
             android:src="@mipmap/cover"/>
 
 
         <android.support.design.widget.TabLayout
-            android:id="@+id/tabsCollege"
+            android:id="@+id/tabsUniversity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffff"
@@ -42,7 +42,7 @@
 
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/viewpagerCollege"
+        android:id="@+id/viewpagerUniversity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"  />

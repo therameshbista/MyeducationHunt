@@ -219,6 +219,7 @@
                 android:orientation="vertical">
 
                 <EditText
+                    android:id="@+id/college_program_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="13.5dp"
@@ -227,6 +228,7 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Program name"/>
                 <EditText
+                    android:id="@+id/college_program_fee"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -281,6 +283,7 @@
                     android:layout_marginBottom="7dp"
                     android:background="#6c8487"/>
                 <EditText
+                    android:id="@+id/college_program_name1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -289,6 +292,7 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Program name"/>
                 <EditText
+                    android:id="@+id/college_annual_fee1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -343,6 +347,7 @@
                     android:layout_marginBottom="7dp"
                     android:background="#6c8487"/>
                 <EditText
+                    android:id="@+id/college_program_name2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -351,6 +356,7 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Program name"/>
                 <EditText
+                    android:id="@+id/college_annual_fee2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -406,6 +412,7 @@
                     android:layout_marginBottom="7dp"
                     android:background="#6c8487"/>
                 <EditText
+                    android:id="@+id/college_program_name3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -414,6 +421,7 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Program name"/>
                 <EditText
+                    android:id="@+id/college_annual_fee3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -469,6 +477,7 @@
                     android:layout_marginBottom="7dp"
                     android:background="#6c8487"/>
                 <EditText
+                    android:id="@+id/college_program_name4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -477,6 +486,7 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Program name"/>
                 <EditText
+                    android:id="@+id/college_annual_fee4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -534,6 +544,7 @@
                     android:layout_marginBottom="7dp"
                     android:background="#6c8487"/>
                 <EditText
+                    android:id="@+id/college_program_name5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -542,6 +553,7 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Program name"/>
                 <EditText
+                    android:id="@+id/college_annual_fee5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -599,6 +611,7 @@
                     android:layout_marginBottom="7dp"
                     android:background="#6c8487"/>
                 <EditText
+                    android:id="@+id/college_program_name6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#fff"
@@ -606,6 +619,7 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Program name"/>
                 <EditText
+                    android:id="@+id/college_annual_fee6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -663,6 +677,7 @@
                     android:background="#6c8487"/>
 
                 <EditText
+                    android:id="@+id/college_program_name7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -671,6 +686,7 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Program name"/>
                 <EditText
+                    android:id="@+id/college_annual_fee7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -728,6 +744,7 @@
                     android:background="#6c8487"/>
 
                 <EditText
+                    android:id="@+id/college_program_name8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -736,6 +753,7 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Program name"/>
                 <EditText
+                    android:id="@+id/college_annual_fee8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -793,6 +811,7 @@
                     android:background="#6c8487"/>
 
                 <EditText
+                    android:id="@+id/college_program_name9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -801,6 +820,7 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Program name"/>
                 <EditText
+                    android:id="@+id/college_annual_fee9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
