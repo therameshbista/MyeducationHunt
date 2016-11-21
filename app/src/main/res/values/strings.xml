@@ -19,6 +19,7 @@
     <string name="spinner_title">Register your Institution</string>
     <string name="feedback">Feedback</string>
     <string name="your_string_here">This is an <u>underline</u>.</string>
+    <string name="err_msg_email">Create Valid Email address</string>
 
     <string-array name="array_district">
         <item>Kathmandu</item>

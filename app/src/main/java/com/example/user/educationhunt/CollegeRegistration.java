@@ -16,8 +16,10 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.user.educationhunt.adapter.NothingSelectedSpinnerAdapter;
 
@@ -32,11 +34,57 @@ public class CollegeRegistration extends AppCompatActivity implements View.OnCli
     private DatePickerDialog datePickerDialog,collegeAdmissionStartDatePicker,collegeAdmissionEndDatePicker;
     private SimpleDateFormat dateFormatter;
     private static int RESULT_LOAD_IMAGE = 1;
-
+    EditText collegeName,collegeAddress,collegePhone,collegeEmail,collegeWebsite,collegeAffiliation,collegeProgram,collegeFee,collegeProgram1,collegeFee1,collegeProgram2,collegeFee2,
+            collegeProgram3,collegeFee3,collegeProgram4,collegeFee4,collegeProgram5,collegeFee5,collegeProgram6,collegeFee6,collegeProgram7,collegeFee7,collegeProgram8,collegeFee8,collegeProgram9,collegeFee9;
+    LinearLayout addCollegeProgram,addCollegeProgram1,addCollegeProgram2,addCollegeProgram3,addCollegeProgram4,addCollegeProgram5,addCollegeProgram6,addCollegeProgram7,addCollegeProgram8,addCollegeProgram9;
+    TextView addMoreColleges;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_college_registration);
+
+        collegeName= (EditText) findViewById(R.id.register_college_name);
+        collegeAddress= (EditText) findViewById(R.id.register_college_address);
+        collegePhone= (EditText) findViewById(R.id.register_college_phone);
+        collegeEmail= (EditText) findViewById(R.id.register_college_email);
+        collegeWebsite= (EditText) findViewById(R.id.register_college_website);
+        collegeAffiliation= (EditText) findViewById(R.id.register_college_edittext_affilation);
+
+        collegeProgram= (EditText) findViewById(R.id.college_program_name);
+        collegeProgram1= (EditText) findViewById(R.id.college_program_name1);
+        collegeProgram2= (EditText) findViewById(R.id.college_program_name2);
+        collegeProgram3= (EditText) findViewById(R.id.college_program_name3);
+        collegeProgram4= (EditText) findViewById(R.id.college_program_name4);
+        collegeProgram5= (EditText) findViewById(R.id.college_program_name5);
+        collegeProgram6= (EditText) findViewById(R.id.college_program_name6);
+        collegeProgram7= (EditText) findViewById(R.id.college_program_name7);
+        collegeProgram8= (EditText) findViewById(R.id.college_program_name8);
+        collegeProgram9= (EditText) findViewById(R.id.college_program_name9);
+
+        collegeFee= (EditText) findViewById(R.id.college_program_fee);
+        collegeFee1= (EditText) findViewById(R.id.college_annual_fee1);
+        collegeFee2= (EditText) findViewById(R.id.college_annual_fee2);
+        collegeFee3= (EditText) findViewById(R.id.college_annual_fee3);
+        collegeFee4= (EditText) findViewById(R.id.college_annual_fee4);
+        collegeFee5= (EditText) findViewById(R.id.college_annual_fee5);
+        collegeFee6= (EditText) findViewById(R.id.college_annual_fee6);
+        collegeFee7= (EditText) findViewById(R.id.college_annual_fee7);
+        collegeFee8= (EditText) findViewById(R.id.college_annual_fee8);
+        collegeFee9= (EditText) findViewById(R.id.college_annual_fee9);
+
+        addCollegeProgram= (LinearLayout) findViewById(R.id.addCollegeProgram);
+        addCollegeProgram1= (LinearLayout) findViewById(R.id.addCollegeProgram1);
+        addCollegeProgram2= (LinearLayout) findViewById(R.id.addCollegeProgram2);
+        addCollegeProgram3= (LinearLayout) findViewById(R.id.addCollegeProgram3);
+        addCollegeProgram4= (LinearLayout) findViewById(R.id.addCollegeProgram4);
+        addCollegeProgram5= (LinearLayout) findViewById(R.id.addCollegeProgram5);
+        addCollegeProgram6= (LinearLayout) findViewById(R.id.addCollegeProgram6);
+        addCollegeProgram7= (LinearLayout) findViewById(R.id.addCollegeProgram7);
+        addCollegeProgram8= (LinearLayout) findViewById(R.id.addCollegeProgram8);
+        addCollegeProgram9= (LinearLayout) findViewById(R.id.addCollegeProgram9);
+
+        addMoreColleges= (TextView) findViewById(R.id.add_more_college_programs);
+        addMoreColleges.setOnClickListener(this);
 
         collegeLogoUpload= (ImageView) findViewById(R.id.register_college_logo);
         collegeLogoUpload.setOnClickListener(this);
@@ -421,6 +469,38 @@ public class CollegeRegistration extends AppCompatActivity implements View.OnCli
             case R.id.register_college_logo:
                 Intent i=new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(i, RESULT_LOAD_IMAGE);
+                break;
+            case R.id.add_more_college_programs:
+                if (addMoreColleges.getVisibility()==View.VISIBLE) {
+                    if (addCollegeProgram9.getVisibility() == View.GONE) {
+                        if (addCollegeProgram8.getVisibility() == View.GONE) {
+                            if (addCollegeProgram7.getVisibility() == View.GONE) {
+                                if (addCollegeProgram6.getVisibility() == View.GONE) {
+                                    if (addCollegeProgram5.getVisibility() == View.GONE) {
+                                        if (addCollegeProgram4.getVisibility() == View.GONE) {
+                                            if (addCollegeProgram3.getVisibility() == View.GONE) {
+                                                if (addCollegeProgram2.getVisibility() == View.GONE) {
+                                                    if (addCollegeProgram1.getVisibility() == View.GONE) {
+                                                        addCollegeProgram1.setVisibility(View.VISIBLE);
+                                                    } else
+                                                        addCollegeProgram2.setVisibility(View.VISIBLE);
+                                                } else
+                                                    addCollegeProgram3.setVisibility(View.VISIBLE);
+                                            } else
+                                                addCollegeProgram4.setVisibility(View.VISIBLE);
+                                        } else
+                                            addCollegeProgram5.setVisibility(View.VISIBLE);
+                                    } else
+                                        addCollegeProgram6.setVisibility(View.VISIBLE);
+                                } else
+                                    addCollegeProgram7.setVisibility(View.VISIBLE);
+                            } else
+                                addCollegeProgram8.setVisibility(View.VISIBLE);
+                        } else
+                            addCollegeProgram9.setVisibility(View.VISIBLE);
+                    }else
+                        addMoreColleges.setVisibility(View.GONE);
+                }
         }
     }
 

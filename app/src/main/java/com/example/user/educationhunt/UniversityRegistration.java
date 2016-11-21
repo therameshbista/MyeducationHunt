@@ -17,8 +17,10 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.user.educationhunt.adapter.NothingSelectedSpinnerAdapter;
 
@@ -34,10 +36,60 @@ public class UniversityRegistration extends AppCompatActivity implements View.On
     private SimpleDateFormat dateFormatterUniversity;
     private static int RESULT_LOAD_IMAGE = 1;
 
+    EditText uniName,uniAddress,uniPhone,uniEmail,uniWebsite,uniProgramName,uniProgramFee,uniProgramName1,uniProgramFee1,uniProgramName2,uniProgramFee2,uniProgramName3,uniProgramFee3,uniProgramName4,uniProgramFee4
+            ,uniProgramName5,uniProgramFee5,uniProgramName6,uniProgramFee6,uniProgramName7,uniProgramFee7,uniProgramName8,uniProgramFee8,uniProgramName9,uniProgramFee9;
+
+    TextView addMoreUni;
+
+    LinearLayout addUniversityProgram,addUniversityProgram1,addUniversityProgram2,addUniversityProgram3,addUniversityProgram4,addUniversityProgram5,addUniversityProgram6,addUniversityProgram7,addUniversityProgram8,addUniversityProgram9;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_university_registration);
+
+        uniName= (EditText) findViewById(R.id.register_university_name);
+        uniAddress= (EditText) findViewById(R.id.register_university_address);
+        uniPhone= (EditText) findViewById(R.id.register_university_phone);
+        uniEmail= (EditText) findViewById(R.id.register_university_email);
+        uniWebsite= (EditText) findViewById(R.id.register_university_website);
+
+        uniProgramName= (EditText) findViewById(R.id.universityProgramName);
+        uniProgramName1= (EditText) findViewById(R.id.universityProgramName1);
+        uniProgramName2= (EditText) findViewById(R.id.universityProgramName2);
+        uniProgramName3= (EditText) findViewById(R.id.universityProgramName3);
+        uniProgramName4= (EditText) findViewById(R.id.universityProgramName4);
+        uniProgramName5= (EditText) findViewById(R.id.universityProgramName5);
+        uniProgramName6= (EditText) findViewById(R.id.universityProgramName6);
+        uniProgramName7= (EditText) findViewById(R.id.universityProgramName7);
+        uniProgramName8= (EditText) findViewById(R.id.universityProgramName8);
+        uniProgramName9= (EditText) findViewById(R.id.universityProgramName9);
+
+
+        uniProgramFee= (EditText) findViewById(R.id.universityProgramFee);
+        uniProgramFee1= (EditText) findViewById(R.id.universityProgramFee1);
+        uniProgramFee2= (EditText) findViewById(R.id.universityProgramFee2);
+        uniProgramFee3= (EditText) findViewById(R.id.universityProgramFee3);
+        uniProgramFee4= (EditText) findViewById(R.id.universityProgramFee4);
+        uniProgramFee5= (EditText) findViewById(R.id.universityProgramFee5);
+        uniProgramFee6= (EditText) findViewById(R.id.universityProgramFee6);
+        uniProgramFee7= (EditText) findViewById(R.id.universityProgramFee7);
+        uniProgramFee8= (EditText) findViewById(R.id.universityProgramFee8);
+        uniProgramFee9= (EditText) findViewById(R.id.universityProgramFee9);
+
+        addUniversityProgram= (LinearLayout) findViewById(R.id.addUniversityProgram);
+        addUniversityProgram1= (LinearLayout) findViewById(R.id.addUniversityProgram1);
+        addUniversityProgram2= (LinearLayout) findViewById(R.id.addUniversityProgram2);
+        addUniversityProgram3= (LinearLayout) findViewById(R.id.addUniversityProgram3);
+        addUniversityProgram4= (LinearLayout) findViewById(R.id.addUniversityProgram4);
+        addUniversityProgram5= (LinearLayout) findViewById(R.id.addUniversityProgram5);
+        addUniversityProgram6= (LinearLayout) findViewById(R.id.addUniversityProgram6);
+        addUniversityProgram7= (LinearLayout) findViewById(R.id.addUniversityProgram7);
+        addUniversityProgram8= (LinearLayout) findViewById(R.id.addUniversityProgram8);
+        addUniversityProgram9= (LinearLayout) findViewById(R.id.addUniversityProgram9);
+
+        addMoreUni= (TextView) findViewById(R.id.add_more_university_programs);
+        addMoreUni.setOnClickListener(this);
+
 
         ActionBar actionBar=getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -90,6 +142,38 @@ public class UniversityRegistration extends AppCompatActivity implements View.On
                 break;
             case R.id.university_admission_end_date:
                 universityAdmissionEndDatePicker.show();
+                break;
+            case R.id.add_more_university_programs:
+                if (addMoreUni.getVisibility()==View.VISIBLE) {
+                    if (addUniversityProgram9.getVisibility() == View.GONE) {
+                        if (addUniversityProgram8.getVisibility() == View.GONE) {
+                            if (addUniversityProgram7.getVisibility() == View.GONE) {
+                                if (addUniversityProgram6.getVisibility() == View.GONE) {
+                                    if (addUniversityProgram5.getVisibility() == View.GONE) {
+                                        if (addUniversityProgram4.getVisibility() == View.GONE) {
+                                            if (addUniversityProgram3.getVisibility() == View.GONE) {
+                                                if (addUniversityProgram2.getVisibility() == View.GONE) {
+                                                    if (addUniversityProgram1.getVisibility() == View.GONE) {
+                                                        addUniversityProgram1.setVisibility(View.VISIBLE);
+                                                    } else
+                                                        addUniversityProgram2.setVisibility(View.VISIBLE);
+                                                } else
+                                                    addUniversityProgram3.setVisibility(View.VISIBLE);
+                                            } else
+                                                addUniversityProgram4.setVisibility(View.VISIBLE);
+                                        } else
+                                            addUniversityProgram5.setVisibility(View.VISIBLE);
+                                    } else
+                                        addUniversityProgram6.setVisibility(View.VISIBLE);
+                                } else
+                                    addUniversityProgram7.setVisibility(View.VISIBLE);
+                            } else
+                                addUniversityProgram8.setVisibility(View.VISIBLE);
+                        } else
+                            addUniversityProgram9.setVisibility(View.VISIBLE);
+                    }else
+                        addMoreUni.setVisibility(View.GONE);
+                }
 
         }
 

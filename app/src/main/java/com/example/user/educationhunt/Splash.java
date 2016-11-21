@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.example.user.educationhunt.fragment.Search;
+
 import java.util.Timer;
 
 public class Splash extends AppCompatActivity {
@@ -23,7 +25,7 @@ public class Splash extends AppCompatActivity {
 
             @Override
             public void run() {
-                Intent i = new Intent(Splash.this, EduHunt.class);
+                Intent i = new Intent(getApplicationContext(), EduHunt.class);
                 startActivity(i);
 
                 finish();

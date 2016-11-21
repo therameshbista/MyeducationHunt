@@ -74,10 +74,6 @@ public class SchoolDetails extends AppCompatActivity{
             case R.id.star_School:
                 if (isStarFilled) {
                     item.setIcon(R.mipmap.starfilled);
-//                    Intent i=new Intent(SchoolDetails.this,Bookmark.class);
-//                    String bookmarkedName=getIntent().getExtras().getString("name");
-//                    i.putExtra("bookmarkname",bookmarkedName);
-//                    startActivity(i);
                     isStarFilled=false;
 
                 }else{

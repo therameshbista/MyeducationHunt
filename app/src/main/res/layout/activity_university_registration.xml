@@ -181,6 +181,7 @@
                 android:orientation="vertical">
 
                 <EditText
+                    android:id="@+id/universityProgramName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -189,6 +190,7 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Program name"/>
                 <EditText
+                    android:id="@+id/universityProgramFee"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_edittext"
@@ -202,6 +204,7 @@
 
         <LinearLayout
             android:id="@+id/addUniversityProgram1"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -243,6 +246,7 @@
                     android:layout_marginBottom="7dp"
                     android:background="#6c8487"/>
                 <EditText
+                    android:id="@+id/universityProgramName1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="13.5dp"
@@ -251,6 +255,7 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Program name"/>
                 <EditText
+                    android:id="@+id/universityProgramFee1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="13.5dp"
@@ -263,6 +268,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/addUniversityProgram2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -305,6 +311,7 @@
                     android:layout_marginBottom="7dp"
                     android:background="#6c8487"/>
                 <EditText
+                    android:id="@+id/universityProgramName2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="13.5dp"
@@ -313,6 +320,7 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Program name"/>
                 <EditText
+                    android:id="@+id/universityProgramFee2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="13.5dp"
@@ -368,6 +376,7 @@
                     android:layout_marginBottom="7dp"
                     android:background="#6c8487"/>
                 <EditText
+                    android:id="@+id/universityProgramName3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="13.5dp"
@@ -376,6 +385,7 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Program name"/>
                 <EditText
+                    android:id="@+id/universityProgramFee3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="13.5dp"
@@ -431,6 +441,7 @@
                     android:layout_marginBottom="7dp"
                     android:background="#6c8487"/>
                 <EditText
+                    android:id="@+id/universityProgramName4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="13.4dp"
@@ -439,6 +450,7 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Program name"/>
                 <EditText
+                    android:id="@+id/universityProgramFee4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="13.5dp"
@@ -496,6 +508,7 @@
                     android:layout_marginBottom="7dp"
                     android:background="#6c8487"/>
                 <EditText
+                    android:id="@+id/universityProgramName5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="13.5dp"
@@ -504,6 +517,7 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Program name"/>
                 <EditText
+                    android:id="@+id/universityProgramFee5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="13.5dp"
@@ -561,6 +575,7 @@
                     android:layout_marginBottom="7dp"
                     android:background="#6c8487"/>
                 <EditText
+                    android:id="@+id/universityProgramName6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="13.5dp"
@@ -569,6 +584,7 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Program name"/>
                 <EditText
+                    android:id="@+id/universityProgramFee6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="13.5dp"
@@ -626,6 +642,7 @@
                     android:background="#6c8487"/>
 
                 <EditText
+                    android:id="@+id/universityProgramName7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="13.5dp"
@@ -634,6 +651,7 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Program name"/>
                 <EditText
+                    android:id="@+id/universityProgramFee7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="13.5dp"
@@ -691,6 +709,7 @@
                     android:background="#6c8487"/>
 
                 <EditText
+                    android:id="@+id/universityProgramName8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="13.5dp"
@@ -699,6 +718,7 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Program name"/>
                 <EditText
+                    android:id="@+id/universityProgramFee8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="13.5dp"
@@ -756,6 +776,7 @@
                     android:background="#6c8487"/>
 
                 <EditText
+                    android:id="@+id/universityProgramName9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="13.5dp"
@@ -764,6 +785,7 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Program name"/>
                 <EditText
+                    android:id="@+id/universityProgramFee9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="13.5dp"

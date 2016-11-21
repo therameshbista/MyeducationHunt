@@ -4,18 +4,9 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/home"
-            android:icon="@mipmap/homee"
-            android:title="Home" />
-        <item
             android:id="@+id/search"
             android:icon="@mipmap/search"
             android:title="Search" />
-        <item
-            android:id="@+id/fav"
-            android:icon="@mipmap/fav"
-            android:title="Favourites" />
-
         <item
             android:id="@+id/settings"
             android:icon="@mipmap/settings"

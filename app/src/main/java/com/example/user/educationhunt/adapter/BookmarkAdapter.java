@@ -12,36 +12,34 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.user.educationhunt.R;
 import com.example.user.educationhunt.pojos.AppController;
-import com.example.user.educationhunt.pojos.OurSchool;
+import com.example.user.educationhunt.pojos.Bookmarkitem;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.logging.Filter;
 
 /**
- * Created by user on 11/3/2016.
+ * Created by user on 11/21/2016.
  */
-public class CustomListAdapter extends BaseAdapter {
+public class BookmarkAdapter extends BaseAdapter {
 
     private Activity activity;
     private LayoutInflater inflater;
-    private List<OurSchool> ourSchoolsList;
+    private List<Bookmarkitem> ourBookmarkList;
     ImageLoader imageLoader = AppController.getInstance().getImageLoader();
 
-    public CustomListAdapter(Activity activity, List<OurSchool> ourSchoolsList) {
+    public BookmarkAdapter(Activity activity, List<Bookmarkitem> ourBookmarkList) {
         this.activity = activity;
-        this.ourSchoolsList = ourSchoolsList;
+        this.ourBookmarkList = ourBookmarkList;
     }
 
 
     @Override
     public int getCount() {
-        return ourSchoolsList.size();
+        return ourBookmarkList.size();
     }
 
     @Override
     public Object getItem(int location) {
-        return ourSchoolsList.get(location);
+        return ourBookmarkList.get(location);
     }
 
     @Override
@@ -56,21 +54,21 @@ public class CustomListAdapter extends BaseAdapter {
             inflater = (LayoutInflater) activity
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView == null)
-            convertView = inflater.inflate(R.layout.list_school_view, null);
+            convertView = inflater.inflate(R.layout.bookmark_list, null);
 
         if (imageLoader == null)
             imageLoader = AppController.getInstance().getImageLoader();
-        NetworkImageView schoolLogo = (NetworkImageView) convertView
-                .findViewById(R.id.schoolLogo);
-        TextView schoolName = (TextView) convertView.findViewById(R.id.schoolName);
-        TextView schoolLocation = (TextView) convertView.findViewById(R.id.schoolLocation);
-        OurSchool m = ourSchoolsList.get(position);
+        NetworkImageView bookmarkLogo = (NetworkImageView) convertView
+                .findViewById(R.id.bookmarklogo);
+        TextView bookmarkTitle = (TextView) convertView.findViewById(R.id.bookmarkTitle);
+        TextView bookmarkAddress = (TextView) convertView.findViewById(R.id.bookmarkAddress);
+        Bookmarkitem m = ourBookmarkList.get(position);
 
-        schoolLogo.setImageUrl(m.getSchoolLogo(), imageLoader);
+        bookmarkLogo.setImageUrl(m.getLogo(), imageLoader);
 
-        schoolName.setText("Name: " +m.getSchoolName());
+        bookmarkTitle.setText("Name: " +m.getName());
 
-        schoolLocation.setText("Address: " +String.valueOf(m.getSchoolLocation()));
+        bookmarkAddress.setText("Address: " +String.valueOf(m.getAddress()));
 
 
         return convertView;

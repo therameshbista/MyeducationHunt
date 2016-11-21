@@ -191,6 +191,7 @@
 
         <LinearLayout
             android:id="@+id/addSchoolProgram1"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -232,7 +233,7 @@
                     android:background="@drawable/rounded_edittext"
                     android:padding="6dp"
                     android:textSize="13.5dp"
-                    android:hint="Total Annual fee(NRs)"/>
+                    android:hint="1Total Annual fee(NRs)"/>
 
             </LinearLayout>
 
@@ -283,7 +284,7 @@
                     android:background="@drawable/rounded_edittext"
                     android:padding="6dp"
                     android:textSize="13.5dp"
-                    android:hint="Total Annual fee(NRs)"/>
+                    android:hint="2Total Annual fee(NRs)"/>
 
             </LinearLayout>
 
@@ -334,7 +335,7 @@
                     android:background="@drawable/rounded_edittext"
                     android:padding="6dp"
                     android:textSize="13.5dp"
-                    android:hint="Total Annual fee(NRs)"/>
+                    android:hint="3Total Annual fee(NRs)"/>
 
             </LinearLayout>
 
@@ -385,7 +386,7 @@
                     android:background="@drawable/rounded_edittext"
                     android:padding="6dp"
                     android:textSize="13.5dp"
-                    android:hint="Total Annual fee(NRs)"/>
+                    android:hint="4Total Annual fee(NRs)"/>
 
             </LinearLayout>
 
@@ -437,7 +438,7 @@
                     android:background="@drawable/rounded_edittext"
                     android:padding="6dp"
                     android:textSize="13.5dp"
-                    android:hint="Total Annual fee(NRs)"/>
+                    android:hint="5Total Annual fee(NRs)"/>
 
             </LinearLayout>
 
@@ -488,7 +489,7 @@
                     android:background="@drawable/rounded_edittext"
                     android:padding="6dp"
                     android:textSize="13.5dp"
-                    android:hint="Total Annual fee(NRs)"/>
+                    android:hint="6Total Annual fee(NRs)"/>
 
             </LinearLayout>
 
@@ -541,7 +542,7 @@
                     android:background="@drawable/rounded_edittext"
                     android:padding="6dp"
                     android:textSize="13.5dp"
-                    android:hint="Total Annual fee(NRs)"/>
+                    android:hint="7Total Annual fee(NRs)"/>
 
             </LinearLayout>
 
@@ -593,7 +594,7 @@
                     android:background="@drawable/rounded_edittext"
                     android:padding="6dp"
                     android:textSize="13.5dp"
-                    android:hint="Total Annual fee(NRs)"/>
+                    android:hint="8Total Annual fee(NRs)"/>
 
             </LinearLayout>
 
@@ -643,7 +644,7 @@
                     android:background="@drawable/rounded_edittext"
                     android:padding="6dp"
                     android:textSize="13.5dp"
-                    android:hint="Total annual fee(NRs)"/>
+                    android:hint="9Total annual fee(NRs)"/>
 
             </LinearLayout>
 

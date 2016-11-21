@@ -8,26 +8,31 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.user.educationhunt.R;
+import com.example.user.educationhunt.adapter.BookmarkAdapter;
+import com.example.user.educationhunt.adapter.CustomListAdapter;
+import com.example.user.educationhunt.pojos.Bookmarkitem;
+import com.example.user.educationhunt.pojos.OurSchool;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Bookmark extends AppCompatActivity {
-    ArrayAdapter adapter;
-    ArrayList<String> items;
+    private List<Bookmarkitem> ourBookmarkListItems = new ArrayList<Bookmarkitem>();
+    private ListView listView;
+    private BookmarkAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bookmark);
 
-        ActionBar actionBar=getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle("Your Bookmark");
 
-//        ListView listView=(ListView)findViewById(R.id.list_bookmarked);
-//        items=new ArrayList<String>();
-//        adapter=new ArrayAdapter(this, R.layout.college_item_layout,R.id.txt,items);
-//        listView.setAdapter(adapter);
-//        items.add(this.getIntent().getExtras().getString("bookmarkname"));
+        listView = (ListView) findViewById(R.id.list);
+        adapter = new BookmarkAdapter(this, ourBookmarkListItems);
+        listView.setAdapter(adapter);
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

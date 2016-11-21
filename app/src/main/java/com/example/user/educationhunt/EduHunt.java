@@ -20,8 +20,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.user.educationhunt.fragment.Favourites;
-import com.example.user.educationhunt.fragment.Home;
 import com.example.user.educationhunt.fragment.Register;
 import com.example.user.educationhunt.fragment.Search;
 import com.example.user.educationhunt.fragment.Settings;
@@ -76,14 +74,8 @@ public class EduHunt extends AppCompatActivity {
         Fragment fragment = null;
         Class fragmentClass;
         switch (menuItem.getItemId()) {
-            case R.id.home:
-                fragmentClass = Home.class;
-                break;
             case R.id.search:
                 fragmentClass = Search.class;
-                break;
-            case R.id.fav:
-                fragmentClass = Favourites.class;
                 break;
             case R.id.settings:
                 fragmentClass = Settings.class;
@@ -92,7 +84,7 @@ public class EduHunt extends AppCompatActivity {
                 fragmentClass = Register.class;
                 break;
             default:
-                fragmentClass = Home.class;
+                fragmentClass = Search.class;
         }
 
         try {
@@ -129,9 +121,6 @@ public class EduHunt extends AppCompatActivity {
             case R.id.feedback:
                 final Dialog dialog1=new Dialog(this);
                 dialog1.setContentView(R.layout.activity_feedback);
-                EditText feedbackName= (EditText) dialog1.findViewById(R.id.feedback_name);
-                EditText feedbackEmail= (EditText) dialog1.findViewById(R.id.feedback_email);
-                EditText feedbackComment= (EditText) dialog1.findViewById(R.id.feedback_comment);
                 Button btnFeedback= (Button) dialog1.findViewById(R.id.btn_feedback_send);
 
                btnFeedback.setOnClickListener(new View.OnClickListener() {
