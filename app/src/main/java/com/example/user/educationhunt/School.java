@@ -67,7 +67,7 @@ public class School extends AppCompatActivity implements SearchView.OnQueryTextL
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                OurSchool ourSchool = new OurSchool();
+//                OurSchool ourSchool = new OurSchool();
                 Intent i = new Intent(School.this, SchoolDetails.class);
 
                 i.putExtra("id", ourSchoolsListItems.get(position).schoolId);

@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.Icon;
 import android.net.Uri;
+import android.os.Parcelable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -26,6 +27,7 @@ import com.example.user.educationhunt.fragment.About;
 import com.example.user.educationhunt.fragment.Admission;
 import com.example.user.educationhunt.fragment.FeeStructure;
 import com.example.user.educationhunt.fragment.Majors;
+import com.example.user.educationhunt.pojos.Bookmarkitem;
 import com.example.user.educationhunt.pojos.OurSchool;
 
 import org.junit.runner.Describable;
@@ -74,8 +76,20 @@ public class SchoolDetails extends AppCompatActivity{
             case R.id.star_School:
                 if (isStarFilled) {
                     item.setIcon(R.mipmap.starfilled);
-                    isStarFilled=false;
+                    String Item = getIntent().getExtras().getString("name");
+                    String Item1 = getIntent().getExtras().getString("location");
+                    String Item2 = getIntent().getExtras().getString("logo");
 
+                    Bookmarkitem bookmark = new Bookmarkitem();
+                    Intent i = new Intent(SchoolDetails.this, Bookmark.class);
+
+                    i.putExtra("name", Item);
+                    i.putExtra("location",Item1);
+                    i.putExtra("logo",Item2);
+
+                    startActivity(i);
+
+                    isStarFilled=false;
                 }else{
                     item.setIcon(R.mipmap.star);
                     isStarFilled=true;

@@ -1,20 +1,15 @@
 package com.example.user.educationhunt.pojos;
 
+import java.io.Serializable;
+
 /**
  * Created by user on 11/21/2016.
  */
-public class Bookmarkitem {
+public class Bookmarkitem{
 
-    String name;
-    String address;
-    String logo;
-
-    public Bookmarkitem(String name, String address, String logo) {
-        this.name = name;
-        this.address = address;
-        this.logo = logo;
-    }
-
+    public String name;
+    public String address;
+    public String logo;
 
     public String getName() {
         return name;
