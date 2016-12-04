@@ -1,18 +1,15 @@
 package com.example.user.educationhunt;
 
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import com.example.user.educationhunt.R;
 import com.example.user.educationhunt.adapter.BookmarkAdapter;
-import com.example.user.educationhunt.adapter.CustomListAdapter;
 import com.example.user.educationhunt.database.DatabaseHelper;
 import com.example.user.educationhunt.pojos.Bookmarkitem;
-import com.example.user.educationhunt.pojos.OurSchool;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,31 +19,30 @@ public class Bookmark extends AppCompatActivity {
     private ListView listView;
     private BookmarkAdapter adapter;
     DatabaseHelper dbhelper;
-    ArrayList<Bookmarkitem>bookmarklist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bookmark);
-        dbhelper=new DatabaseHelper(this);
-        bookmarklist=dbhelper.getBookmarkist();
+        dbhelper = new DatabaseHelper(this);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle("Your Bookmark");
 
-        listView = (ListView) findViewById(R.id.list_bookmarked);
-        adapter = new BookmarkAdapter(this, ourBookmarkListItems);
-        listView.setAdapter(adapter);
+        List<Bookmarkitem> bookmarkedSchools = dbhelper.getAllSchoolBookmark();
 
-        Bookmarkitem bookmark=new Bookmarkitem();
-        bookmark.name=getIntent().getExtras().getString("name");
-        bookmark.address=getIntent().getExtras().getString("location");
-        bookmark.logo=getIntent().getExtras().getString("logo");
-        ourBookmarkListItems.add(bookmark);
-        dbhelper.insertBookmarkData(bookmark);
+
+        listView = (ListView) findViewById(R.id.list_bookmarked);
+        if (bookmarkedSchools.size() != 0) {
+            adapter = new BookmarkAdapter(this, bookmarkedSchools);
+            listView.setAdapter(adapter);
+        } else {
+            Toast.makeText(this, "You have no bookmark yet.", Toast.LENGTH_SHORT).show();
+        }
 
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

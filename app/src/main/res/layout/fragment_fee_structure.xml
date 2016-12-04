@@ -17,7 +17,7 @@
             android:layout_width="17dp"
             android:layout_height="17dp"
             android:layout_marginLeft="10dp"
-            android:src="@mipmap/tutionfee" />
+            />
 
         <TextView
             android:id="@+id/tutionfee"
@@ -34,8 +34,7 @@
             android:id="@+id/booksicon"
             android:layout_width="17dp"
             android:layout_height="17dp"
-            android:layout_toRightOf="@id/tutionfee"
-            android:src="@mipmap/books" />
+            android:layout_toRightOf="@id/tutionfee"/>
 
         <TextView
             android:id="@+id/books"
@@ -53,7 +52,7 @@
             android:layout_width="17dp"
             android:layout_height="17dp"
             android:layout_toRightOf="@id/books"
-            android:src="@mipmap/miscellaneous" />
+             />
 
         <TextView
             android:id="@+id/miscellaneous"

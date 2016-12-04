@@ -3,50 +3,46 @@ package com.example.user.educationhunt.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.user.educationhunt.R;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.example.user.educationhunt.pojos.OurCollege;
+import com.example.user.educationhunt.pojos.OurUniversity;
 
 import java.util.ArrayList;
-
-import static com.example.user.educationhunt.R.layout.school_programs_offered;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Majors extends Fragment  {
+public class Majors extends Fragment {
 
     ArrayAdapter adapter;
     ArrayList<String> items;
-//    private static final String url = "http://myeducationhunt.com/public/schools";
+
+    //    private static final String url = "http://myeducationhunt.com/public/schools";
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_majors, container, false);
 
-        ListView listView=(ListView)view.findViewById(R.id.list_college_majors);
-        items=new ArrayList<String>();
-        adapter=new ArrayAdapter(getActivity(), R.layout.college_item_layout,R.id.txt,items);
+        ListView listView = (ListView) view.findViewById(R.id.list_college_majors);
+        items = new ArrayList<String>();
+        adapter = new ArrayAdapter(getActivity(), R.layout.college_item_layout, R.id.txt, items);
         listView.setAdapter(adapter);
-        items.add(getActivity().getIntent().getExtras().getString("name"));
+        OurCollege ourCollege = null;
+        OurUniversity ourUniversity = null;
+        if (getActivity().getIntent().getSerializableExtra("college") != null) {
+            ourCollege = (OurCollege) getActivity().getIntent().getSerializableExtra("college");
+            items.add(ourCollege.getNameCollege());
+        } else {
+            ourUniversity = (OurUniversity) getActivity().getIntent().getSerializableExtra("university");
+            items.add(ourUniversity.getUniversityName());
+        }
+
         return view;
     }
 

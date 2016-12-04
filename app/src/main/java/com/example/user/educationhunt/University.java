@@ -2,10 +2,10 @@ package com.example.user.educationhunt;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
@@ -19,7 +19,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.user.educationhunt.adapter.CustomListAdapter;
 import com.example.user.educationhunt.adapter.UniversityListAdapter;
 import com.example.user.educationhunt.pojos.AppController;
 import com.example.user.educationhunt.pojos.OurSchool;
@@ -32,7 +31,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class University extends AppCompatActivity implements SearchView.OnQueryTextListener{
+public class University extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     // Log tag
     private static final String TAG = University.class.getSimpleName();
@@ -49,7 +48,7 @@ public class University extends AppCompatActivity implements SearchView.OnQueryT
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_university);
 
-        ActionBar actionBar=getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle("Universities");
 
@@ -61,17 +60,18 @@ public class University extends AppCompatActivity implements SearchView.OnQueryT
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                OurSchool ourSchool=new OurSchool();
-                Intent i=new Intent(University.this,UniversityDetails.class);
+                OurSchool ourSchool = new OurSchool();
+                Intent i = new Intent(University.this, UniversityDetails.class);
 
-                i.putExtra("id", ourUniversityListItems.get(position).universityId);
-                i.putExtra("name", ourUniversityListItems.get(position).universityName);
-                i.putExtra("location", ourUniversityListItems.get(position).universityLocation);
-                i.putExtra("logo", ourUniversityListItems.get(position).universityLogo);
-                i.putExtra("email", ourUniversityListItems.get(position).universityEmail);
-                i.putExtra("website", ourUniversityListItems.get(position).universityWebsite);
-                i.putExtra("created_at", ourUniversityListItems.get(position).universitycreatedAt);
-                i.putExtra("updated_at", ourUniversityListItems.get(position).universityupdatedAt);
+                i.putExtra("university", ourUniversityListItems.get(position));
+//                i.putExtra("id", ourUniversityListItems.get(position).universityId);
+//                i.putExtra("name", ourUniversityListItems.get(position).universityName);
+//                i.putExtra("location", ourUniversityListItems.get(position).universityLocation);
+//                i.putExtra("logo", ourUniversityListItems.get(position).universityLogo);
+//                i.putExtra("email", ourUniversityListItems.get(position).universityEmail);
+//                i.putExtra("website", ourUniversityListItems.get(position).universityWebsite);
+//                i.putExtra("created_at", ourUniversityListItems.get(position).universitycreatedAt);
+//                i.putExtra("updated_at", ourUniversityListItems.get(position).universityupdatedAt);
 
                 startActivity(i);
 
@@ -98,14 +98,14 @@ public class University extends AppCompatActivity implements SearchView.OnQueryT
                                 JSONObject obj = response.getJSONObject(i);
                                 OurUniversity ourUniversity = new OurUniversity();
 
-                                ourUniversity.universityId=obj.getInt("id");
-                                ourUniversity.universityName=obj.getString("name");
-                                ourUniversity.universityLocation=obj.getString("location");
-                                ourUniversity.universityLogo=obj.getString("logo");
-                                ourUniversity.universityEmail=obj.getString("email");
-                                ourUniversity.universityWebsite=obj.getString("website");
-                                ourUniversity.universitycreatedAt=obj.getString("created_at");
-                                ourUniversity.universityupdatedAt=obj.getString("updated_at");
+                                ourUniversity.universityId = obj.getInt("id");
+                                ourUniversity.universityName = obj.getString("name");
+                                ourUniversity.universityLocation = obj.getString("location");
+                                ourUniversity.universityLogo = obj.getString("logo");
+                                ourUniversity.universityEmail = obj.getString("email");
+                                ourUniversity.universityWebsite = obj.getString("website");
+                                ourUniversity.universitycreatedAt = obj.getString("created_at");
+                                ourUniversity.universityupdatedAt = obj.getString("updated_at");
 
                                 // adding schools to ourSchool list
                                 ourUniversityListItems.add(ourUniversity);

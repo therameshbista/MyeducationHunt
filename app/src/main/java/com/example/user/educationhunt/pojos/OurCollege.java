@@ -7,16 +7,17 @@ import java.io.Serializable;
  */
 public class OurCollege implements Serializable {
 
-    public String idCollege;
+    public int idCollege;
     public String nameCollege;
     public String locationCollege;
-    public String emailCollege;;
+    public String emailCollege;
+    ;
     public String createdAtCollege;
     public String updatedAtCollege;
     public String collegeLogoCollege;
     public String websiteCollege;
 
-    public String getIdCollege() {
+    public int getIdCollege() {
         return idCollege;
     }
 
@@ -48,7 +49,7 @@ public class OurCollege implements Serializable {
         return websiteCollege;
     }
 
-    public void setIdCollege(String idCollege) {
+    public void setIdCollege(int idCollege) {
         this.idCollege = idCollege;
     }
 

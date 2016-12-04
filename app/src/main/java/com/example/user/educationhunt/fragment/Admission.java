@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.user.educationhunt.R;
+import com.example.user.educationhunt.pojos.OurCollege;
+import com.example.user.educationhunt.pojos.OurSchool;
+import com.example.user.educationhunt.pojos.OurUniversity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,22 +47,38 @@ public class Admission extends Fragment {
         content2.setSpan(new UnderlineSpan(), 0, content2.length(), 0);
         textView2.setText(content2);
 
+        OurSchool ourSchool = null;
+        OurCollege ourCollege = null;
+        OurUniversity ourUniversity = null;
+        TextView admissionOpen = (TextView) view.findViewById(R.id.admission_form_open);
 
-        TextView admissionOpen= (TextView) view.findViewById(R.id.admission_form_open);
-        String Item = getActivity().getIntent().getExtras().getString("created_at");
-        admissionOpen.setText(Item);
+        TextView admissionClosed = (TextView) view.findViewById(R.id.admission_form_closed);
 
-        TextView admissionClosed= (TextView) view.findViewById(R.id.admission_form_closed);
-        String Item1 = getActivity().getIntent().getExtras().getString("created_at");
-        admissionClosed.setText(Item1);
+        TextView admissionContactNumber = (TextView) view.findViewById(R.id.school_admission_contact_number);
 
-        TextView admissionContactNumber= (TextView) view.findViewById(R.id.school_admission_contact_number);
-        String Item2 = getActivity().getIntent().getExtras().getString("created_at");
-        admissionContactNumber.setText("Contact:"+Item2);
+        TextView admissionContactEmail = (TextView) view.findViewById(R.id.school_admission_contact_email);
 
-        TextView admissionContactEmail= (TextView) view.findViewById(R.id.school_admission_contact_email);
-        String Item3 = getActivity().getIntent().getExtras().getString("email");
-        admissionContactEmail.setText("Email:"+Item3);
+
+        if (getActivity().getIntent().getSerializableExtra("school") != null) {
+            ourSchool = (OurSchool) getActivity().getIntent().getSerializableExtra("school");
+            admissionOpen.setText(ourSchool.getCreatedAt());
+            admissionOpen.setText(ourSchool.getCreatedAt());
+            admissionContactNumber.setText("Contact:" + ourSchool.getCreatedAt());
+            admissionContactEmail.setText("Email:" + ourSchool.getSchoolEmail());
+        } else if (getActivity().getIntent().getSerializableExtra("college") != null) {
+            ourCollege = (OurCollege) getActivity().getIntent().getSerializableExtra("college");
+            admissionOpen.setText(ourCollege.getCreatedAtCollege());
+            admissionClosed.setText(ourCollege.getCreatedAtCollege());
+            admissionContactNumber.setText("Contact:" + ourCollege.getCreatedAtCollege());
+            admissionContactEmail.setText("Email:" + ourCollege.getEmailCollege());
+        } else {
+            ourUniversity = (OurUniversity) getActivity().getIntent().getSerializableExtra("university");
+            admissionOpen.setText(ourUniversity.getUniversitycreatedAt());
+            admissionClosed.setText(ourUniversity.getUniversitycreatedAt());
+            admissionContactNumber.setText("Contact:" + ourUniversity.getUniversitycreatedAt());
+            admissionContactEmail.setText("Email:" + ourUniversity.getUniversityEmail());
+        }
+
 
         return view;
 

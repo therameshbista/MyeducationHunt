@@ -14,6 +14,7 @@ import com.example.user.educationhunt.College;
 import com.example.user.educationhunt.R;
 import com.example.user.educationhunt.School;
 import com.example.user.educationhunt.University;
+import com.example.user.educationhunt.database.DatabaseHelper;
 
 
 /**
@@ -22,7 +23,7 @@ import com.example.user.educationhunt.University;
 public class Search extends Fragment implements View.OnClickListener{
 
     LinearLayout school,college,university,bookmark;
-
+    DatabaseHelper db;
 
     public Search() {
         // Required empty public constructor
@@ -34,6 +35,9 @@ public class Search extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_search, container, false);
+
+        //creating table in database
+        db= new DatabaseHelper(getActivity());
 
         school= (LinearLayout) view.findViewById(R.id.school);
         college= (LinearLayout) view.findViewById(R.id.college);

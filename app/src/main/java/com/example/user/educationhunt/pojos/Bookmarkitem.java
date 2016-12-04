@@ -7,9 +7,18 @@ import java.io.Serializable;
  */
 public class Bookmarkitem{
 
+    public int bookmarkID; //school or college or university id
     public String name;
     public String address;
     public String logo;
+
+    public int getBookmarkID() {
+        return bookmarkID;
+    }
+
+    public void setBookmarkID(int bookmarkID) {
+        this.bookmarkID = bookmarkID;
+    }
 
     public String getName() {
         return name;

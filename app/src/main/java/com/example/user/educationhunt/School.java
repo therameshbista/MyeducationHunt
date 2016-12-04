@@ -4,21 +4,17 @@ import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.view.MenuItemCompat;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.SearchView;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ListView;
 
 import com.android.volley.Response;
@@ -26,7 +22,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.user.educationhunt.adapter.CustomListAdapter;
-import com.example.user.educationhunt.fragment.Search;
 import com.example.user.educationhunt.pojos.AppController;
 import com.example.user.educationhunt.pojos.OurSchool;
 
@@ -69,23 +64,14 @@ public class School extends AppCompatActivity implements SearchView.OnQueryTextL
 
 //                OurSchool ourSchool = new OurSchool();
                 Intent i = new Intent(School.this, SchoolDetails.class);
-
-                i.putExtra("id", ourSchoolsListItems.get(position).schoolId);
-                i.putExtra("name", ourSchoolsListItems.get(position).schoolName);
-                i.putExtra("location", ourSchoolsListItems.get(position).schoolLocation);
-                i.putExtra("logo", ourSchoolsListItems.get(position).schoolLogo);
-                i.putExtra("email", ourSchoolsListItems.get(position).schoolEmail);
-                i.putExtra("website", ourSchoolsListItems.get(position).schoolWebsite);
-                i.putExtra("created_at", ourSchoolsListItems.get(position).createdAt);
-                i.putExtra("updated_at", ourSchoolsListItems.get(position).updatedAt);
-
+                i.putExtra("school", ourSchoolsListItems.get(position));
                 startActivity(i);
 
             }
         });
 
 
-    pDialog = new ProgressDialog(this);
+        pDialog = new ProgressDialog(this);
 // Showing progress dialog before making http request
         pDialog.setMessage("Loading…");
         pDialog.show();
@@ -166,7 +152,7 @@ public class School extends AppCompatActivity implements SearchView.OnQueryTextL
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.search, menu);
-        SearchManager searchManager = (SearchManager) getSystemService( Context.SEARCH_SERVICE );
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView) menu.findItem(R.id.schoolSearch).getActionView();
 
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
@@ -177,15 +163,11 @@ public class School extends AppCompatActivity implements SearchView.OnQueryTextL
     }
 
     @Override
-    public boolean onQueryTextChange(String newText)
-    {
+    public boolean onQueryTextChange(String newText) {
         // this is your adapter that will be filtered
-        if (TextUtils.isEmpty(newText))
-        {
+        if (TextUtils.isEmpty(newText)) {
             listView.clearTextFilter();
-        }
-        else
-        {
+        } else {
             listView.setFilterText(newText.toString());
         }
 

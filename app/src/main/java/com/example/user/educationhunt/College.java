@@ -2,10 +2,10 @@ package com.example.user.educationhunt;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
@@ -13,19 +13,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Spinner;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.user.educationhunt.adapter.CollegeListAdapter;
-import com.example.user.educationhunt.adapter.CustomListAdapter;
 import com.example.user.educationhunt.pojos.AppController;
 import com.example.user.educationhunt.pojos.OurCollege;
-import com.example.user.educationhunt.pojos.OurSchool;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,11 +47,11 @@ public class College extends AppCompatActivity implements SearchView.OnQueryText
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_college);
 
-        ActionBar actionBar=getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle("Colleges");
 
-        listViewCollege= (ListView) findViewById(R.id.list_college);
+        listViewCollege = (ListView) findViewById(R.id.list_college);
         adapterCollege = new CollegeListAdapter(this, ourCollegeListItems);
         listViewCollege.setAdapter(adapterCollege);
 
@@ -63,17 +59,10 @@ public class College extends AppCompatActivity implements SearchView.OnQueryText
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                OurCollege ourCollege=new OurCollege();
-                Intent i=new Intent(College.this,CollegeDetail.class);
+                OurCollege ourCollege = new OurCollege();
+                Intent i = new Intent(College.this, CollegeDetail.class);
 
-                i.putExtra("id", ourCollegeListItems.get(position).idCollege);
-                i.putExtra("name", ourCollegeListItems.get(position).nameCollege);
-                i.putExtra("location", ourCollegeListItems.get(position).locationCollege);
-                i.putExtra("logo", ourCollegeListItems.get(position).collegeLogoCollege);
-                i.putExtra("email", ourCollegeListItems.get(position).emailCollege);
-                i.putExtra("website", ourCollegeListItems.get(position).websiteCollege);
-                i.putExtra("created_at", ourCollegeListItems.get(position).createdAtCollege);
-                i.putExtra("updated_at", ourCollegeListItems.get(position).updatedAtCollege);
+                i.putExtra("college", ourCollegeListItems.get(position));
 
                 startActivity(i);
 
@@ -99,14 +88,14 @@ public class College extends AppCompatActivity implements SearchView.OnQueryText
                                 JSONObject obj = response.getJSONObject(i);
                                 OurCollege ourCollege = new OurCollege();
 
-                                ourCollege.idCollege=obj.getString("id");
-                                ourCollege.nameCollege=obj.getString("name");
-                                ourCollege.locationCollege=obj.getString("location");
-                                ourCollege.collegeLogoCollege=obj.getString("logo");
-                                ourCollege.emailCollege=obj.getString("email");
-                                ourCollege.websiteCollege=obj.getString("website");
-                                ourCollege.createdAtCollege=obj.getString("created_at");
-                                ourCollege.updatedAtCollege=obj.getString("updated_at");
+                                ourCollege.idCollege = obj.getInt("id");
+                                ourCollege.nameCollege = obj.getString("name");
+                                ourCollege.locationCollege = obj.getString("location");
+                                ourCollege.collegeLogoCollege = obj.getString("logo");
+                                ourCollege.emailCollege = obj.getString("email");
+                                ourCollege.websiteCollege = obj.getString("website");
+                                ourCollege.createdAtCollege = obj.getString("created_at");
+                                ourCollege.updatedAtCollege = obj.getString("updated_at");
 
                                 // adding schools to ourSchool list
                                 ourCollegeListItems.add(ourCollege);

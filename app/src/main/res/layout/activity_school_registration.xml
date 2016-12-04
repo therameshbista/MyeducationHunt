@@ -7,7 +7,6 @@
     android:paddingLeft="22dp"
     android:paddingRight="22dp"
     android:paddingTop="22dp"
-    android:background="@mipmap/backgroundlogo"
     tools:context="com.example.user.educationhunt.UniversityRegistration">
 
     <LinearLayout
@@ -721,7 +720,6 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:scaleType="fitXY"
-                android:background="@mipmap/logoholder"
                 android:layout_gravity="center_horizontal"/>
 
         </LinearLayout>

@@ -3,18 +3,15 @@ package com.example.user.educationhunt.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.user.educationhunt.R;
-import com.example.user.educationhunt.School;
-import com.example.user.educationhunt.SchoolDetails;
+import com.example.user.educationhunt.pojos.OurCollege;
 import com.example.user.educationhunt.pojos.OurSchool;
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.example.user.educationhunt.pojos.OurUniversity;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -24,20 +21,16 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import org.junit.runner.Describable;
-
-import java.io.Serializable;
-
 /**
  * A simple {@link Fragment} subclass.
  */
-public class About extends Fragment implements OnMapReadyCallback{
+public class About extends Fragment implements OnMapReadyCallback {
 
     MapView mapView;
     GoogleMap map;
 
 
-    public TextView aboutSchoolName,aboutSchoolLocation,aboutSchoolNumber,aboutSchoolEmail,aboutSchoolWebsite,aboutSchoolCategory;
+    public TextView aboutSchoolName, aboutSchoolLocation, aboutSchoolNumber, aboutSchoolEmail, aboutSchoolWebsite, aboutSchoolCategory;
 
 
     @Override
@@ -56,33 +49,45 @@ public class About extends Fragment implements OnMapReadyCallback{
         MapsInitializer.initialize(this.getActivity());
 
         // Updates the location and zoom of the MapView
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(27.6933,85.3211), 15);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(27.6933, 85.3211), 15);
         map.animateCamera(cameraUpdate);
 
-        aboutSchoolName= (TextView) v.findViewById(R.id.about_school_name);
-        aboutSchoolLocation= (TextView) v.findViewById(R.id.about_school_location);
-        aboutSchoolNumber= (TextView) v.findViewById(R.id.about_school_number);
-        aboutSchoolCategory= (TextView) v.findViewById(R.id.about_school_category);
-        aboutSchoolEmail= (TextView) v.findViewById(R.id.about_school_email);
-        aboutSchoolWebsite= (TextView) v.findViewById(R.id.about_school_website);
+        aboutSchoolName = (TextView) v.findViewById(R.id.about_school_name);
+        aboutSchoolLocation = (TextView) v.findViewById(R.id.about_school_location);
+        aboutSchoolNumber = (TextView) v.findViewById(R.id.about_school_number);
+        aboutSchoolCategory = (TextView) v.findViewById(R.id.about_school_category);
+        aboutSchoolEmail = (TextView) v.findViewById(R.id.about_school_email);
+        aboutSchoolWebsite = (TextView) v.findViewById(R.id.about_school_website);
 
-        String Item = getActivity().getIntent().getExtras().getString("name");
-        aboutSchoolName.setText(Item);
+        OurSchool ourSchool = null;
+        OurCollege ourCollege = null;
+        OurUniversity ourUniversity = null;
+        if (getActivity().getIntent().getSerializableExtra("school") != null) {
+            ourSchool = (OurSchool) getActivity().getIntent().getSerializableExtra("school");
+            aboutSchoolName.setText(ourSchool.getSchoolName());
+            aboutSchoolLocation.setText(ourSchool.getSchoolLocation());
+            aboutSchoolEmail.setText(ourSchool.getSchoolEmail());
+            aboutSchoolWebsite.setText(ourSchool.getSchoolWebsite());
+            aboutSchoolNumber.setText(ourSchool.getCreatedAt());
+            aboutSchoolCategory.setText(ourSchool.getUpdatedAt());
+        } else if (getActivity().getIntent().getSerializableExtra("college") != null) {
+            ourCollege = (OurCollege) getActivity().getIntent().getSerializableExtra("college");
+            aboutSchoolName.setText(ourCollege.getNameCollege());
+            aboutSchoolLocation.setText(ourCollege.getLocationCollege());
+            aboutSchoolEmail.setText(ourCollege.getEmailCollege());
+            aboutSchoolWebsite.setText(ourCollege.getWebsiteCollege());
+            aboutSchoolNumber.setText(ourCollege.getCreatedAtCollege());
+            aboutSchoolCategory.setText(ourCollege.getUpdatedAtCollege());
+        } else {
+            ourUniversity = (OurUniversity) getActivity().getIntent().getSerializableExtra("university");
+            aboutSchoolName.setText(ourUniversity.getUniversityName());
+            aboutSchoolLocation.setText(ourUniversity.getUniversityLocation());
+            aboutSchoolEmail.setText(ourUniversity.getUniversityEmail());
+            aboutSchoolWebsite.setText(ourUniversity.getUniversityWebsite());
+            aboutSchoolNumber.setText(ourUniversity.getUniversitycreatedAt());
+            aboutSchoolCategory.setText(ourUniversity.getUniversityupdatedAt());
+        }
 
-        String Item1 = getActivity().getIntent().getExtras().getString("location");
-        aboutSchoolLocation.setText(Item1);
-
-        String Item2 = getActivity().getIntent().getExtras().getString("email");
-        aboutSchoolEmail.setText(Item2);
-
-        String Item3= getActivity().getIntent().getExtras().getString("website");
-        aboutSchoolWebsite.setText(Item3);
-
-        String Item4 = getActivity().getIntent().getExtras().getString("created_at");
-        aboutSchoolNumber.setText(Item4);
-
-        String Item5 = getActivity().getIntent().getExtras().getString("updated_at");
-        aboutSchoolCategory.setText(Item5);
 
         onMapReady(map);
 
@@ -112,6 +117,7 @@ public class About extends Fragment implements OnMapReadyCallback{
         super.onLowMemory();
         mapView.onLowMemory();
     }
+
     @Override
     public void onMapReady(GoogleMap map) {
         map.addMarker(new MarkerOptions()
