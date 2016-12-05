@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -14,23 +16,28 @@ import com.example.user.educationhunt.R;
 import com.example.user.educationhunt.pojos.AppController;
 import com.example.user.educationhunt.pojos.OurSchool;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.logging.Filter;
 
 /**
  * Created by user on 11/3/2016.
  */
-public class CustomListAdapter extends BaseAdapter {
+public class CustomListAdapter extends BaseAdapter implements Filterable {
 
     private Activity activity;
     private LayoutInflater inflater;
+
     private List<OurSchool> ourSchoolsList;
+    private List<OurSchool> ourSchoolsList_original;
+
     ImageLoader imageLoader = AppController.getInstance().getImageLoader();
+    private ItemFilter itemFilter = new ItemFilter();
+
 
     public CustomListAdapter(Activity activity, List<OurSchool> ourSchoolsList) {
         this.activity = activity;
         this.ourSchoolsList = ourSchoolsList;
+        this.ourSchoolsList_original = ourSchoolsList;
     }
 
 
@@ -68,11 +75,49 @@ public class CustomListAdapter extends BaseAdapter {
 
         schoolLogo.setImageUrl(m.getSchoolLogo(), imageLoader);
 
-        schoolName.setText("Name: " +m.getSchoolName());
+        schoolName.setText("Name: " + m.getSchoolName());
 
-        schoolLocation.setText("Address: " +String.valueOf(m.getSchoolLocation()));
+        schoolLocation.setText("Address: " + String.valueOf(m.getSchoolLocation()));
 
 
         return convertView;
+    }
+
+    @Override
+    public Filter getFilter() {
+        return itemFilter;
+    }
+
+    private class ItemFilter extends Filter {
+
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            String filterString = charSequence.toString().toLowerCase();
+
+            FilterResults filterResults = new FilterResults();
+            final List<OurSchool> ourSchools = ourSchoolsList_original;
+
+            int count = ourSchools.size();
+
+            List<OurSchool> filteredSchoolList = new ArrayList<>();
+
+            String filterableString;
+
+            for (int i = 0; i < count; i++) {
+                filterableString = ourSchools.get(i).getSchoolName();
+                if (filterableString.toLowerCase().contains(filterString)) {
+                    filteredSchoolList.add(ourSchools.get(i));
+                }
+            }
+            filterResults.values = filteredSchoolList;
+            filterResults.count = filteredSchoolList.size();
+            return filterResults;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            ourSchoolsList = (List<OurSchool>) filterResults.values;
+            notifyDataSetChanged();
+        }
     }
 }

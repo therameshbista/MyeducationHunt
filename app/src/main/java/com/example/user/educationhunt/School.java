@@ -168,7 +168,8 @@ public class School extends AppCompatActivity implements SearchView.OnQueryTextL
         if (TextUtils.isEmpty(newText)) {
             listView.clearTextFilter();
         } else {
-            listView.setFilterText(newText.toString());
+            adapter.getFilter().filter(newText.toString());
+//            listView.setFilterText(newText.toString());
         }
 
         return true;
