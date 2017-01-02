@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -15,22 +17,30 @@ import com.example.user.educationhunt.pojos.AppController;
 import com.example.user.educationhunt.pojos.OurSchool;
 import com.example.user.educationhunt.pojos.OurUniversity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by user on 11/16/2016.
  */
-public class UniversityListAdapter extends BaseAdapter {
+public class UniversityListAdapter extends BaseAdapter implements Filterable {
 
     private Activity activity;
     private LayoutInflater inflater;
+
     private List<OurUniversity> ourUniversityList;
+    private List<OurUniversity> ourUniversityList_original;
+
     ImageLoader imageLoader = AppController.getInstance().getImageLoader();
+    private ItemFilter itemFilter = new ItemFilter();
+
 
     public UniversityListAdapter(Activity activity, List<OurUniversity> ourUniversityList) {
         this.activity = activity;
         this.ourUniversityList = ourUniversityList;
+        this.ourUniversityList_original = ourUniversityList;
     }
+
 
     @Override
     public int getCount() {
@@ -68,9 +78,48 @@ public class UniversityListAdapter extends BaseAdapter {
 
         universityName.setText("Name: " + m.getUniversityName());
 
-        universityLocation.setText("Address: " + String.valueOf(m.getUniversityLocation()));
+        universityLocation.setText("Address: " + String.valueOf(m.getUniversityAddress()));
 
 
         return convertView;
     }
+
+    @Override
+    public Filter getFilter() {
+        return itemFilter;
+    }
+
+    private class ItemFilter extends Filter {
+
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            String filterString = charSequence.toString().toLowerCase();
+
+            FilterResults filterResults = new FilterResults();
+            final List<OurUniversity> ourUniversity = ourUniversityList_original;
+
+            int count = ourUniversity.size();
+
+            List<OurUniversity> filteredUniversityList = new ArrayList<>();
+
+            String filterableString;
+
+            for (int i = 0; i < count; i++) {
+                filterableString = ourUniversity.get(i).getUniversityName();
+                if (filterableString.toLowerCase().contains(filterString)) {
+                    filteredUniversityList.add(ourUniversity.get(i));
+                }
+            }
+            filterResults.values = filteredUniversityList;
+            filterResults.count = filteredUniversityList.size();
+            return filterResults;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            ourUniversityList = (List<OurUniversity>) filterResults.values;
+            notifyDataSetChanged();
+        }
+    }
+
 }

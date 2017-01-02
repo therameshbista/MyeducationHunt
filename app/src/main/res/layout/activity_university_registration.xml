@@ -1,909 +1,934 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="22dp"
-    android:paddingLeft="22dp"
-    android:paddingRight="22dp"
-    android:paddingTop="22dp"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.user.educationhunt.UniversityRegistration">
 
-    <LinearLayout
-        android:layout_height="wrap_content"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:layout_marginBottom="4dp"
-            android:text="Name:"/>
-
-        <EditText
-            android:id="@+id/register_university_name"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:background="@drawable/rounded_edittext"
-            android:padding="6dp"
-            android:layout_marginBottom="10dp"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:layout_marginBottom="4dp"
-            android:text="Address:"/>
+            android:layout_height="match_parent"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-        <EditText
-            android:id="@+id/register_university_address"
-            android:layout_width="match_parent"
-            android:background="@drawable/rounded_edittext"
-            android:padding="6dp"
-            android:layout_marginBottom="10dp"
-            android:layout_height="wrap_content" />
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
-
-            <Spinner
-                android:id="@+id/register_university_district"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_marginRight="10dp"
-                android:layout_height="wrap_content" />
-            <Spinner
-                android:id="@+id/register_university_country"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_marginBottom="10dp"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:layout_marginBottom="4dp"
-            android:text="Phone:"/>
-
-        <EditText
-            android:id="@+id/register_university_phone"
             android:layout_width="match_parent"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/rounded_edittext"
-            android:padding="6dp"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:layout_marginBottom="4dp"
-            android:text="Email:"/>
-
-        <EditText
-            android:id="@+id/register_university_email"
-            android:layout_width="match_parent"
-            android:background="@drawable/rounded_edittext"
-            android:padding="6dp"
-            android:layout_marginBottom="10dp"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:layout_marginBottom="4dp"
-            android:text="Website:"/>
-
-        <EditText
-            android:id="@+id/register_university_website"
-            android:layout_width="match_parent"
-            android:background="@drawable/rounded_edittext"
-            android:padding="6dp"
-            android:layout_marginBottom="10dp"
-            android:layout_height="wrap_content" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:paddingBottom="22dp"
+            android:paddingLeft="22dp"
+            android:paddingRight="22dp"
+            android:paddingTop="22dp"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:textSize="18dp"
                 android:layout_marginBottom="4dp"
-                android:text="Institution Type:"/>
-            <Spinner
-                android:id="@+id/register_university_institution"
+                android:text="Name:"/>
+
+            <EditText
+                android:id="@+id/register_university_name"
                 android:layout_width="match_parent"
+                android:background="@drawable/rounded_edittext"
+                android:padding="6dp"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:layout_marginBottom="4dp"
+                android:text="Address:"/>
+
+            <EditText
+                android:id="@+id/register_university_address"
+                android:layout_width="match_parent"
+                android:background="@drawable/rounded_edittext"
+                android:padding="6dp"
                 android:layout_marginBottom="10dp"
                 android:layout_height="wrap_content" />
 
-        </LinearLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:textSize="18dp"
-            android:text="Establishment Date:"/>
-
-        <EditText
-            android:id="@+id/register_university_estdate"
-            android:layout_width="match_parent"
-            android:background="@drawable/rounded_edittext"
-            android:padding="6dp"
-            android:layout_marginBottom="10dp"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:textSize="18dp"
-            android:text="Fee Structure:"/>
-
-        <LinearLayout
-            android:id="@+id/addUniversityProgram"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <Spinner
-                    android:id="@+id/register_university_level"
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
+                    android:id="@+id/register_university_district"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10dp"
                     android:layout_height="wrap_content" />
                 <Spinner
-                    android:id="@+id/register_university_duration"
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
+                    android:id="@+id/register_university_country"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="10dp"
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/universityProgramName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="6dp"
-                    android:textSize="13.5dp"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Program name"/>
-                <EditText
-                    android:id="@+id/universityProgramFee"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="6dp"
-                    android:textSize="13.5dp"
-                    android:hint="Program fee(NRs)"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/addUniversityProgram1"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="7dp"
-                    android:background="#6c8487"/>
-                <Spinner
-                    android:id="@+id/register_university_level1"
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_height="wrap_content" />
-                <Spinner
-                    android:id="@+id/register_university_duration1"
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="7dp"
-                    android:background="#6c8487"/>
-                <EditText
-                    android:id="@+id/universityProgramName1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="13.5dp"
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="6dp"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Program name"/>
-                <EditText
-                    android:id="@+id/universityProgramFee1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="13.5dp"
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="6dp"
-                    android:hint="Program fee(NRs)"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/addUniversityProgram2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="7dp"
-                    android:background="#6c8487"/>
-                <Spinner
-                    android:id="@+id/register_university_level2"
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_height="wrap_content" />
-                <Spinner
-                    android:id="@+id/register_university_duration2"
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="7dp"
-                    android:background="#6c8487"/>
-                <EditText
-                    android:id="@+id/universityProgramName2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="13.5dp"
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="6dp"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Program name"/>
-                <EditText
-                    android:id="@+id/universityProgramFee2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="13.5dp"
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="6dp"
-                    android:hint="Program fee(NRs)"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/addUniversityProgram3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="7dp"
-                    android:background="#6c8487"/>
-                <Spinner
-                    android:id="@+id/register_university_level3"
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_height="wrap_content" />
-                <Spinner
-                    android:id="@+id/register_university_duration3"
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="7dp"
-                    android:background="#6c8487"/>
-                <EditText
-                    android:id="@+id/universityProgramName3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="13.5dp"
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="6dp"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Program name"/>
-                <EditText
-                    android:id="@+id/universityProgramFee3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="13.5dp"
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="6dp"
-                    android:hint="Program fee(NRs)"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/addUniversityProgram4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="7dp"
-                    android:background="#6c8487"/>
-                <Spinner
-                    android:id="@+id/register_university_level4"
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_height="wrap_content" />
-                <Spinner
-                    android:id="@+id/register_university_duration4"
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="7dp"
-                    android:background="#6c8487"/>
-                <EditText
-                    android:id="@+id/universityProgramName4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="13.4dp"
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="6dp"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Program name"/>
-                <EditText
-                    android:id="@+id/universityProgramFee4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="13.5dp"
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="6dp"
-                    android:hint="Program fee(NRs)"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/addUniversityProgram5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="7dp"
-                    android:background="#6c8487"/>
-
-                <Spinner
-                    android:id="@+id/register_university_level5"
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_height="wrap_content" />
-                <Spinner
-                    android:id="@+id/register_university_duration5"
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="7dp"
-                    android:background="#6c8487"/>
-                <EditText
-                    android:id="@+id/universityProgramName5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="13.5dp"
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="6dp"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Program name"/>
-                <EditText
-                    android:id="@+id/universityProgramFee5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="13.5dp"
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="6dp"
-                    android:hint="Program fee(NRs)"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/addUniversityProgram6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="7dp"
-                    android:background="#6c8487"/>
-                <Spinner
-                    android:id="@+id/register_university_level6"
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_height="wrap_content" />
-                <Spinner
-                    android:id="@+id/register_university_duration6"
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="7dp"
-                    android:background="#6c8487"/>
-                <EditText
-                    android:id="@+id/universityProgramName6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="13.5dp"
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="6dp"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Program name"/>
-                <EditText
-                    android:id="@+id/universityProgramFee6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="13.5dp"
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="6dp"
-                    android:hint="Program fee(NRs)"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/addUniversityProgram7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="7dp"
-                    android:background="#6c8487"/>
-
-                <Spinner
-                    android:id="@+id/register_university_level7"
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_height="wrap_content" />
-                <Spinner
-                    android:id="@+id/register_university_duration7"
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="7dp"
-                    android:background="#6c8487"/>
-
-                <EditText
-                    android:id="@+id/universityProgramName7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="13.5dp"
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="6dp"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Program name"/>
-                <EditText
-                    android:id="@+id/universityProgramFee7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="13.5dp"
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="6dp"
-                    android:hint="Program fee(NRs)"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/addUniversityProgram8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="7dp"
-                    android:background="#6c8487"/>
-                <Spinner
-                    android:id="@+id/register_university_level8"
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_height="wrap_content" />
-                <Spinner
-                    android:id="@+id/register_university_duration8"
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="7dp"
-                    android:background="#6c8487"/>
-
-                <EditText
-                    android:id="@+id/universityProgramName8"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="13.5dp"
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="6dp"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Program name"/>
-                <EditText
-                    android:id="@+id/universityProgramFee8"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="13.5dp"
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="6dp"
-                    android:hint="Program fee(NRs)"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/addUniversityProgram9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="7dp"
-                    android:background="#6c8487"/>
-
-                <Spinner
-                    android:id="@+id/register_university_level9"
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_height="wrap_content" />
-                <Spinner
-                    android:id="@+id/register_university_duration9"
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="7dp"
-                    android:background="#6c8487"/>
-
-                <EditText
-                    android:id="@+id/universityProgramName9"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="13.5dp"
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="6dp"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Program name"/>
-                <EditText
-                    android:id="@+id/universityProgramFee9"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="13.5dp"
-                    android:background="@drawable/rounded_edittext"
-                    android:padding="6dp"
-                    android:hint="Program fee(NRs)"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-        <TextView
-            android:id="@+id/add_more_university_programs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="10dp"
-            android:layout_gravity="right"
-            android:textColor="@color/colorPrimary"
-            android:layout_marginBottom="8dp"
-            android:text="Add more +"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:textSize="18dp"
-            android:text="Admission Open:"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="0.1"
-                android:textSize="12dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="From:"/>
+                android:textSize="18dp"
+                android:layout_marginBottom="4dp"
+                android:text="Phone:"/>
+
             <EditText
-                android:id="@+id/university_admission_startDate"
-                android:layout_width="0dp"
-                android:layout_weight="0.3"
+                android:id="@+id/register_university_phone"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/rounded_edittext"
                 android:padding="6dp"
-                android:layout_marginRight="12dp"
+                android:inputType="numberDecimal"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:layout_marginBottom="4dp"
+                android:text="Email:"/>
+
+            <EditText
+                android:id="@+id/register_university_email"
+                android:layout_width="match_parent"
+                android:background="@drawable/rounded_edittext"
+                android:padding="6dp"
+                android:inputType="textEmailAddress"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:inputType="textWebEmailAddress"
+                android:layout_marginBottom="4dp"
+                android:text="Website:"/>
+
+            <EditText
+                android:id="@+id/register_university_website"
+                android:layout_width="match_parent"
+                android:background="@drawable/rounded_edittext"
+                android:padding="6dp"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:layout_marginBottom="4dp"
+                    android:text="Institution Type:"/>
+                <Spinner
+                    android:id="@+id/register_university_institution"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:textSize="18dp"
+                android:text="Establishment Date:"/>
+
+            <EditText
+                android:id="@+id/register_university_estdate"
+                android:layout_width="match_parent"
+                android:background="@drawable/rounded_edittext"
+                android:padding="6dp"
+                android:layout_marginBottom="10dp"
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="0.1"
-                android:textSize="12dp"
-                android:gravity="end"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="To:"/>
-            <EditText
-                android:id="@+id/university_admission_end_date"
-                android:layout_width="0dp"
-                android:layout_weight="0.3"
-                android:background="@drawable/rounded_edittext"
-                android:padding="6dp"
-                android:layout_marginLeft="7dp"
-                android:layout_height="wrap_content" />
+                android:layout_marginBottom="4dp"
+                android:textSize="18dp"
+                android:text="Fee Structure:"/>
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/addUniversityProgram"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
+                    <Spinner
+                        android:id="@+id/register_university_level"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_height="wrap_content" />
+                    <Spinner
+                        android:id="@+id/register_university_duration"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/universityProgramName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounded_edittext"
+                        android:padding="6dp"
+                        android:textSize="13.5dp"
+                        android:layout_marginBottom="8dp"
+                        android:hint="Program name"/>
+                    <EditText
+                        android:id="@+id/universityProgramFee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounded_edittext"
+                        android:padding="6dp"
+                        android:inputType="numberDecimal"
+                        android:textSize="13.5dp"
+                        android:hint="Program fee(NRs)"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/addUniversityProgram1"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="#6c8487"/>
+                    <Spinner
+                        android:id="@+id/register_university_level1"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_height="wrap_content" />
+                    <Spinner
+                        android:id="@+id/register_university_duration1"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="#6c8487"/>
+                    <EditText
+                        android:id="@+id/universityProgramName1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13.5dp"
+                        android:background="@drawable/rounded_edittext"
+                        android:padding="6dp"
+                        android:layout_marginBottom="8dp"
+                        android:hint="Program name"/>
+                    <EditText
+                        android:id="@+id/universityProgramFee1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13.5dp"
+                        android:inputType="numberDecimal"
+                        android:background="@drawable/rounded_edittext"
+                        android:padding="6dp"
+                        android:hint="Program fee(NRs)"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/addUniversityProgram2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="#6c8487"/>
+                    <Spinner
+                        android:id="@+id/register_university_level2"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_height="wrap_content" />
+                    <Spinner
+                        android:id="@+id/register_university_duration2"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="#6c8487"/>
+                    <EditText
+                        android:id="@+id/universityProgramName2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13.5dp"
+                        android:background="@drawable/rounded_edittext"
+                        android:padding="6dp"
+                        android:layout_marginBottom="8dp"
+                        android:hint="Program name"/>
+                    <EditText
+                        android:id="@+id/universityProgramFee2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13.5dp"
+                        android:inputType="numberDecimal"
+                        android:background="@drawable/rounded_edittext"
+                        android:padding="6dp"
+                        android:hint="Program fee(NRs)"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/addUniversityProgram3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="#6c8487"/>
+                    <Spinner
+                        android:id="@+id/register_university_level3"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_height="wrap_content" />
+                    <Spinner
+                        android:id="@+id/register_university_duration3"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="#6c8487"/>
+                    <EditText
+                        android:id="@+id/universityProgramName3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13.5dp"
+                        android:background="@drawable/rounded_edittext"
+                        android:padding="6dp"
+                        android:layout_marginBottom="8dp"
+                        android:hint="Program name"/>
+                    <EditText
+                        android:id="@+id/universityProgramFee3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13.5dp"
+                        android:inputType="numberDecimal"
+                        android:background="@drawable/rounded_edittext"
+                        android:padding="6dp"
+                        android:hint="Program fee(NRs)"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/addUniversityProgram4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="#6c8487"/>
+                    <Spinner
+                        android:id="@+id/register_university_level4"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_height="wrap_content" />
+                    <Spinner
+                        android:id="@+id/register_university_duration4"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="#6c8487"/>
+                    <EditText
+                        android:id="@+id/universityProgramName4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13.4dp"
+                        android:background="@drawable/rounded_edittext"
+                        android:padding="6dp"
+                        android:layout_marginBottom="8dp"
+                        android:hint="Program name"/>
+                    <EditText
+                        android:id="@+id/universityProgramFee4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13.5dp"
+                        android:inputType="numberDecimal"
+                        android:background="@drawable/rounded_edittext"
+                        android:padding="6dp"
+                        android:hint="Program fee(NRs)"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/addUniversityProgram5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="#6c8487"/>
+
+                    <Spinner
+                        android:id="@+id/register_university_level5"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_height="wrap_content" />
+                    <Spinner
+                        android:id="@+id/register_university_duration5"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="#6c8487"/>
+                    <EditText
+                        android:id="@+id/universityProgramName5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13.5dp"
+                        android:background="@drawable/rounded_edittext"
+                        android:padding="6dp"
+                        android:layout_marginBottom="8dp"
+                        android:hint="Program name"/>
+                    <EditText
+                        android:id="@+id/universityProgramFee5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13.5dp"
+                        android:inputType="numberDecimal"
+                        android:background="@drawable/rounded_edittext"
+                        android:padding="6dp"
+                        android:hint="Program fee(NRs)"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/addUniversityProgram6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="#6c8487"/>
+                    <Spinner
+                        android:id="@+id/register_university_level6"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_height="wrap_content" />
+                    <Spinner
+                        android:id="@+id/register_university_duration6"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="#6c8487"/>
+                    <EditText
+                        android:id="@+id/universityProgramName6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13.5dp"
+                        android:background="@drawable/rounded_edittext"
+                        android:padding="6dp"
+                        android:layout_marginBottom="8dp"
+                        android:hint="Program name"/>
+                    <EditText
+                        android:id="@+id/universityProgramFee6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13.5dp"
+                        android:inputType="numberDecimal"
+                        android:background="@drawable/rounded_edittext"
+                        android:padding="6dp"
+                        android:hint="Program fee(NRs)"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/addUniversityProgram7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="#6c8487"/>
+
+                    <Spinner
+                        android:id="@+id/register_university_level7"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_height="wrap_content" />
+                    <Spinner
+                        android:id="@+id/register_university_duration7"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="#6c8487"/>
+
+                    <EditText
+                        android:id="@+id/universityProgramName7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13.5dp"
+                        android:background="@drawable/rounded_edittext"
+                        android:padding="6dp"
+                        android:layout_marginBottom="8dp"
+                        android:hint="Program name"/>
+                    <EditText
+                        android:id="@+id/universityProgramFee7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13.5dp"
+                        android:inputType="numberDecimal"
+                        android:background="@drawable/rounded_edittext"
+                        android:padding="6dp"
+                        android:hint="Program fee(NRs)"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/addUniversityProgram8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="#6c8487"/>
+                    <Spinner
+                        android:id="@+id/register_university_level8"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_height="wrap_content" />
+                    <Spinner
+                        android:id="@+id/register_university_duration8"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="#6c8487"/>
+
+                    <EditText
+                        android:id="@+id/universityProgramName8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13.5dp"
+                        android:background="@drawable/rounded_edittext"
+                        android:padding="6dp"
+                        android:layout_marginBottom="8dp"
+                        android:hint="Program name"/>
+                    <EditText
+                        android:id="@+id/universityProgramFee8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13.5dp"
+                        android:inputType="numberDecimal"
+                        android:background="@drawable/rounded_edittext"
+                        android:padding="6dp"
+                        android:hint="Program fee(NRs)"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/addUniversityProgram9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="#6c8487"/>
+
+                    <Spinner
+                        android:id="@+id/register_university_level9"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_height="wrap_content" />
+                    <Spinner
+                        android:id="@+id/register_university_duration9"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="#6c8487"/>
+
+                    <EditText
+                        android:id="@+id/universityProgramName9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13.5dp"
+                        android:background="@drawable/rounded_edittext"
+                        android:padding="6dp"
+                        android:layout_marginBottom="8dp"
+                        android:hint="Program name"/>
+                    <EditText
+                        android:id="@+id/universityProgramFee9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13.5dp"
+                        android:inputType="numberDecimal"
+                        android:background="@drawable/rounded_edittext"
+                        android:padding="6dp"
+                        android:hint="Program fee(NRs)"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/add_more_university_programs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10dp"
+                android:layout_gravity="right"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginBottom="8dp"
+                android:text="Add more +"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:textSize="18dp"
-                android:text="University Logo:"/>
-            <ImageView
-                android:id="@+id/register_university_logo"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:scaleType="fitXY"
-                android:layout_gravity="center_horizontal"/>
+                android:text="Admission Open:"/>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.1"
+                    android:textSize="12dp"
+                    android:layout_height="wrap_content"
+                    android:text="From:"/>
+                <EditText
+                    android:id="@+id/university_admission_startDate"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:background="@drawable/rounded_edittext"
+                    android:padding="6dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.1"
+                    android:textSize="12dp"
+                    android:gravity="end"
+                    android:layout_height="wrap_content"
+                    android:text="To:"/>
+                <EditText
+                    android:id="@+id/university_admission_end_date"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:background="@drawable/rounded_edittext"
+                    android:padding="6dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="18dp"
+                    android:text="University Logo:"/>
+                <ImageView
+                    android:id="@+id/register_university_logo"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:scaleType="fitXY"
+                    android:background="@mipmap/logoholder"
+                    android:layout_gravity="center_horizontal"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="35dp"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/send_university_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_submit"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="70dp"
+                    android:textColor="#fff"
+                    android:text="Submit"/>
+                <Button
+                    android:id="@+id/cancel_university_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_discard"
+                    android:textColor="#fff"
+                    android:text="Cancel"/>
+            </LinearLayout>
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:textSize="18dp"
-            android:text="Google Map Location URL:"/>
 
-        <EditText
-            android:id="@+id/register_university_map_Url"
-            android:layout_width="match_parent"
-            android:background="@drawable/rounded_edittext"
-            android:padding="6dp"
-            android:layout_marginBottom="5dp"
-            android:layout_height="wrap_content" />rrrRa
+    </ScrollView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_marginTop="35dp"
-            android:layout_height="wrap_content">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_submit"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="70dp"
-                android:textColor="#fff"
-                android:text="Submit"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_discard"
-                android:textColor="#fff"
-                android:text="Cancel"/>
-        </LinearLayout>
-    </LinearLayout>
-
-</ScrollView>
+</LinearLayout>

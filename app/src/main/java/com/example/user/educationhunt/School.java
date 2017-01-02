@@ -1,13 +1,17 @@
 package com.example.user.educationhunt;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -16,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -23,6 +28,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.user.educationhunt.adapter.CustomListAdapter;
 import com.example.user.educationhunt.pojos.AppController;
+import com.example.user.educationhunt.pojos.FeeClass;
 import com.example.user.educationhunt.pojos.OurSchool;
 
 import org.json.JSONArray;
@@ -34,10 +40,11 @@ import java.util.List;
 
 public class School extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
+    private Toolbar toolbar;
 
     private static final String TAG = School.class.getSimpleName();
 
-    private static final String url = "http://myeducationhunt.com/public/schools";
+    private static final String url = "http://www.myeducationhunt.com/api/v1/schools";
 
     private ProgressDialog pDialog;
     private List<OurSchool> ourSchoolsListItems = new ArrayList<OurSchool>();
@@ -49,78 +56,116 @@ public class School extends AppCompatActivity implements SearchView.OnQueryTextL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle("Schools");
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        listView = (ListView) findViewById(R.id.list);
-        adapter = new CustomListAdapter(this, ourSchoolsListItems);
-        listView.setAdapter(adapter);
-        listView.setTextFilterEnabled(true);
+        toolbar.setPadding(0, getStatusBarHeight(), 0, 0);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Schools");
 
-//                OurSchool ourSchool = new OurSchool();
-                Intent i = new Intent(School.this, SchoolDetails.class);
-                i.putExtra("school", ourSchoolsListItems.get(position));
-                startActivity(i);
+        if (isConnected()) {
 
-            }
-        });
+            listView = (ListView) findViewById(R.id.list);
+            adapter = new CustomListAdapter(this, ourSchoolsListItems);
+            listView.setAdapter(adapter);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    Intent i = new Intent(School.this, SchoolDetails.class);
+
+                    i.putExtra("school", ourSchoolsListItems.get(position));
+                    startActivity(i);
+
+                }
+            });
 
 
-        pDialog = new ProgressDialog(this);
+            pDialog = new ProgressDialog(this);
 // Showing progress dialog before making http request
-        pDialog.setMessage("Loading…");
-        pDialog.show();
+            pDialog.setMessage("Loading…");
+            pDialog.show();
 
-// Creating volley request obj
-        JsonArrayRequest schoolRequest = new JsonArrayRequest(url,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        Log.d(TAG, response.toString());
-                        hidePDialog();
 
-                        // Parsing json
-                        for (int i = 0; i < response.length(); i++) {
-                            try {
+            JsonArrayRequest schoolRequest = new JsonArrayRequest(url,
+                    new Response.Listener<JSONArray>() {
+                        @Override
+                        public void onResponse(JSONArray response) {
+                            Log.d(TAG, response.toString());
+                            hidePDialog();
 
-                                JSONObject obj = response.getJSONObject(i);
-                                OurSchool ourSchool = new OurSchool();
+                            // Parsing json
+                            for (int i = 0; i < response.length(); i++) {
+                                try {
 
-                                ourSchool.schoolId = obj.getInt("id");
-                                ourSchool.schoolName = obj.getString("name");
-                                ourSchool.schoolLocation = obj.getString("location");
-                                ourSchool.schoolLogo = obj.getString("logo");
-                                ourSchool.schoolEmail = obj.getString("email");
-                                ourSchool.schoolWebsite = obj.getString("website");
-                                ourSchool.createdAt = obj.getString("created_at");
-                                ourSchool.updatedAt = obj.getString("updated_at");
+                                    JSONObject obj = response.getJSONObject(i);
+                                    OurSchool ourSchool = new OurSchool();
 
-                                // adding schools to ourSchool list
-                                ourSchoolsListItems.add(ourSchool);
+                                    ourSchool.schoolId = obj.getInt("id");
+                                    ourSchool.schoolName = obj.getString("name");
+                                    ourSchool.schoolAddress = obj.getString("address");
+                                    ourSchool.schoolLogo = obj.getString("logo");
+                                    ourSchool.schoolDistrict = obj.getString("district");
+                                    ourSchool.schoolCountry = obj.getString("country");
+                                    ourSchool.schoolPhone = obj.getString("phone");
+                                    ourSchool.schoolEmail = obj.getString("email");
+                                    ourSchool.schoolWebsite = obj.getString("website");
+                                    ourSchool.schoolType = obj.getString("institution_type");
+                                    ourSchool.estDate = obj.getString("establishment_date");
+                                    ourSchool.admissinOpenDate = obj.getString("admission_open_from");
+                                    ourSchool.admissionEndDate = obj.getString("admission_open_to");
+                                    ourSchool.latitude = obj.getDouble("latitude");
+                                    ourSchool.longitude = obj.getDouble("longitude");
 
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                                    JSONArray fees = obj.getJSONArray("fees");
+                                    List<FeeClass> listFeeClass = new ArrayList<FeeClass>();
+                                    for (int j = 0; j < fees.length(); j++) {
+                                        FeeClass feeClass = new FeeClass();
+                                        JSONObject obj1 = fees.getJSONObject(j);
+                                        feeClass.setGrade(obj1.getString("grade"));
+                                        feeClass.setFee(obj1.getString("price"));
+
+                                        listFeeClass.add(feeClass);
+                                    }
+                                    ourSchool.setFeesList(listFeeClass);
+                                    ourSchoolsListItems.add(ourSchool);
+
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
                             }
+
+                            adapter.notifyDataSetChanged();
                         }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    VolleyLog.d(TAG, "Error: " + error.getMessage());
+                    hidePDialog();
+                }
+            });
 
-                        adapter.notifyDataSetChanged();
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.d(TAG, "Error: " + error.getMessage());
-                hidePDialog();
-            }
-        });
+            // Adding request to request queue
+            AppController.getInstance().addToRequestQueue(schoolRequest);
 
-        // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(schoolRequest);
+        } else {
+
+            Toast.makeText(this, "Please check your internet connection", Toast.LENGTH_LONG).show();
+        }
     }
+
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
+
 
     @Override
     public void onDestroy() {
@@ -133,7 +178,6 @@ public class School extends AppCompatActivity implements SearchView.OnQueryTextL
             pDialog.dismiss();
             pDialog = null;
         }
-
     }
 
     @Override
@@ -146,6 +190,15 @@ public class School extends AppCompatActivity implements SearchView.OnQueryTextL
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public boolean isConnected() {
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Activity.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected())
+            return true;
+        else
+            return false;
     }
 
     @Override
@@ -164,12 +217,10 @@ public class School extends AppCompatActivity implements SearchView.OnQueryTextL
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        // this is your adapter that will be filtered
         if (TextUtils.isEmpty(newText)) {
             listView.clearTextFilter();
         } else {
             adapter.getFilter().filter(newText.toString());
-//            listView.setFilterText(newText.toString());
         }
 
         return true;

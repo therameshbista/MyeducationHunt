@@ -58,6 +58,7 @@
                 android:layout_height="30dp"
                 android:layout_marginLeft="20dp">
                 <ImageView
+                    android:id="@+id/phonecalls"
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/call"/>
@@ -77,7 +78,8 @@
                 android:layout_marginLeft="20dp">
                 <ImageView
                     android:layout_width="20dp"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/type"/>
                 <TextView
                     android:id="@+id/about_school_category"
                     android:layout_width="wrap_content"
@@ -89,10 +91,31 @@
 
             </LinearLayout>
             <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/collegeAffiliation"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginLeft="20dp">
                 <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/network"/>
+                <TextView
+                    android:id="@+id/about_college_affiliation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+                    android:text="Affiliation"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp">
+                <ImageView
+                    android:id="@+id/sendEmails"
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/email"/>
@@ -112,6 +135,7 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginLeft="20dp">
                 <ImageView
+                    android:id="@+id/weblink"
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/web"/>

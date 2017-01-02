@@ -32,11 +32,4 @@ public class Splash extends AppCompatActivity {
             }
         }, 3000);
     }
-
-//    public void showProgress(View view){
-//        progress=new ProgressDialog(this);
-//        progress.setMessage("Loading...");
-//        progress.show();
-//    }
-
 }

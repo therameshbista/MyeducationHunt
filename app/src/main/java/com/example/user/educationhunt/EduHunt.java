@@ -1,9 +1,13 @@
 package com.example.user.educationhunt;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,23 +17,42 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.user.educationhunt.fragment.NearMe;
 import com.example.user.educationhunt.fragment.Register;
 import com.example.user.educationhunt.fragment.Search;
 import com.example.user.educationhunt.fragment.Settings;
+import com.example.user.educationhunt.pojos.feedbackData;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class EduHunt extends AppCompatActivity {
     private DrawerLayout mDrawer;
     private Toolbar toolbar;
     private NavigationView nvDrawer;
     private ActionBarDrawerToggle drawerToggle;
+    TextView toolBarTitle;
+    ImageView toolBarLogo;
 
 
     @Override
@@ -39,6 +62,9 @@ public class EduHunt extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolBarLogo= (ImageView) findViewById(R.id.toolbarlogo);
+        toolBarTitle= (TextView) findViewById(R.id.toolbartitle);
+
 
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -81,12 +107,23 @@ public class EduHunt extends AppCompatActivity {
         switch (menuItem.getItemId()) {
             case R.id.search:
                 fragmentClass = Search.class;
+                toolBarLogo.setVisibility(View.GONE);
+                toolBarTitle.setText("Search");
                 break;
             case R.id.settings:
                 fragmentClass = Settings.class;
+                toolBarLogo.setVisibility(View.GONE);
+                toolBarTitle.setText("Settings");
                 break;
             case R.id.register:
                 fragmentClass = Register.class;
+                toolBarLogo.setVisibility(View.GONE);
+                toolBarTitle.setText("Register Now");
+                break;
+            case R.id.nearme:
+                fragmentClass = NearMe.class;
+                toolBarLogo.setVisibility(View.GONE);
+                toolBarTitle.setText("Near Me");
                 break;
             default:
                 fragmentClass = Search.class;
@@ -98,18 +135,13 @@ public class EduHunt extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        // Insert the fragment by replacing any existing fragment
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
 
-        // Highlight the selected item has been done by NavigationView
         menuItem.setChecked(true);
-        // Set action bar title
         setTitle(menuItem.getTitle());
-        // Close the navigation drawer
         mDrawer.closeDrawers();
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -120,49 +152,17 @@ public class EduHunt extends AppCompatActivity {
             case R.id.our_team:
                 final Dialog dialog=new Dialog(this);
                 dialog.setContentView(R.layout.activity_our_team);
-                dialog.getWindow().setLayout(650,1100);
                 dialog.show();
                 return true;
             case R.id.feedback:
-                final Dialog dialog1=new Dialog(this);
-                dialog1.setContentView(R.layout.activity_feedback);
-                Button btnFeedback= (Button) dialog1.findViewById(R.id.btn_feedback_send);
-
-               btnFeedback.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        EditText feedbackName= (EditText) dialog1.findViewById(R.id.feedback_name);
-                        EditText feedbackEmail= (EditText) dialog1.findViewById(R.id.feedback_email);
-                        EditText feedbackComment= (EditText) dialog1.findViewById(R.id.feedback_comment);
-                        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                                "mailto", "meramesh111@outlook.com", null));
-                        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback");
-                        emailIntent.putExtra(Intent.EXTRA_TEXT, feedbackComment.getText()+"\n"+ "\nBest Regards,\n"+ feedbackName.getText()
-                        );
-
-                        try {
-                            startActivity(Intent.createChooser(emailIntent, "Send email..."));
-                        } catch (android.content.ActivityNotFoundException ex) {
-                            Toast.makeText(EduHunt.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
-                        }
-                        feedbackName.getText().clear();
-                        feedbackEmail.getText().clear();
-                        feedbackComment.getText().clear();
-                        dialog1.dismiss();
-
-
-                    }
-                });
-                dialog1.getWindow().setLayout(650,1100);
-                dialog1.show();
+                startActivity(new Intent(EduHunt.this,SendFeedback.class));
                 return true;
 
         }
         return super.onOptionsItemSelected(item);
     }
 
-    // `onPostCreate` called when activity start-up is complete after `onStart()`
-    // NOTE! Make sure to override the method with only a single `Bundle` argument
+
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);

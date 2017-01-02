@@ -28,10 +28,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String NAME = "Name";
     private static final String LOGO = "Logo";
     private static final String LOCATION = "Location";
-//    private static final String SCHOOL_CREATED_AT = "createdAt";
-//    private static final String SCHOOL_UPDATED_AT = "updatedAt";
-//    private static final String SCHOOL_EMAIL = "schoolEmail";
-//    private static final String SCHOOL_WEBSITE = "schoolWebsite";
 
     String createTableBookmark = "Create table if not exists `Bookmark` ("
             + "`name`	TEXT," + "`location`	TEXT," + "`logo`	TEXT);";
@@ -96,9 +92,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int arg1, int arg2) {
         // TODO Auto-generated method stub
-        //Drop older version if existed
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_BOOKMARK);
-        //create table again
         onCreate(sqLiteDatabase);
     }
 
@@ -116,18 +110,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } else {
             databaseUpdatedListener.setDatabaseError("Failed to insert");
         }
-
         db.close();
     }
 
-    //    getting all bookmarked school
     public List<Bookmarkitem> getAllSchoolBookmark() {
         SQLiteDatabase db = this.getWritableDatabase();
         String selectQuery = "SELECT * FROM " + TABLE_NAME_BOOKMARK;
         List<Bookmarkitem> bookmarkitems = new ArrayList<>();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        //looping through all list and adding to list
         if (cursor.moveToFirst()) {
             do {
                 Bookmarkitem bookmarkitem = new Bookmarkitem();
@@ -139,9 +130,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         return bookmarkitems;
-
-
     }
 
+    public void removeBookmarkItem(int sID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + TABLE_NAME_BOOKMARK + " WHERE " + ID + "= '" + sID + "'");
+        db.close();
+    }
 }
-

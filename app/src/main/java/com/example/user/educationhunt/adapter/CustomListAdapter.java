@@ -77,7 +77,7 @@ public class CustomListAdapter extends BaseAdapter implements Filterable {
 
         schoolName.setText("Name: " + m.getSchoolName());
 
-        schoolLocation.setText("Address: " + String.valueOf(m.getSchoolLocation()));
+        schoolLocation.setText("Address: " + String.valueOf(m.getSchoolAddress()));
 
 
         return convertView;

@@ -1,9 +1,12 @@
 package com.example.user.educationhunt;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -19,6 +22,7 @@ public class Bookmark extends AppCompatActivity {
     private ListView listView;
     private BookmarkAdapter adapter;
     DatabaseHelper dbhelper;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +30,15 @@ public class Bookmark extends AppCompatActivity {
         setContentView(R.layout.activity_bookmark);
         dbhelper = new DatabaseHelper(this);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle("Your Bookmark");
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        toolbar.setPadding(0, getStatusBarHeight(), 0, 0);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Bookmark");
 
         List<Bookmarkitem> bookmarkedSchools = dbhelper.getAllSchoolBookmark();
-
 
         listView = (ListView) findViewById(R.id.list_bookmarked);
         if (bookmarkedSchools.size() != 0) {
@@ -41,6 +48,23 @@ public class Bookmark extends AppCompatActivity {
             Toast.makeText(this, "You have no bookmark yet.", Toast.LENGTH_SHORT).show();
         }
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                startActivity(new Intent(Bookmark.this,SchoolDetails.class));
+            }
+        });
+
+          }
+
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
     }
 
     @Override

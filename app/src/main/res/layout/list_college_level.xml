@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/collegeLevel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/grade_table"
+        android:gravity="center_horizontal"
+        android:padding="5dp"
+        android:text="level"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/collegeProgramName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/grade_table"
+        android:gravity="center_horizontal"
+        android:padding="5dp"
+        android:text="Program Name"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/collegeDuration"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/grade_table"
+        android:gravity="center_horizontal"
+        android:padding="5dp"
+        android:text="Duration"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/collegeFee"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/grade_table"
+        android:gravity="center_horizontal"
+        android:padding="5dp"
+        android:text="ram"
+        android:textSize="10dp" />
+</LinearLayout>

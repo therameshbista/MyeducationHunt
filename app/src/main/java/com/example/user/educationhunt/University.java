@@ -1,12 +1,17 @@
 package com.example.user.educationhunt;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -21,6 +27,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.user.educationhunt.adapter.UniversityListAdapter;
 import com.example.user.educationhunt.pojos.AppController;
+import com.example.user.educationhunt.pojos.Collegefees;
 import com.example.user.educationhunt.pojos.OurSchool;
 import com.example.user.educationhunt.pojos.OurUniversity;
 
@@ -34,9 +41,10 @@ import java.util.List;
 public class University extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     // Log tag
+    private Toolbar toolbar;
     private static final String TAG = University.class.getSimpleName();
 
-    private static final String url = "http://myeducationhunt.com/public/schools";
+    private static final String url = "http://www.myeducationhunt.com/api/v1/universities";
 
     private ProgressDialog pDialog;
     private List<OurUniversity> ourUniversityListItems = new ArrayList<OurUniversity>();
@@ -48,9 +56,15 @@ public class University extends AppCompatActivity implements SearchView.OnQueryT
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_university);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle("Universities");
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        toolbar.setPadding(0, getStatusBarHeight(), 0, 0);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Universities");
+
+        if(isConnected()) {
 
         listViewUniversity = (ListView) findViewById(R.id.list_university);
         adapterUniversity = new UniversityListAdapter(this, ourUniversityListItems);
@@ -60,19 +74,9 @@ public class University extends AppCompatActivity implements SearchView.OnQueryT
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                OurSchool ourSchool = new OurSchool();
                 Intent i = new Intent(University.this, UniversityDetails.class);
 
                 i.putExtra("university", ourUniversityListItems.get(position));
-//                i.putExtra("id", ourUniversityListItems.get(position).universityId);
-//                i.putExtra("name", ourUniversityListItems.get(position).universityName);
-//                i.putExtra("location", ourUniversityListItems.get(position).universityLocation);
-//                i.putExtra("logo", ourUniversityListItems.get(position).universityLogo);
-//                i.putExtra("email", ourUniversityListItems.get(position).universityEmail);
-//                i.putExtra("website", ourUniversityListItems.get(position).universityWebsite);
-//                i.putExtra("created_at", ourUniversityListItems.get(position).universitycreatedAt);
-//                i.putExtra("updated_at", ourUniversityListItems.get(position).universityupdatedAt);
-
                 startActivity(i);
 
             }
@@ -83,8 +87,7 @@ public class University extends AppCompatActivity implements SearchView.OnQueryT
         pDialog.setMessage("Loading…");
         pDialog.show();
 
-        // Creating volley request obj
-        JsonArrayRequest universityRequest = new JsonArrayRequest(url,
+        JsonArrayRequest schoolRequest = new JsonArrayRequest(url,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -100,15 +103,36 @@ public class University extends AppCompatActivity implements SearchView.OnQueryT
 
                                 ourUniversity.universityId = obj.getInt("id");
                                 ourUniversity.universityName = obj.getString("name");
-                                ourUniversity.universityLocation = obj.getString("location");
+                                ourUniversity.universityAddress = obj.getString("address");
                                 ourUniversity.universityLogo = obj.getString("logo");
-                                ourUniversity.universityEmail = obj.getString("email");
-                                ourUniversity.universityWebsite = obj.getString("website");
-                                ourUniversity.universitycreatedAt = obj.getString("created_at");
-                                ourUniversity.universityupdatedAt = obj.getString("updated_at");
-
+                                ourUniversity.universityDistrict=obj.getString("district");
+                                ourUniversity.universityCountry=obj.getString("country");
+                                ourUniversity.universityPhone=obj.getString("phone");
+                                ourUniversity.universityEmail=obj.getString("email");
+                                ourUniversity.universityWebsite=obj.getString("website");
+                                ourUniversity.universityType=obj.getString("institution_type");
+                                ourUniversity.universityestDate=obj.getString("establishment_date");
+                                ourUniversity.admissionOpendate=obj.getString("admission_open_from");
+                                ourUniversity.admissionEnddate=obj.getString("admission_open_to");
+                                ourUniversity.universityLatitude=obj.getDouble("latitude");
+                                ourUniversity.universityLongitude=obj.getDouble("longitude");
                                 // adding schools to ourSchool list
+
+                                JSONArray fees = obj.getJSONArray("fees");
+                                List<Collegefees> listFeeClass = new ArrayList<Collegefees>();
+                                for (int j = 0; j < fees.length(); j++) {
+                                    Collegefees feeCollege = new Collegefees();
+                                    JSONObject obj1 = fees.getJSONObject(j);
+                                    feeCollege.setLevel(obj1.getString("level"));
+                                    feeCollege.setFee(obj1.getString("fee"));
+                                    feeCollege.setDuration(obj1.getString("duration"));
+                                    feeCollege.setProgramName(obj1.getString("program_name"));
+
+                                    listFeeClass.add(feeCollege);
+                                }
+                                ourUniversity.setFeesList(listFeeClass);
                                 ourUniversityListItems.add(ourUniversity);
+
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -126,7 +150,30 @@ public class University extends AppCompatActivity implements SearchView.OnQueryT
         });
 
         // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(universityRequest);
+        AppController.getInstance().addToRequestQueue(schoolRequest);
+
+        }
+        else{
+
+            Toast.makeText(this,"Please check your internet connection",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
+    public boolean isConnected(){
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Activity.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected())
+            return true;
+        else
+            return false;
     }
 
     @Override
@@ -169,14 +216,19 @@ public class University extends AppCompatActivity implements SearchView.OnQueryT
     }
 
     @Override
-    public boolean onQueryTextSubmit(String query) {
-        // User pressed the search button
-        return false;
+    public boolean onQueryTextChange(String newText) {
+        if (TextUtils.isEmpty(newText)) {
+            listViewUniversity.clearTextFilter();
+        } else {
+            adapterUniversity.getFilter().filter(newText.toString());
+        }
+
+        return true;
     }
 
     @Override
-    public boolean onQueryTextChange(String newText) {
-        // User changed the text
+    public boolean onQueryTextSubmit(String query) {
+        // TODO Auto-generated method stub
         return false;
     }
 }

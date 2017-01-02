@@ -16,8 +16,7 @@ import android.widget.Toast;
 import com.example.user.educationhunt.database.DatabaseHelper;
 import com.example.user.educationhunt.fragment.About;
 import com.example.user.educationhunt.fragment.Admission;
-import com.example.user.educationhunt.fragment.Fee_College;
-import com.example.user.educationhunt.fragment.Majors;
+import com.example.user.educationhunt.fragment.FeeStructure;
 import com.example.user.educationhunt.listner.DatabaseUpdatedListener;
 import com.example.user.educationhunt.pojos.Bookmarkitem;
 import com.example.user.educationhunt.pojos.OurCollege;
@@ -43,7 +42,7 @@ public class CollegeDetail extends AppCompatActivity implements DatabaseUpdatedL
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(ourCollege.getNameCollege());
+        getSupportActionBar().setTitle(ourCollege.getCollegeName());
 
         db = new DatabaseHelper(this);
         db.databaseUpdatedListener = this;
@@ -67,18 +66,12 @@ public class CollegeDetail extends AppCompatActivity implements DatabaseUpdatedL
         switch (item.getItemId()) {
 
             case R.id.star_School:
-//                if (isStarFilled) {
-//                    item.setIcon(R.mipmap.starfilled);
-//                    isStarFilled=false;
-//                }else{
-//                    item.setIcon(R.mipmap.star);
-//                    isStarFilled=true;
-//                }
+
                 Bookmarkitem bookmarkitem = new Bookmarkitem();
-                bookmarkitem.setBookmarkID(ourCollege.getIdCollege());
-                bookmarkitem.setName(ourCollege.getNameCollege());
-                bookmarkitem.setLogo(ourCollege.getCollegeLogoCollege());
-                bookmarkitem.setAddress(ourCollege.getLocationCollege());
+                bookmarkitem.setBookmarkID(ourCollege.getCollegeId());
+                bookmarkitem.setName(ourCollege.getCollegeName());
+                bookmarkitem.setLogo(ourCollege.getCollegeLogo());
+                bookmarkitem.setAddress(ourCollege.getCollegeAddress());
                 db.addSchoolBookmark(bookmarkitem, item); //saving to database
                 return true;
         }
@@ -89,8 +82,7 @@ public class CollegeDetail extends AppCompatActivity implements DatabaseUpdatedL
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new About(), "ABOUT US");
         adapter.addFragment(new Admission(), "ADMISSION");
-        adapter.addFragment(new Majors(), "MAJORS");
-        adapter.addFragment(new Fee_College(), "FEE");
+        adapter.addFragment(new FeeStructure(), "FEE");
         viewPager.setAdapter(adapter);
     }
 
@@ -99,7 +91,7 @@ public class CollegeDetail extends AppCompatActivity implements DatabaseUpdatedL
         List<Bookmarkitem> bookmarkitems = db.getAllSchoolBookmark();
         if (bookmarkitems.size() != 0) {
             for (Bookmarkitem bookmarkitem : bookmarkitems) {
-                if (bookmarkitem.getBookmarkID() == ourCollege.getIdCollege()) {
+                if (bookmarkitem.getBookmarkID() == ourCollege.getCollegeId()) {
                     isStarFilled = true;
                     break;
                 }

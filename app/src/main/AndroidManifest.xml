@@ -2,97 +2,123 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.user.educationhunt">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+
 
     <uses-feature
         android:glEsVersion="0x00020000"
-        android:required="true"/>
+        android:required="true" />
 
     <permission
         android:name="com.example.permission.MAPS_RECEIVE"
-        android:protectionLevel="signature"/>
-    <uses-permission android:name="com.example.permission.MAPS_RECEIVE"/>
+        android:protectionLevel="signature" />
 
+    <uses-permission android:name="com.example.permission.MAPS_RECEIVE" />
 
     <application
         android:name=".pojos.AppController"
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAPf9kPEHTnMpx81uYVMnmONEIEiTRme9I"/>
+            android:value="AIzaSyAPf9kPEHTnMpx81uYVMnmONEIEiTRme9I" />
 
-        <activity android:name=".Splash">
+        <activity
+            android:name=".Splash"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EduHunt" />
+        <activity
+            android:name=".EduHunt"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".School"
-            android:theme="@style/AppTheme1">
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.searchable"
-                android:resource="@xml/searchable">
-            </meta-data>
+                android:resource="@xml/searchable"></meta-data>
         </activity>
         <activity
             android:name=".College"
             android:parentActivityName=".EduHunt"
-            android:theme="@style/AppTheme1" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".University"
             android:parentActivityName=".EduHunt"
-            android:theme="@style/AppTheme1" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Bookmark"
             android:parentActivityName=".EduHunt"
-            android:theme="@style/AppTheme1" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Terms"
-            android:theme="@style/AppTheme1" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Privacy"
-            android:theme="@style/AppTheme1" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Help"
-            android:theme="@style/AppTheme1" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Info"
-            android:theme="@style/AppTheme1" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Website"
             android:parentActivityName=".Info"
-            android:theme="@style/AppTheme1" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SchoolRegistration"
-            android:theme="@style/AppTheme1"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".CollegeRegistration"
-            android:theme="@style/AppTheme1"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".UniversityRegistration"
-            android:theme="@style/AppTheme1"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".SchoolDetails"
-            android:parentActivityName=".School" />
+            android:parentActivityName=".School"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".CollegeDetail"
-            android:parentActivityName=".College" />
+            android:parentActivityName=".College"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UniversityDetails"
-            android:parentActivityName=".University"></activity>
+            android:parentActivityName=".University"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SendFeedback"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"></activity>
     </application>
+    <supports-screens
+        android:largeScreens="false"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:anyDensity="true" />
 
 </manifest>

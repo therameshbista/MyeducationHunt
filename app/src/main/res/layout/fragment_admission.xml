@@ -7,13 +7,14 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/school_admission_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textSize="30dp"
-        android:textColor="#16cc5f"
+        android:textSize="18dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
-        android:text="Admission Deadline!" />
+        android:layout_gravity="center_horizontal"
+        android:text="Phone:015520123" />
 
     <TextView
         android:id="@+id/from"

@@ -21,4 +21,14 @@
             android:checkableBehavior="none"
             android:title="Register Your Institution" />
     </group>
+
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single"  >
+        <item
+            android:id="@+id/nearme"
+            android:icon="@mipmap/location"
+            android:checkableBehavior="none"
+            android:title="Find School/Colleges Near Me" />
+    </group>
 </menu>

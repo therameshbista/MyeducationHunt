@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by user on 11/21/2016.
  */
-public class Bookmarkitem{
+public class Bookmarkitem implements Serializable{
 
     public int bookmarkID; //school or college or university id
     public String name;

@@ -73,34 +73,13 @@ public class SchoolDetails extends AppCompatActivity implements DatabaseUpdatedL
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-
             case R.id.star_School:
-//                if (isStarFilled) {
-//                    item.setIcon(R.mipmap.starfilled);
-//                    String Item = getIntent().getExtras().getString("name");
-//                    String Item1 = getIntent().getExtras().getString("location");
-//                    String Item2 = getIntent().getExtras().getString("logo");
-//
-//                    Bookmarkitem bookmark = new Bookmarkitem();
-//                    Intent i = new Intent(SchoolDetails.this, Bookmark.class);
-//
-//                    i.putExtra("name", Item);
-//                    i.putExtra("location", Item1);
-//                    i.putExtra("logo", Item2);
-//
-//                    startActivity(i);
-//
-//                    isStarFilled = false;
-//                } else {
-//                    item.setIcon(R.mipmap.star);
-//                    isStarFilled = true;
-//                }
                 Bookmarkitem bookmarkitem = new Bookmarkitem();
                 bookmarkitem.setBookmarkID(ourSchool.getSchoolId());
                 bookmarkitem.setName(ourSchool.getSchoolName());
                 bookmarkitem.setLogo(ourSchool.getSchoolLogo());
-                bookmarkitem.setAddress(ourSchool.getSchoolLocation());
-                db.addSchoolBookmark(bookmarkitem, item); //saving to database
+                bookmarkitem.setAddress(ourSchool.getSchoolAddress());
+                db.addSchoolBookmark(bookmarkitem, item);
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -115,13 +94,21 @@ public class SchoolDetails extends AppCompatActivity implements DatabaseUpdatedL
                     isStarFilled = true;
                     break;
                 }
+                else isStarFilled=false;
             }
             if (isStarFilled) {
                 menu.getItem(0).setIcon(getResources().getDrawable(R.mipmap.starfilled));
+            }else if (isStarFilled.booleanValue()==true){
+                delete();
+                menu.getItem(0).setIcon(getResources().getDrawable(R.mipmap.star));
             }
         }
         return true;
     }
+
+    public void delete(){
+        List<Bookmarkitem> bookmarkitems = db.getAllSchoolBookmark();
+        db.removeBookmarkItem(ourSchool.getSchoolId());    }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -141,7 +128,6 @@ public class SchoolDetails extends AppCompatActivity implements DatabaseUpdatedL
     @Override
     public void setDatabaseError(String failureMessage) {
         Toast.makeText(this, failureMessage, Toast.LENGTH_SHORT).show();
-        // dont activate your bookmark icon
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {

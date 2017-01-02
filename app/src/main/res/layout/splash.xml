@@ -10,8 +10,8 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         style="?android:attr/progressBarStyle"
-        android:layout_gravity="center"
-        android:layout_marginTop="340dp"
+        android:layout_gravity="bottom|center"
+        android:layout_marginTop="390dp"
         android:indeterminateDrawable="@drawable/circular"
         android:max="100"
         android:progress="200"
@@ -23,7 +23,7 @@
         android:textSize="12dp"
         android:textColor="#f26c4f"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="120dp"
         android:text="Powered By:"/>
 
     <TextView
@@ -32,6 +32,6 @@
         android:layout_gravity="center_horizontal"
         android:textSize="12dp"
         android:textColor="#f26c4f"
-        android:text="Soani tech Pvt.Ltd" />
+        android:text="SoAni tech Pvt.Ltd" />
 
 </LinearLayout>

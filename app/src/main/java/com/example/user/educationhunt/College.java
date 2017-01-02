@@ -1,12 +1,17 @@
 package com.example.user.educationhunt;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -21,7 +27,10 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.user.educationhunt.adapter.CollegeListAdapter;
 import com.example.user.educationhunt.pojos.AppController;
+import com.example.user.educationhunt.pojos.Collegefees;
+import com.example.user.educationhunt.pojos.FeeClass;
 import com.example.user.educationhunt.pojos.OurCollege;
+import com.example.user.educationhunt.pojos.OurSchool;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,9 +42,10 @@ import java.util.List;
 public class College extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     // Log tag
+    private Toolbar toolbar;
     private static final String TAG = College.class.getSimpleName();
 
-    private static final String url = "http://myeducationhunt.com/public/schools";
+    private static final String url = "http://www.myeducationhunt.com/api/v1/colleges";
 
     private ProgressDialog pDialog;
     private List<OurCollege> ourCollegeListItems = new ArrayList<OurCollege>();
@@ -47,76 +57,116 @@ public class College extends AppCompatActivity implements SearchView.OnQueryText
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_college);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle("Colleges");
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        listViewCollege = (ListView) findViewById(R.id.list_college);
-        adapterCollege = new CollegeListAdapter(this, ourCollegeListItems);
-        listViewCollege.setAdapter(adapterCollege);
+        toolbar.setPadding(0, getStatusBarHeight(), 0, 0);
 
-        listViewCollege.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Colleges");
 
-                OurCollege ourCollege = new OurCollege();
-                Intent i = new Intent(College.this, CollegeDetail.class);
+        if(isConnected()) {
 
-                i.putExtra("college", ourCollegeListItems.get(position));
+            listViewCollege = (ListView) findViewById(R.id.list_college);
+            adapterCollege = new CollegeListAdapter(this, ourCollegeListItems);
+            listViewCollege.setAdapter(adapterCollege);
 
-                startActivity(i);
+            listViewCollege.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            }
-        });
-        pDialog = new ProgressDialog(this);
-        // Showing progress dialog before making http request
-        pDialog.setMessage("Loading…");
-        pDialog.show();
+                    Intent i = new Intent(College.this, CollegeDetail.class);
 
-        // Creating volley request obj
-        JsonArrayRequest collegeRequest = new JsonArrayRequest(url,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        Log.d(TAG, response.toString());
-                        hidePDialog();
+                    i.putExtra("college", ourCollegeListItems.get(position));
 
-                        // Parsing json
-                        for (int i = 0; i < response.length(); i++) {
-                            try {
+                    startActivity(i);
 
-                                JSONObject obj = response.getJSONObject(i);
-                                OurCollege ourCollege = new OurCollege();
+                }
+            });
+            pDialog = new ProgressDialog(this);
+            // Showing progress dialog before making http request
+            pDialog.setMessage("Loading…");
+            pDialog.show();
 
-                                ourCollege.idCollege = obj.getInt("id");
-                                ourCollege.nameCollege = obj.getString("name");
-                                ourCollege.locationCollege = obj.getString("location");
-                                ourCollege.collegeLogoCollege = obj.getString("logo");
-                                ourCollege.emailCollege = obj.getString("email");
-                                ourCollege.websiteCollege = obj.getString("website");
-                                ourCollege.createdAtCollege = obj.getString("created_at");
-                                ourCollege.updatedAtCollege = obj.getString("updated_at");
+            JsonArrayRequest schoolRequest = new JsonArrayRequest(url,
+                    new Response.Listener<JSONArray>() {
+                        @Override
+                        public void onResponse(JSONArray response) {
+                            Log.d(TAG, response.toString());
+                            hidePDialog();
 
-                                // adding schools to ourSchool list
-                                ourCollegeListItems.add(ourCollege);
+                            // Parsing json
+                            for (int i = 0; i < response.length(); i++) {
+                                try {
 
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                                    JSONObject obj = response.getJSONObject(i);
+                                    OurCollege ourCollege = new OurCollege();
+
+                                    ourCollege.collegeId = obj.getInt("id");
+                                    ourCollege.collegeName = obj.getString("name");
+                                    ourCollege.collegeAddress = obj.getString("address");
+                                    ourCollege.collegeLogo = obj.getString("logo");
+                                    ourCollege.collegeDistrict = obj.getString("district");
+                                    ourCollege.collegeCountry = obj.getString("country");
+                                    ourCollege.collegePhone = obj.getString("phone");
+                                    ourCollege.collegeEmail = obj.getString("email");
+                                    ourCollege.collegeWebsite = obj.getString("website");
+                                    ourCollege.collegeAffiliation = obj.getString("affiliation");
+                                    ourCollege.collegeType = obj.getString("institution_type");
+                                    ourCollege.estDate = obj.getString("establishment_date");
+                                    ourCollege.admissinOpenDate = obj.getString("admission_open_from");
+                                    ourCollege.admissionEndDate = obj.getString("admission_open_to");
+                                    ourCollege.latitude = obj.getDouble("latitude");
+                                    ourCollege.longitude = obj.getDouble("longitude");
+                                    // adding schools to ourSchool list
+                                    JSONArray fees = obj.getJSONArray("fees");
+                                    List<Collegefees> listFeeClass = new ArrayList<Collegefees>();
+                                    for (int j = 0; j < fees.length(); j++) {
+                                        Collegefees feeCollege = new Collegefees();
+                                        JSONObject obj1 = fees.getJSONObject(j);
+                                        feeCollege.setLevel(obj1.getString("level"));
+                                        feeCollege.setFee(obj1.getString("fee"));
+                                        feeCollege.setDuration(obj1.getString("duration"));
+                                        feeCollege.setProgramName(obj1.getString("program_name"));
+
+                                        listFeeClass.add(feeCollege);
+                                    }
+                                    ourCollege.setFeesList(listFeeClass);
+                                    ourCollegeListItems.add(ourCollege);
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
                             }
+
+                            adapterCollege.notifyDataSetChanged();
                         }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    VolleyLog.d(TAG, "Error: " + error.getMessage());
+                    hidePDialog();
+                }
+            });
 
-                        adapterCollege.notifyDataSetChanged();
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.d(TAG, "Error: " + error.getMessage());
-                hidePDialog();
+            // Adding request to request queue
+            AppController.getInstance().addToRequestQueue(schoolRequest);
+
+        }
+            else{
+
+                Toast.makeText(this,"Please check your internet connection",Toast.LENGTH_LONG).show();
             }
-        });
+    }
 
-        // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(collegeRequest);
+
+    public boolean isConnected(){
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Activity.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected())
+            return true;
+        else
+            return false;
     }
 
     @Override
@@ -132,6 +182,15 @@ public class College extends AppCompatActivity implements SearchView.OnQueryText
         }
     }
 
+    // A method to find height of the status bar
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -158,14 +217,19 @@ public class College extends AppCompatActivity implements SearchView.OnQueryText
     }
 
     @Override
-    public boolean onQueryTextSubmit(String query) {
-        // User pressed the search button
-        return false;
+    public boolean onQueryTextChange(String newText) {
+        if (TextUtils.isEmpty(newText)) {
+            listViewCollege.clearTextFilter();
+        } else {
+            adapterCollege.getFilter().filter(newText.toString());
+        }
+
+        return true;
     }
 
     @Override
-    public boolean onQueryTextChange(String newText) {
-        // User changed the text
+    public boolean onQueryTextSubmit(String query) {
+        // TODO Auto-generated method stub
         return false;
     }
 }
