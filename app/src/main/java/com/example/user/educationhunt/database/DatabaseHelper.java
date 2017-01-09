@@ -175,10 +175,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return bookmarkitems;
     }
 
-    public void removeBookmarkItem(int sID) {
+    public boolean removeBookmarkItem(String id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("DELETE FROM " + TABLE_NAME_BOOKMARK + " WHERE " + ID + "= '" + sID + "'");
-        db.close();
+        return db.delete(TABLE_NAME_BOOKMARK, ID + "=" + id, null) > 0;
     }
 
     public Bookmarkitem getBoomarkDetailByID(String id){

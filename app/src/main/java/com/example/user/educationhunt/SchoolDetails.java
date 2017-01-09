@@ -74,26 +74,35 @@ public class SchoolDetails extends AppCompatActivity implements DatabaseUpdatedL
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.star_School:
-                Bookmarkitem bookmarkitem = new Bookmarkitem();
-                bookmarkitem.setBookmarkID(ourSchool.getSchoolId());
-                bookmarkitem.setName(ourSchool.getSchoolName());
-                bookmarkitem.setLogo(ourSchool.getSchoolLogo());
-                bookmarkitem.setAddress(ourSchool.getSchoolAddress());
+                if(!isStarFilled) {
+                    Bookmarkitem bookmarkitem = new Bookmarkitem();
+                    bookmarkitem.setBookmarkID(ourSchool.getSchoolId());
+                    bookmarkitem.setName(ourSchool.getSchoolName());
+                    bookmarkitem.setLogo(ourSchool.getSchoolLogo());
+                    bookmarkitem.setAddress(ourSchool.getSchoolAddress());
 
-                bookmarkitem.setEmail(ourSchool.getSchoolEmail());
-                bookmarkitem.setCountry(ourSchool.getSchoolCountry());
-                bookmarkitem.setPhone(ourSchool.getSchoolPhone());
-                bookmarkitem.setWebsite(ourSchool.getSchoolWebsite());
+                    bookmarkitem.setEmail(ourSchool.getSchoolEmail());
+                    bookmarkitem.setCountry(ourSchool.getSchoolCountry());
+                    bookmarkitem.setPhone(ourSchool.getSchoolPhone());
+                    bookmarkitem.setWebsite(ourSchool.getSchoolWebsite());
 
-                bookmarkitem.setInstitution_type(ourSchool.getSchoolType());
-                bookmarkitem.setEstablishment_date(ourSchool.getEstDate());
-                bookmarkitem.setAdmission_open_from(ourSchool.getAdmissinOpenDate());
-                bookmarkitem.setAdmission_open_to(ourSchool.getAdmissionEndDate());
+                    bookmarkitem.setInstitution_type(ourSchool.getSchoolType());
+                    bookmarkitem.setEstablishment_date(ourSchool.getEstDate());
+                    bookmarkitem.setAdmission_open_from(ourSchool.getAdmissinOpenDate());
+                    bookmarkitem.setAdmission_open_to(ourSchool.getAdmissionEndDate());
 
-                bookmarkitem.setLatitude(ourSchool.getLatitude()+"");
-                bookmarkitem.setLongitude(ourSchool.getLongitude()+"");
+                    bookmarkitem.setLatitude(ourSchool.getLatitude() + "");
+                    bookmarkitem.setLongitude(ourSchool.getLongitude() + "");
 
-                db.addSchoolBookmark(bookmarkitem, item);
+                    db.addSchoolBookmark(bookmarkitem, item);
+                }else{
+                    if(db.removeBookmarkItem(ourSchool.getSchoolId()+"")){
+                        Toast.makeText(this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
+                        item.setIcon(getResources().getDrawable(R.drawable.star));
+                    }else {
+                        Toast.makeText(this, "Not Successfully Deleted", Toast.LENGTH_SHORT).show();
+                    }
+                }
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -112,17 +121,15 @@ public class SchoolDetails extends AppCompatActivity implements DatabaseUpdatedL
             }
             if (isStarFilled) {
                 menu.getItem(0).setIcon(getResources().getDrawable(R.mipmap.starfilled));
-            }else if (isStarFilled.booleanValue()==true){
-                delete();
-                menu.getItem(0).setIcon(getResources().getDrawable(R.mipmap.star));
             }
+//            else if (isStarFilled.booleanValue()==true){
+//                delete();
+//                menu.getItem(0).setIcon(getResources().getDrawable(R.mipmap.star));
+//            }
         }
         return true;
     }
 
-    public void delete(){
-        List<Bookmarkitem> bookmarkitems = db.getAllSchoolBookmark();
-        db.removeBookmarkItem(ourSchool.getSchoolId());    }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
