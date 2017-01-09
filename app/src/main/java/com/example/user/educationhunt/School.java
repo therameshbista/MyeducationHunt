@@ -126,7 +126,6 @@ public class School extends AppCompatActivity implements SearchView.OnQueryTextL
                                         JSONObject obj1 = fees.getJSONObject(j);
                                         feeClass.setGrade(obj1.getString("grade"));
                                         feeClass.setFee(obj1.getString("price"));
-
                                         listFeeClass.add(feeClass);
                                     }
                                     ourSchool.setFeesList(listFeeClass);

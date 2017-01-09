@@ -79,6 +79,20 @@ public class SchoolDetails extends AppCompatActivity implements DatabaseUpdatedL
                 bookmarkitem.setName(ourSchool.getSchoolName());
                 bookmarkitem.setLogo(ourSchool.getSchoolLogo());
                 bookmarkitem.setAddress(ourSchool.getSchoolAddress());
+
+                bookmarkitem.setEmail(ourSchool.getSchoolEmail());
+                bookmarkitem.setCountry(ourSchool.getSchoolCountry());
+                bookmarkitem.setPhone(ourSchool.getSchoolPhone());
+                bookmarkitem.setWebsite(ourSchool.getSchoolWebsite());
+
+                bookmarkitem.setInstitution_type(ourSchool.getSchoolType());
+                bookmarkitem.setEstablishment_date(ourSchool.getEstDate());
+                bookmarkitem.setAdmission_open_from(ourSchool.getAdmissinOpenDate());
+                bookmarkitem.setAdmission_open_to(ourSchool.getAdmissionEndDate());
+
+                bookmarkitem.setLatitude(ourSchool.getLatitude()+"");
+                bookmarkitem.setLongitude(ourSchool.getLongitude()+"");
+
                 db.addSchoolBookmark(bookmarkitem, item);
                 return true;
         }

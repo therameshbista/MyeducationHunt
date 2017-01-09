@@ -26,8 +26,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //    Contact table columns name
     private static final String ID = "Id";
     private static final String NAME = "Name";
+    private static final String ADDRESS= "Address";
     private static final String LOGO = "Logo";
-    private static final String LOCATION = "Location";
+    private static final String COUNTRY = "country";
+    private static final String PHONE = "phone";
+    private static final String EMAIL = "email";
+    private static final String WEBSITE = "website";
+    private static final String INSTITUTION_TYPE = "institution_type";
+    private static final String ESTABLISHED_DATE = "establishment_date";
+    private static final String ADMISSION_OPEN_FROM = "admission_open_from";
+    private static final String ADMISSION_OPEN_TO = "admission_open_to";
+    private static final String LATITUDE = "latitude";
+    private static final String LONGITUDE = "longitude";
 
     String createTableBookmark = "Create table if not exists `Bookmark` ("
             + "`name`	TEXT," + "`location`	TEXT," + "`logo`	TEXT);";
@@ -36,7 +46,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + ID + " INTEGER PRIMARY KEY, "
             + NAME + " TEXT, "
             + LOGO + " TEXT, "
-            + LOCATION + " TEXT " + ")";
+            + ADDRESS + " TEXT, "
+            + COUNTRY + " TEXT, "
+            + PHONE + " TEXT, "
+            + EMAIL + " TEXT, "
+            + WEBSITE + " TEXT, "
+            + INSTITUTION_TYPE + " TEXT, "
+            + ESTABLISHED_DATE + " TEXT, "
+            + ADMISSION_OPEN_FROM + " TEXT, "
+            + ADMISSION_OPEN_TO + " TEXT, "
+            + LATITUDE + " TEXT, "
+            + LONGITUDE + " TEXT " + ")";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -102,8 +122,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(ID, bookmarkitem.getBookmarkID());
         values.put(NAME, bookmarkitem.getName());
         values.put(LOGO, bookmarkitem.getLogo());
-        values.put(LOCATION, bookmarkitem.getAddress());
+        values.put(ADDRESS, bookmarkitem.getAddress());
 
+        values.put(COUNTRY, bookmarkitem.getCountry());
+        values.put(PHONE, bookmarkitem.getPhone());
+        values.put(EMAIL, bookmarkitem.getEmail());
+        values.put(WEBSITE, bookmarkitem.getWebsite());
+        values.put(INSTITUTION_TYPE, bookmarkitem.getInstitution_type());
+        values.put(ESTABLISHED_DATE, bookmarkitem.getEstablishment_date());
+        values.put(ADMISSION_OPEN_FROM, bookmarkitem.getAdmission_open_from());
+        values.put(ADMISSION_OPEN_TO, bookmarkitem.getAdmission_open_to());
+
+        values.put(LATITUDE, bookmarkitem.getLatitude());
+        values.put(LONGITUDE, bookmarkitem.getLongitude());
         //inserting row
         if (db.insert(TABLE_NAME_BOOKMARK, null, values) != -1) {
             databaseUpdatedListener.setDatabaseSuccess(bookmarkitem.getName(), menuItem);
@@ -126,6 +157,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 bookmarkitem.setName(cursor.getString(1));
                 bookmarkitem.setLogo(cursor.getString(2));
                 bookmarkitem.setAddress(cursor.getString(3));
+
+                bookmarkitem.setCountry(cursor.getString(4));
+                bookmarkitem.setPhone(cursor.getString(5));
+                bookmarkitem.setEmail(cursor.getString(6));
+                bookmarkitem.setWebsite(cursor.getString(7));
+                bookmarkitem.setInstitution_type(cursor.getString(8));
+                bookmarkitem.setEstablishment_date(cursor.getString(9));
+                bookmarkitem.setAdmission_open_from(cursor.getString(10));
+                bookmarkitem.setAdmission_open_to(cursor.getString(11));
+                bookmarkitem.setLatitude(cursor.getString(12));
+                bookmarkitem.setLongitude(cursor.getString(13));
+
                 bookmarkitems.add(bookmarkitem);
             } while (cursor.moveToNext());
         }
@@ -136,5 +179,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM " + TABLE_NAME_BOOKMARK + " WHERE " + ID + "= '" + sID + "'");
         db.close();
+    }
+
+    public Bookmarkitem getBoomarkDetailByID(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = null;
+        String empName = "";
+        try{
+            Bookmarkitem bookmarkitem= new Bookmarkitem();
+            cursor = db.rawQuery("SELECT * FROM "+TABLE_NAME_BOOKMARK+ " WHERE "+ID +"=?", new String[] {id + ""});
+            if(cursor.getCount() > 0) {
+
+                cursor.moveToFirst();
+                bookmarkitem.setBookmarkID(Integer.parseInt(cursor.getString(0)));
+                bookmarkitem.setName(cursor.getString(1));
+                bookmarkitem.setLogo(cursor.getString(2));
+                bookmarkitem.setAddress(cursor.getString(3));
+
+                bookmarkitem.setCountry(cursor.getString(4));
+                bookmarkitem.setPhone(cursor.getString(5));
+                bookmarkitem.setEmail(cursor.getString(6));
+                bookmarkitem.setWebsite(cursor.getString(7));
+                bookmarkitem.setInstitution_type(cursor.getString(8));
+                bookmarkitem.setEstablishment_date(cursor.getString(9));
+                bookmarkitem.setAdmission_open_from(cursor.getString(10));
+                bookmarkitem.setAdmission_open_to(cursor.getString(11));
+                bookmarkitem.setLatitude(cursor.getString(12));
+                bookmarkitem.setLongitude(cursor.getString(13));
+            }
+
+            return bookmarkitem;
+        }finally {
+
+            cursor.close();
+        }
     }
 }

@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.user.educationhunt.adapter.BookmarkAdapter;
 import com.example.user.educationhunt.database.DatabaseHelper;
 import com.example.user.educationhunt.pojos.Bookmarkitem;
+import com.example.user.educationhunt.pojos.OurSchool;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,7 @@ public class Bookmark extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Bookmark");
 
-        List<Bookmarkitem> bookmarkedSchools = dbhelper.getAllSchoolBookmark();
+        final List<Bookmarkitem> bookmarkedSchools = dbhelper.getAllSchoolBookmark();
 
         listView = (ListView) findViewById(R.id.list_bookmarked);
         if (bookmarkedSchools.size() != 0) {
@@ -51,12 +52,33 @@ public class Bookmark extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//             Bookmarkitem bookmarkitem= dbhelper.getBoomarkDetailByID(bookmarkedSchools.get(position).getBookmarkID()+"");
+                Toast.makeText(Bookmark.this, bookmarkedSchools.get(position).getName() + "", Toast.LENGTH_SHORT).show();
+                Bookmarkitem bookmarkitem = bookmarkedSchools.get(position);
+                OurSchool ourSchool = new OurSchool();
+                ourSchool.schoolId = bookmarkitem.getBookmarkID();
+                ourSchool.schoolName = bookmarkitem.getName();
+                ourSchool.schoolAddress = bookmarkitem.getAddress();
+                ourSchool.schoolLogo = bookmarkitem.getLogo();
+                ourSchool.schoolDistrict = bookmarkitem.getCountry();
+                ourSchool.schoolCountry = bookmarkitem.getCountry();
+                ourSchool.schoolPhone = bookmarkitem.getPhone();
+                ourSchool.schoolEmail = bookmarkitem.getEmail();
+                ourSchool.schoolWebsite = bookmarkitem.getWebsite();
+                ourSchool.schoolType = bookmarkitem.getInstitution_type();
+                ourSchool.estDate = bookmarkitem.getEstablishment_date();
+                ourSchool.admissinOpenDate = bookmarkitem.getAdmission_open_from();
+                ourSchool.admissionEndDate = bookmarkitem.getAdmission_open_to();
+                ourSchool.latitude = Double.parseDouble(bookmarkitem.getLatitude());
+                ourSchool.longitude = Double.parseDouble(bookmarkitem.getLongitude());
 
-                startActivity(new Intent(Bookmark.this,SchoolDetails.class));
+                Intent intent= new Intent(Bookmark.this,SchoolDetails.class);
+                intent.putExtra("school",ourSchool);
+                startActivity(intent);
             }
         });
 
-          }
+    }
 
     public int getStatusBarHeight() {
         int result = 0;
